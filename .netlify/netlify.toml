@@ -1,0 +1,31 @@
+functionsDirectory = "C:\\Users\\ANAND VIVEK IITI\\AnnouncementIITI\\netlify\\functions"
+functionsDirectoryOrigin = "ui"
+plugins = []
+headers = []
+redirects = []
+
+[functions]
+
+[functions."*"]
+
+[build]
+publish = "C:\\Users\\ANAND VIVEK IITI\\AnnouncementIITI\\dist"
+publishOrigin = "ui"
+commandOrigin = "ui"
+base = "C:\\Users\\ANAND VIVEK IITI\\AnnouncementIITI"
+command = "npm run build"
+functions = "C:\\Users\\ANAND VIVEK IITI\\AnnouncementIITI\\netlify\\functions"
+
+[build.environment]
+
+[build.processing]
+
+[build.processing.css]
+
+[build.processing.html]
+
+[build.processing.images]
+
+[build.processing.js]
+
+[build.services]
