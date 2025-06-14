@@ -27,7 +27,7 @@ function ClubPage() {
   );
 }
 
-function ClubCard({ name, imgSrc, instagramUrl }) {
+function ClubCard({ name,  instagramUrl }) {
   return (
     
       <div className="bg-transparent border-black pt-20 flex flex-col items-center pb-10 sm:w-[25vh] sm:h-[40vw] md:w-[35vh] md:h-[40vw] lg:w-[50vh] lg:h-[30vw] ">

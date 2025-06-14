@@ -1,6 +1,6 @@
-functionsDirectory = "C:\\Users\\ANAND VIVEK IITI\\AnnouncementIITI\\netlify\\functions"
-functionsDirectoryOrigin = "ui"
 plugins = []
+functionsDirectory = "C:\\Users\\ANAND VIVEK IITI\\AnnouncementIITI\\netlify\\functions"
+functionsDirectoryOrigin = "config-v1"
 headers = []
 redirects = []
 
@@ -10,9 +10,8 @@ redirects = []
 
 [build]
 publish = "C:\\Users\\ANAND VIVEK IITI\\AnnouncementIITI\\dist"
-publishOrigin = "ui"
-commandOrigin = "ui"
-base = "C:\\Users\\ANAND VIVEK IITI\\AnnouncementIITI"
+publishOrigin = "config"
+commandOrigin = "config"
 command = "npm run build"
 functions = "C:\\Users\\ANAND VIVEK IITI\\AnnouncementIITI\\netlify\\functions"
 
