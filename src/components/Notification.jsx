@@ -1,9 +1,11 @@
 import './Notification.css';
 import image from './image.png';
 
-const notifi =[{anouncment_photo:image,anouncement_heading:'Headind 1',anouncment_info:'This is the first announcement.'},
-  {anouncment_photo:image,anouncement_heading:'Heading 2',anouncment_info:'This is the first announcement.'},
-  {anouncment_photo:image,anouncement_heading:'Heading 3',anouncment_info:'This is the first announcement.'}];
+const notifi =[{anouncment_photo:image,anouncement_heading:'This is the heading',anouncment_info:'This is the first announcement.'},
+  {anouncment_photo:image,anouncement_heading:'This is the heading',anouncment_info:'This is the first announcement.'},
+  {anouncment_photo:image,anouncement_heading:'This is the heading',anouncment_info:'This is the first announcement.'},
+  {anouncment_photo:image,anouncement_heading:'This is the heading',anouncment_info:'This is the first announcement.'},
+  {anouncment_photo:image,anouncement_heading:'This is the heading',anouncment_info:'This is the first announcement.'}];
 export default function Notification() {
   return( 
   <div>

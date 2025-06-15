@@ -1,21 +1,28 @@
 .con{
 display: flex;
 flex-direction: column;
+background-color: gray;
 }
 .notifi{
     display: flex;
     flex-direction: row;
     align-items: center;
-    height: 200px;
-   margin-left: 150px;
-   gap: 100px;
+    height: 150px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+   
+   gap: 60px;
+   background-color: white;
+   border-radius: 40px;
 }
-img{
+.notifi img{
     height: 100px;
     width: 100px;
+    margin-left: 150px;
     
 }
 h1{
     font-size:xx-large;
+    color: #000;
 }
 
