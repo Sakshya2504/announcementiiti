@@ -1,0 +1,21 @@
+.con{
+display: flex;
+flex-direction: column;
+}
+.notifi{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 200px;
+   margin-left: 150px;
+   gap: 100px;
+}
+img{
+    height: 100px;
+    width: 100px;
+    
+}
+h1{
+    font-size:xx-large;
+}
+
