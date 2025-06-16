@@ -1,6 +1,7 @@
 import './App.css';
 import Events from './components/Events';
 import NavBar from './components/NavBar';
+import Individualclubpage from './components/individualclubpage';
 import ClubPage from './components/ClubPage';
 import Announcement from './components/Announcement';
 import Registration from './components/Registration';
@@ -35,6 +36,7 @@ function App() {
           <Route path="/announcement" element={<Announcement />} />
           <Route path="/registration" element={<Registration />} />
           <Route path="/notification" element={<Notification />} />
+          <Route path="/individualclubpage" element={<Individualclubpage />} />
         </Routes>
         
       </div>
