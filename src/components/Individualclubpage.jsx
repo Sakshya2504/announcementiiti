@@ -4,6 +4,7 @@ import './Individualclubpage.css'
 import insta from './insta.png';
 import linkedIn from './linkedIn.png';
 import facebook from './facebook.png';
+import { useState } from 'react';
 import exampleImage from './image.png'; // relative to Events.jsx
 const events = [
   {
@@ -14,14 +15,14 @@ const events = [
     club: 'Avana and Aaina collab',
     image: exampleImage,
   }, {
-    id: 1,
+    id: 2,
     time: '6pm today',
     location: 'Near tea post',
     name: 'Nukkad Natak',
     club: 'Avana and Aaina collab',
     image: exampleImage,
   }, {
-    id: 1,
+    id: 3,
     time: '6pm today',
     location: 'Near tea post',
     name: 'Nukkad Natak',
@@ -29,20 +30,69 @@ const events = [
     image: exampleImage,
   }]
 
-function Individualclubpage() {
+ function Createevent({onclose}) {
   return (
-    <div>
+   <>
+      <div className='createevent'>
+        <button className='back' onClick={onclose}>✖</button>
+      <form action="/individualclubpage">
+      
+      <h1 >Event Detailes</h1>
+      <input type="text" placeholder='Event Name' name='EventName'/>
+      <input type="text" placeholder='Event Date And Time' name='Event Date And Time'/>
+      <input type="text" placeholder='Conducyed By' name='Conducyed By'/>
+      <input type="text" placeholder='Event Info' name='Event Info'/>
+      <button type="submit" className="submitbutton">Submit</button>
+
+      </form>
+
+     </div>
+   </>
+  )
+}
+ function Announce({onclose}) {
+  return (
+   <>
+  <div className='announce'>
+ <button className='back' onClick={onclose}>✖</button>
+        <form action="/individualclubpage">
+        <h1>Announcement Details</h1>
+      <input type="text" placeholder='Clubname' name=''/>
+      <input type="text" placeholder='Announcement Heading' name=''/>
+      <input type="text" placeholder='Announcement Info' name=''/>
+      <button type="submit" className="submitbutton">Submit</button>
+
+      </form>
+      
+
+     </div>
+   </>
+  )
+}
+
+  
+
+
+function Individualclubpage() {
+   const [eventform,seteventform]=useState(false);
+   const [announceform,setannounceform]=useState(false);
+  return (
+    <>
         <div className='clubbody'>
             <img src={cynapticlogo} alt="cynapticlogo" />
         </div>
         <div className='button_con'>
-          <button className='button'>
+          <button className='createeventbutton' onClick={()=>seteventform(true)}>
           Create Event
           </button>
-          <button className='button'>
+         
+          <button className='announcebutton' onClick={()=>setannounceform(true)}>
             Announce
           </button>
+           
         </div>
+         {eventform&&<Createevent onclose={()=>seteventform(false)}/>}
+         {announceform&&<Announce onclose={()=>setannounceform(false)}/>}
          <div className="p-4 bg-gray-200 min-h-screen">
       <h1 className="text-3xl font-bold mb-6 text-center">Club Events</h1>
 
@@ -106,7 +156,7 @@ function Individualclubpage() {
            
 
         </footer>
-    </div>
+    </>
   )
 }
 

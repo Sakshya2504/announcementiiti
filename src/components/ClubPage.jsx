@@ -1,6 +1,7 @@
 // src/components/ClubPage.jsx
 import image from './iiti.png'
 import { Link } from 'react-router-dom';
+
 function ClubPage() {
   const clubs = [
     { name: 'Aaina Club', imgSrc: '/_next/static/media/aaina_logo.e8006f82.png', instagramUrl: 'https://www.instagram.com/dramaticsclubiiti/' },
