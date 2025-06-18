@@ -7,9 +7,9 @@ background-color: gray;
     display: flex;
     flex-direction: row;
     align-items: center;
-    height: 150px;
-    margin-top: 15px;
-    margin-bottom: 15px;
+    height: 100px;
+    margin-top: 7px;
+    margin-bottom: 7px;
    
    gap: 60px;
    background-color: white;
