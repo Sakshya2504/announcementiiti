@@ -3,14 +3,14 @@ import Events from './components/Events';
 import NavBar from './components/NavBar';
 import Individualclubpage from './components/individualclubpage';
 import ClubPage from './components/ClubPage';
-import Announcement from './components/Announcement';
-import Registration from './components/Registration';
 import Notification from './components/Notification';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import insta from './Images/Insta.png';
 import linkedIn from './Images/linkedIn.png';
 import twitter from './Images/twitter.png';
 import facebook from './Images/facebook.png';
+import Signup from './components/Signup';
+import Login from './components/Login';
 function App() {
   return (
     <div className="min-h-screen flex flex-col">
@@ -33,9 +33,12 @@ function App() {
         <Routes>
           <Route path="/" element={<Events />} />
           <Route path="/clubs" element={<ClubPage />} />
-          <Route path="/announcement" element={<Announcement />} />
-          <Route path="/registration" element={<Registration />} />
-          <Route path="/notification" element={<Notification />} />
+        
+           <Route path="/notification" element={<Notification />} />
+
+          <Route path="/signup" element={<Signup/>} />
+          <Route path="/login" element={<Login/>} />
+          
           <Route path="/individualclubpage" element={<Individualclubpage />} />
         </Routes>
         

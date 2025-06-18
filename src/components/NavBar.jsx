@@ -4,9 +4,9 @@ import  Search  from './Search.png';
 const navigation = [
   { name: 'Clubs', path: '/clubs' },
   { name: 'Events', path: '/' },
-  { name: 'Announcement', path: '/announcement' },
-  { name: 'Registration', path: '/registration' },
+ 
   { name: 'Notification', path: '/notification' },
+   { name: 'Signup', path: '/signup' },
 ];
 
 export default function NavBar() {
@@ -25,7 +25,7 @@ const [isOpen, setIsOpen] = useState(false);
           </a>
 
               
-          <nav className="hidden md:flex space-x-10 p-4">
+          <nav className="hidden md:flex space-x-15 p-4">
             {navigation.map((item) => (
               <Link
                 key={item.path}
