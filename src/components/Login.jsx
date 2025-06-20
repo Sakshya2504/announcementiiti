@@ -23,31 +23,30 @@ const [logininfo,setlogininfo]=useState({
 }
  
   return (
+    <>
     <div className="login">
       <div className="logincontainer">
        
-        <p>
-          USER LOGIN
-        </p>
+       
        <form>
   <div className='loginform'>
-    <label for="InputEmail1">EMAIL ADRESS</label>
-    <input type="email" className="email" id="InputEmail1" onChange={change}/>
-    
+     <h2 className=' text-xl text-white font-bold py-10'>
+          SIGN IN
+        </h2>
+    <input type="email" placeholder='Email or Username' className="email" id="InputEmail1" onChange={change}/>
   
- 
-    <label for="InputPassword">PASSWORD</label>
-    <input type="password" className="password" id="InputPassword"/>
+    <input type="password" placeholder='Password' className="password" id="InputPassword"/>
   
  
   <button type="submit" className="loginsubmitbutton" >login</button>
   </div>
-  <p>Doesnot have acount?</p>
-<Link to='/signup'>Signup</Link>
+  <p className='text-white'>Doesnot have acount?</p>
+<Link to='/signup' className='text-blue-500 font-bold hover:underline' >Signup</Link>
  
 </form>
       </div>
     </div>
+    </>
   )
 }
 

@@ -8,8 +8,8 @@ const notifi =[{anouncment_photo:image,anouncement_heading:'This is the heading'
   {anouncment_photo:image,anouncement_heading:'This is the heading',anouncment_info:'This is the first announcement.'}];
 export default function Notification() {
   return( 
-  <div>
-    <div id="con">
+  <>
+    <div className="con">
      { notifi.map((e,index)=>(
       <div key={index} className="notifi">
         <img src={e.anouncment_photo} alt="image" />
@@ -22,6 +22,6 @@ export default function Notification() {
       ))}
 
     </div>
-  </div>
+  </>
 );
 }

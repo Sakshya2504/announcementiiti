@@ -93,8 +93,8 @@ function Individualclubpage() {
         </div>
          {eventform&&<Createevent onclose={()=>seteventform(false)}/>}
          {announceform&&<Announce onclose={()=>setannounceform(false)}/>}
-         <div className="p-4 bg-gray-200 min-h-screen">
-      <h1 className="text-3xl font-bold mb-6 text-center">Club Events</h1>
+         <div className="p-4 bg-[rgba(1,1,27)] min-h-screen">
+      <h1 className="text-3xl font-bold text-white mb-6 text-center">Club Events</h1>
 
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         {events.map((event) => (
@@ -128,7 +128,7 @@ function Individualclubpage() {
 
     </div>
         
-    <footer className="bg-gray-800 text-white  bottom-0 py-10">
+    <footer className="bg-[rgba(1,1,27)] border border-t-[#3f3e45] text-white  bottom-0 py-10">
       <div className='footer'>
         <p>© 2023 The Cynaptics Club — @IITI</p>
       <a

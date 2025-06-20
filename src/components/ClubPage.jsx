@@ -32,7 +32,7 @@ function ClubPage() {
 function ClubCard({ name }) {
   return (
     
-      <div className="bg-transparent border-black pt-20 flex flex-col items-center pb-10 sm:w-[25vh] sm:h-[40vw] md:w-[35vh] md:h-[40vw] lg:w-[50vh] lg:h-[30vw] ">
+      <div className="bg-gradient-to-r from-cyan-500/5 to-blue-500/5 border-black pt-20 flex flex-col items-center pb-10 sm:w-[25vh] sm:h-[40vw] md:w-[35vh] md:h-[40vw] lg:w-[50vh] lg:h-[30vw] ">
       <div className="img-cont lg:w-52 lg:h-52 md:w-40 md:h-40 sm:w-30 sm:h-40 flex items-center justify-center lg:mb-5 md:m-2 xs:w-40 xs:h-40 cursor-pointer hover:shadow-xl xxs:h-40">
         <img
           src={image}
@@ -43,7 +43,7 @@ function ClubCard({ name }) {
         />
       </div>
       <div className="heading-cont flex items-center justify-center lg:w-60 lg:h-12 sm:w-40 sm:h-8 md:w-50 md:h-10 xxs:w-40 xxs:h-10">
-        <h5 className="mb-1 text-center text-gray-900 lg:text-xl xxs:text-sm md:text-md lg:font-medium">{name}</h5>
+        <h5 className="mb-1 text-center text-white lg:text-xl xxs:text-sm md:text-md lg:font-medium">{name}</h5>
       </div>
       <div className="w-52 h-12 mb-10 mt-1 flex items-center justify-center cursor-pointer xl:border-b-4 border-blue-500">
         <Link

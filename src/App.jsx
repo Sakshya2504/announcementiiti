@@ -27,7 +27,7 @@ function App() {
         </div>
         </div>
     <Router>
-      <div className="container">
+      <div className="bg-[rgba(1,1,27)]">
         <NavBar />
         
         <Routes>
@@ -45,13 +45,13 @@ function App() {
       </div>
     </Router>
 
-          <div className="footer-container  bottom-0 w-full bg-gray-800 text-white py-4 text-center z-50">
-                 <footer className="bg-gray-800 text-white  bottom-0 py-10">
+          <div className="footer-container border border-t-[#3f3e45] bottom-0 w-full bg-[rgba(1,1,27)] text-white py-4 text-center z-50">
+                 <footer className="bg-[rgba(1,1,27)] border-t-[#3f3e45] text-white  bottom-0 py-10">
             <div className="max-w-7xl mx-auto px-4 text-center">
               <div className="mb-4 space-x-4 text-xl">
-                <a href="#" className="hover:underline">Contact us</a>     
-                <a href="#" className="hover:underline">Help</a>           
-                <a href="#" className="hover:underline">Share</a>
+                <a href="#" className="hover:underline font-bold">Contact us</a>     
+                <a href="#" className="hover:underline font-bold">Help</a>           
+                <a href="#" className="hover:underline font-bold">Share</a>
               </div>
               {/* Social Media Icons */}
                 <div className="Social-Handles mt-4 flex justify-center items-center  gap-10">

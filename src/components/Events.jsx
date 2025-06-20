@@ -20,8 +20,8 @@ const events = [
 
 export default function Events() {
   return (
-    <div className="p-4 bg-gray-200 min-h-screen">
-      <h1 className="text-3xl font-bold mb-6 text-center">Events</h1>
+    <div className="p-4 bg-gradient-to-r from-cyan-500/5 to-blue-500/5 min-h-screen">
+      <h1 className="text-3xl font-bold mb-6 text-white text-center">Events</h1>
 
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         {events.map((event) => (

@@ -16,34 +16,32 @@ function Signup() {
     }
      
   return (
-    
+    <>
     <div className="signup">
       <div className="signupcontainer">
        
-        <p>
-          USER SIGNUP
-        </p>
+       
        <form>
   <div className='signupform'>
-    <label for="Inputusername"> USER NAME</label>
-    <input type="text" className="name" id="Inputusername" onChange={change} />
-    <label for="InputEmail1"> EMAIL ADRESS</label>
-    <input type="email" className="email" id="InputEmail1" onChange={change}/>
+    <h2 className=' text-xl text-white font-bold py-10'>
+          CREATE ACCOUNT
+        </h2>
+    <input type="text" className="name" placeholder='Username' id="Inputusername" onChange={change} />
     
-  
- 
-    <label for="InputPassword1"> PASSWORD</label>
-    <input type="password" className="password" id="InputPassword" onChange={change}/>
+    <input type="email" placeholder='Email' className="email" id="InputEmail1" onChange={change}/>
+    <input type="password" className="password" placeholder='Password' id="InputPassword" onChange={change}/>
+   <input type="password" className="password" placeholder='Confirm Password' id="InputPassword" onChange={change}/>
   
  
   <button type="submit" className="signupsubmitbutton">SIGNUP</button>
   </div>
-  <p>Already have acoount?</p>
-<Link to='/login'>Login</Link>
+  <p className='text-white '>Already have acoount?</p>
+<Link to='/login' className='text-blue-500 font-bold hover:underline'>Login</Link>
  
 </form>
       </div>
     </div>
+    </>
   )
 }
 
