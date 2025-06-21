@@ -15,7 +15,7 @@ align-items: center;
     margin-bottom: 7px;
     width: 75%;
    
-   gap: 60px;
+   gap: 5%;
             /* background: linear-gradient(
     to right,
     rgba(6, 182, 212, 0.3),
@@ -37,18 +37,26 @@ scale: 1.02;
 border-width: 2px;
 }
 .notifi img{
-    height: 90px;
-    width: 100px;
- margin-left: 100px ;
-    margin-top: 4px;
-    margin-bottom: 4px;
+    height: 60px;
+    width: 70px;
+    margin-top: 9px;
+    margin-bottom: 9px;
+    object-fit: fill;
+    border-radius: 10%;
+    margin-right: 120px;
 }
 .notifi h1{
-    font-size:xx-large;
+    font-size:18px;
     color: white;
-    font-weight:400 ;
+    font-weight:500 ;
+    
 }
 .notifi p{
     color: white;
+    font-size: 15;
 }
+.notifi_info{
+    margin-left: 35px;
+}
+
 

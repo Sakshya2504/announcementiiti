@@ -4,7 +4,7 @@ import './Individualclubpage.css'
 import insta from './insta.png';
 import linkedIn from './linkedIn.png';
 import facebook from './facebook.png';
-import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import exampleImage from './image.png'; // relative to Events.jsx
 const events = [
   {
@@ -30,77 +30,44 @@ const events = [
     image: exampleImage,
   }]
 
- function Createevent({onclose}) {
-  return (
-   <>
-      <div className='createevent'>
-        <button className='back' onClick={onclose}>✖</button>
-      <form action="/individualclubpage">
-      
-      <h1 >Event Detailes</h1>
-      <input type="text" placeholder='Event Name' name='EventName'/>
-      <input type="text" placeholder='Event Date And Time' name='Event Date And Time'/>
-      <input type="text" placeholder='Conducyed By' name='Conducyed By'/>
-      <input type="text" placeholder='Event Info' name='Event Info'/>
-      <button type="submit" className="submitbutton">Submit</button>
+ 
 
-      </form>
-
-     </div>
-   </>
-  )
-}
- function Announce({onclose}) {
-  return (
-   <>
-  <div className='announce'>
- <button className='back' onClick={onclose}>✖</button>
-        <form action="/individualclubpage">
-        <h1>Announcement Details</h1>
-      <input type="text" placeholder='Clubname' name=''/>
-      <input type="text" placeholder='Announcement Heading' name=''/>
-      <input type="text" placeholder='Announcement Info' name=''/>
-      <button type="submit" className="submitbutton">Submit</button>
-
-      </form>
-      
-
-     </div>
-   </>
-  )
-}
 
   
 
 
 function Individualclubpage() {
-   const [eventform,seteventform]=useState(false);
-   const [announceform,setannounceform]=useState(false);
+   
+   const navigate =useNavigate();
   return (
     <>
         <div className='clubbody'>
-            <img src={cynapticlogo} alt="cynapticlogo" />
+            <img src={cynapticlogo} alt="cynapticlogo" className='clubimage' />
         </div>
         <div className='button_con'>
-          <button className='createeventbutton' onClick={()=>seteventform(true)}>
+         
+          <button className='createeventbutton'  onClick={()=> navigate('/createevent')} >
+           
           Create Event
+          
           </button>
          
-          <button className='announcebutton' onClick={()=>setannounceform(true)}>
+         
+          <button className='announcebutton' onClick={()=>{navigate('/announce')}}>
             Announce
           </button>
            
         </div>
-         {eventform&&<Createevent onclose={()=>seteventform(false)}/>}
-         {announceform&&<Announce onclose={()=>setannounceform(false)}/>}
-         <div className="p-4 bg-[rgba(1,1,27)] min-h-screen">
+        
+         <div className="p-4 bg-[#01011b] min-h-screen">
       <h1 className="text-3xl font-bold text-white mb-6 text-center">Club Events</h1>
 
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         {events.map((event) => (
           <div
             key={event.id}
-            className="event-detail border rounded-2xl shadow-md p-4 bg-white space-y-3"
+            className="event-detail border rounded-2xl shadow-md p-4 bg-gradient-to-r from-cyan-500/5 to-blue-500/5 space-y-3 border-2 border-[#87CEEB]/60
+            hover:border-[#33bbcf] hover:scale-[1.03] space-y-3"
           >
             <div className="event-logo flex items-center justify-center">
               <img
@@ -110,10 +77,10 @@ function Individualclubpage() {
               />
             </div>
             <div className="event-description space-y-1">
-              <p className="text-gray-700 font-medium">🕒 Time: {event.time}</p>
-              <p className="text-gray-700 font-medium">📍 Location: {event.location}</p>
-              <p className="text-gray-800 font-semibold">🎭 Event: {event.name}</p>
-              <p className="text-gray-600">Conducted by: {event.club}</p>
+              <p className="text-white font-medium">🕒 Time: {event.time}</p>
+              <p className="text-white font-medium">📍 Location: {event.location}</p>
+              <p className="text-white font-semibold">🎭 Event: {event.name}</p>
+              <p className="text-white">Conducted by: {event.club}</p>
 
               <button
                 className="mt-2 bg-blue-500 cursor-pointer text-white px-4 py-2 rounded hover:bg-blue-700 transition"
@@ -130,7 +97,7 @@ function Individualclubpage() {
         
     <footer className="bg-[rgba(1,1,27)] border border-t-[#3f3e45] text-white  bottom-0 py-10">
       <div className='footer'>
-        <p>© 2023 The Cynaptics Club — @IITI</p>
+        <div>© 2023 The Cynaptics Club — @IITI</div>
       <a
         href="https://www.instagram.com/cynapticsclubiiti"
          target="_blank"

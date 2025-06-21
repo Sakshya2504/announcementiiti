@@ -1,7 +1,7 @@
 import './App.css';
 import Events from './components/Events';
 import NavBar from './components/NavBar';
-import Individualclubpage from './components/individualclubpage';
+import Individualclubpage from './components/Individualclubpage';
 import ClubPage from './components/ClubPage';
 import Notification from './components/Notification';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
@@ -11,6 +11,8 @@ import twitter from './Images/twitter.png';
 import facebook from './Images/facebook.png';
 import Signup from './components/Signup';
 import Login from './components/Login';
+import Createevent from './components/Createevent';
+import Announce from './components/Announce';
 function App() {
   return (
     <div className="min-h-screen flex flex-col">
@@ -39,7 +41,11 @@ function App() {
           <Route path="/signup" element={<Signup/>} />
           <Route path="/login" element={<Login/>} />
           
+          
+          
           <Route path="/individualclubpage" element={<Individualclubpage />} />
+          <Route path="/createevent" element={<Createevent/>} />
+           <Route path="/announce" element={<Announce/>} />
         </Routes>
         
       </div>
