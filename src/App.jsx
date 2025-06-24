@@ -15,8 +15,8 @@ import Createevent from './components/Createevent';
 import Announce from './components/Announce';
 function App() {
   return (
-    <div className="min-h-screen flex flex-col">
-       <div className="container-fluid ">
+    <div className="min-h-screen flex flex-col ">
+       {/* <div className="container-fluid ">
             <div className="bg-gray-800 text-white hidden md:flex  gap-4 items-center top-0 py-8 "> 
                 <p className="headingclass text-2xl items-center justify-center text-white "> भारतीय प्रौद्योगिकी संस्थान इंदौर  Indian Institute of Technology Indore</p> 
              
@@ -27,7 +27,7 @@ function App() {
           <p className="headingclass text-xl items-center text-white "> भारतीय प्रौद्योगिकी संस्थान इंदौर <br></br> Indian Institute of Technology Indore</p>
         </div>
         </div>
-        </div>
+        </div> */}
     <Router>
       <div className="bg-[rgba(1,1,27)]">
         <NavBar />

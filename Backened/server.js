@@ -1,0 +1,72 @@
+import mongoose from 'mongoose';
+import express from 'express';
+import cors from 'cors';
+import { User } from './models/UserSchema.js'; // or adjust path as needed
+import bcrypt from 'bcrypt';
+
+
+const app = express();
+const port = 3000;
+
+// Middleware
+app.use(cors());
+app.use(express.json()); // important to parse JSON body
+
+// Connect to MongoDB
+await mongoose.connect("mongodb://localhost:27017/todo", {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+});
+
+// Signup route
+app.post('/api/signup', async (req, res) => {
+    const { name, email, password } = req.body;
+
+    try {
+        const existingUser = await User.findOne({ email });
+        if (existingUser) {
+            return res.status(409).json({ message: 'User already registered with this email' });
+        }
+
+        const saltRounds = 10;
+        const hashedPassword = await bcrypt.hash(password, saltRounds); // 🔐 Hashing here
+
+        const newUser = new User({ name, email, password: hashedPassword }); // Store hashed password
+        await newUser.save();
+
+        res.status(201).json({ message: 'User registered successfully!' });
+    } catch (err) {
+        if (err.name === 'ValidationError') {
+            return res.status(400).json({message : err.message });
+        }
+        res.status(500).json({ message: 'Something went wrong' });
+      }
+});
+
+// Login route
+app.post('/api/login', async (req, res) => {
+    const { email, password } = req.body;
+
+    try {
+        const user = await User.findOne({ email });
+        if (!user) {
+            return res.status(401).json({ message: 'Invalid credentials' });
+        }
+        // Compare the provided password with the hashed password in the database
+        // bcrypt.compare returns a promise that resolves to true or false
+        const isMatch = await bcrypt.compare(password, user.password);
+        if (!isMatch) {
+            return res.status(401).json({ message: "Invalid credentials" });
+        }
+
+
+        res.json({ message: 'Login successful!' });
+    } catch (err) {
+      console.error(err);
+        res.status(500).json({ message: 'Something went wrong' });
+    }
+});
+
+app.listen(port, () => {
+    console.log(`🚀 Server running at http://localhost:${port}`);
+});

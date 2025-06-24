@@ -16,13 +16,16 @@ const [isOpen, setIsOpen] = useState(false);
     <header className="bg-[rgba(1,1,27,0.6)]  sticky top-0 z-50 shadow-md">
       <div className="max-w-[99%] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-30">
+          <div className='flex items-center '>
           <a href="https://www.iiti.ac.in">
             <img
               src="https://www.iiti.ac.in/public/themes/iitindore/demos/update-logo.png"
-              className="logo h-20 w-20"
+              className="logo h-15 w-15 p-0 lg:h-20 lg:w-20"
               alt="IIT Indore Logo"
             />
           </a>
+          <p className='text-white font-bold text-xl p-1 '>IIT INDORE</p>
+          </div>
 
               
           <nav className="hidden md:flex space-x-15 p-4">
@@ -73,7 +76,7 @@ const [isOpen, setIsOpen] = useState(false);
          <div className="md:hidden">
   <button
     onClick={() => setIsOpen(!isOpen)}
-    className="text-black text-3xl focus:outline-none"
+    className="text-white text-3xl focus:outline-none"
   >
     {isOpen ? '✖' : '☰'}
   </button>
