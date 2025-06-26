@@ -62,7 +62,7 @@ alert('Something went wrong');
      <h2 className=' text-xl text-white font-bold py-10'>
           SIGN IN
         </h2>
-    <input type="email" placeholder='Email or Username' value={logininfo.email} className="email" id="InputEmail1" onChange={change}/>
+    <input type="email" placeholder='Email' value={logininfo.email} className="email" id="InputEmail1" onChange={change}/>
   
     <input type="password" placeholder='Password' value={logininfo.password} className="password" id="InputPassword1" onChange={change}/>
   

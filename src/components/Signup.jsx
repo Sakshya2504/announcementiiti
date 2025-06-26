@@ -20,7 +20,7 @@ function Signup() {
     }
     const handlesignup= async (e)=>{
       //  const {name1,email1,password1,confirmpassword1}={...logininfo};
-      e.preventDefaul();
+      e.preventDefault();
 
       // if(!name1||!email1||!password1||!confirmpassword1||password1!==confirmpassword1){
       // alert('PLEASE FILL ALL DETAILS CORRECTLY');
@@ -74,7 +74,7 @@ function Signup() {
     
     <input type="email" placeholder='Email' className="email" value={logininfo.email} id="InputEmail1" onChange={change} required/>
     <input type="password" className="password" placeholder='Password' value={logininfo.password} id="InputPassword1" onChange={change} required/>
-     <input type="password" className="confirmpassword1" placeholder='Confirm Password' value={logininfo.confirmpassword1} id="InputPassword2" onChange={change}/>  
+     {/* <input type="password" className="confirmpassword1" placeholder='Confirm Password' value={logininfo.confirmpassword1} id="InputPassword2" onChange={change}/>   */}
   
  
   <button type="submit" className="signupsubmitbutton" >SIGNUP</button>
