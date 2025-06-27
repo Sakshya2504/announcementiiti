@@ -31,9 +31,10 @@
     .imagelogo{
         height: 30px;
         width: 30px;
-    }
+    }    
+    
     .imagelogo:hover{
-        opacity: 75%;
+        opacity: 0.75;
     }
     
  

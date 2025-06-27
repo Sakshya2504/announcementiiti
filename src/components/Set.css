@@ -1,0 +1,26 @@
+.dropdown{
+  width: 75%;
+  position:fixed;
+  top:120px ;
+  z-index: 50;
+  background-color: black;
+  height: 100vh;
+  
+}
+.profile{
+    color: white;
+    font-weight: bold;
+    padding-left: 15px;
+    margin-bottom: 15px;
+    margin-top: 6px;
+    
+}
+.logout{
+    color: red;
+      font-weight: bold;
+      padding-left: 17px;
+      cursor: pointer;
+}
+.logout:hover {
+  opacity: 0.8;
+}

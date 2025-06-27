@@ -13,33 +13,39 @@ import Signup from './components/Signup';
 import Login from './components/Login';
 import Createevent from './components/Createevent';
 import Announce from './components/Announce';
+import { useState } from 'react';
+import Set from './components/Set';
+import { useEffect } from 'react';
 function App() {
+  const [isOpen, setIsOpen] = useState(false);
+    const [issignup,setissignup] = useState(false);
+  const changestatus =() => setIsOpen(!isOpen);
+  const closeset=()=> setIsOpen(false);
+const [personinfo,setpersoninfo]=useState('');
+  useEffect(() => {
+  const storedInfo = localStorage.getItem('personinfo');
+  if (storedInfo) {
+    setpersoninfo(JSON.parse(storedInfo));
+    setissignup(true);
+  }
+}, []);
+
+ 
   return (
     <div className="min-h-screen flex flex-col ">
-       {/* <div className="container-fluid ">
-            <div className="bg-gray-800 text-white hidden md:flex  gap-4 items-center top-0 py-8 "> 
-                <p className="headingclass text-2xl items-center justify-center text-white "> भारतीय प्रौद्योगिकी संस्थान इंदौर  Indian Institute of Technology Indore</p> 
-             
-               </div>
-               
-        <div className="md:hidden">
-           <div className="bg-gray-800 text-white  top-0 py-10 "> 
-          <p className="headingclass text-xl items-center text-white "> भारतीय प्रौद्योगिकी संस्थान इंदौर <br></br> Indian Institute of Technology Indore</p>
-        </div>
-        </div>
-        </div> */}
-    <Router>
+     
+  
       <div className="bg-[rgba(1,1,27)]">
-        <NavBar />
-        
+        <NavBar changestatus={changestatus} closeset={closeset} issignup={issignup} isOpen={isOpen} />
+       {isOpen&&<Set changestatus={changestatus} setissignup={setissignup} issignup={issignup} personinfo={personinfo}  setpersoninfo={setpersoninfo} closeset={closeset} isOpen={isOpen}/>} 
         <Routes>
           <Route path="/" element={<Events />} />
           <Route path="/clubs" element={<ClubPage />} />
         
            <Route path="/notification" element={<Notification />} />
 
-          <Route path="/signup" element={<Signup/>} />
-          <Route path="/login" element={<Login/>} />
+          <Route path="/signup" element={<Signup setissignup={setissignup}  setpersoninfo={setpersoninfo} />} />
+          <Route path="/login" element={<Login setissignup={setissignup}  setpersoninfo={setpersoninfo} />} />
           
           
           
@@ -49,7 +55,6 @@ function App() {
         </Routes>
         
       </div>
-    </Router>
 
           <div className="footer-container border border-t-[#3f3e45] bottom-0 w-full bg-[rgba(1,1,27)] text-white py-4 text-center z-50">
                  <footer className="bg-[rgba(1,1,27)] border-t-[#3f3e45] text-white  bottom-0 py-10">

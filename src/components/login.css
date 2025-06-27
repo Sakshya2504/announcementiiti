@@ -72,5 +72,17 @@ background-color: rbga(1,1,27);
         background: linear-gradient(to right, #0056b3, #0097d1);
         transform: scale(1.05);
     }
+  @media (max-width: 480px){
+    .logincontainer{
+      width: 90%;
+    }
+    .loginsubmitbutton {
+      width: 90%;
+    }
+     .loginform input{
+      width: 90%;
+     }
+  }
+
 
     

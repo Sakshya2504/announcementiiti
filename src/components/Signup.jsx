@@ -3,7 +3,7 @@ import React,
 import { Link } from 'react-router-dom'
 import './Signup.css'
 import { useNavigate } from 'react-router-dom'
-function Signup() {
+function Signup(props) {
   const navigate=useNavigate();
     const [logininfo,setlogininfo]= useState({
         name:"",
@@ -19,13 +19,13 @@ function Signup() {
     
     }
     const handlesignup= async (e)=>{
-      //  const {name1,email1,password1,confirmpassword1}={...logininfo};
-      e.preventDefaul();
+      
+      e.preventDefault();
+      if (logininfo.password !== logininfo.confirmpassword1) {
+  alert("Passwords do not match!");
+  return;
+}
 
-      // if(!name1||!email1||!password1||!confirmpassword1||password1!==confirmpassword1){
-      // alert('PLEASE FILL ALL DETAILS CORRECTLY');
-      // }
-    
        try{ 
         const res = await fetch('http://localhost:3000/api/signup',{
           method:'POST',
@@ -36,7 +36,9 @@ function Signup() {
       console.log(result);
       if(res.ok){
         alert(result.message||'signup successful');
-        
+        localStorage.setItem('personinfo',JSON.stringify(logininfo));
+        props.setpersoninfo(logininfo);
+        props.setissignup(true);
         setlogininfo( { 
           name:"",
         email:"",
