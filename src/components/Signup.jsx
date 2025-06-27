@@ -19,13 +19,13 @@ function Signup(props) {
     
     }
     const handlesignup= async (e)=>{
-      
-      e.preventDefault();
-      if (logininfo.password !== logininfo.confirmpassword1) {
-  alert("Passwords do not match!");
-  return;
-}
+      //  const {name1,email1,password1,confirmpassword1}={...logininfo};
+      e.preventDefaul();
 
+      // if(!name1||!email1||!password1||!confirmpassword1||password1!==confirmpassword1){
+      // alert('PLEASE FILL ALL DETAILS CORRECTLY');
+      // }
+    
        try{ 
         const res = await fetch('http://localhost:3000/api/signup',{
           method:'POST',
@@ -76,7 +76,7 @@ function Signup(props) {
     
     <input type="email" placeholder='Email' className="email" value={logininfo.email} id="InputEmail1" onChange={change} required/>
     <input type="password" className="password" placeholder='Password' value={logininfo.password} id="InputPassword1" onChange={change} required/>
-     <input type="password" className="confirmpassword1" placeholder='Confirm Password' value={logininfo.confirmpassword1} id="InputPassword2" onChange={change}/>  
+     {/* <input type="password" className="confirmpassword1" placeholder='Confirm Password' value={logininfo.confirmpassword1} id="InputPassword2" onChange={change}/>   */}
   
  
   <button type="submit" className="signupsubmitbutton" >SIGNUP</button>

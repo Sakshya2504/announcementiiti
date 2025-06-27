@@ -3,6 +3,7 @@ import express from 'express';
 import cors from 'cors';
 import { User } from './models/UserSchema.js'; // or adjust path as needed
 import bcrypt from 'bcrypt';
+import { Announce_ } from './models/Announce.js'; // or adjust path as needed
 
 
 const app = express();
@@ -66,6 +67,28 @@ app.post('/api/login', async (req, res) => {
         res.status(500).json({ message: 'Something went wrong' });
     }
 });
+
+app.post('/announce', async (req, res) => {
+    console.log("📨 Incoming body:", req.body);
+    try {
+        const { clubname, heading, info } = req.body;
+
+        // Create and save the new announcement
+        const newAnnounce = new Announce_({
+            clubname,
+            heading,
+            info
+        });
+
+        await newAnnounce.save();
+
+        res.status(201).json({ message: 'Announcement created successfully!' });
+    } catch (err) {
+        console.error('❌ Error creating announcement:', err);
+        res.status(500).json({ message: 'Something went wrong while saving the announcement' });
+    }
+});
+
 
 app.listen(port, () => {
     console.log(`🚀 Server running at http://localhost:${port}`);
