@@ -36,6 +36,7 @@ function Announce() {
           heading: "",
           info: ""
         });
+      navigate('/notification')
 
      
       } else {
