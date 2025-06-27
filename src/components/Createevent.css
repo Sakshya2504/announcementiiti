@@ -87,4 +87,8 @@ align-items: center;
   .createevent_con {
     width: 90%;
   }
+  .createevent_con input{
+     width: 90%;
+  }
+  
 }

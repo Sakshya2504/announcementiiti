@@ -3,7 +3,7 @@ import React,
 import { Link } from 'react-router-dom'
 import './Signup.css'
 import { useNavigate } from 'react-router-dom'
-function Signup() {
+function Signup(props) {
   const navigate=useNavigate();
     const [logininfo,setlogininfo]= useState({
         name:"",
@@ -20,7 +20,7 @@ function Signup() {
     }
     const handlesignup= async (e)=>{
       //  const {name1,email1,password1,confirmpassword1}={...logininfo};
-      e.preventDefault();
+      e.preventDefaul();
 
       // if(!name1||!email1||!password1||!confirmpassword1||password1!==confirmpassword1){
       // alert('PLEASE FILL ALL DETAILS CORRECTLY');
@@ -36,7 +36,9 @@ function Signup() {
       console.log(result);
       if(res.ok){
         alert(result.message||'signup successful');
-        
+        localStorage.setItem('personinfo',JSON.stringify(logininfo));
+        props.setpersoninfo(logininfo);
+        props.setissignup(true);
         setlogininfo( { 
           name:"",
         email:"",

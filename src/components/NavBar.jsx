@@ -1,17 +1,20 @@
-import { Link, useLocation } from 'react-router-dom';
-import { useState } from 'react';
-import  Search  from './Search.png';
-const navigation = [
+import { Link } from 'react-router-dom';
+
+import  Search  from './Search-white.png';
+import user from './user.png'
+import { useLocation } from 'react-router-dom';
+
+
+export default function NavBar(props) {
+  const navigation = [
   { name: 'Clubs', path: '/clubs' },
   { name: 'Events', path: '/' },
  
   { name: 'Notification', path: '/notification' },
-   { name: 'Signup', path: '/signup' },
+   ...(!props.issignup?[{ name: 'Signup', path: '/signup'}]:[] )
 ];
+const location=useLocation();
 
-export default function NavBar() {
-  const location = useLocation();
-const [isOpen, setIsOpen] = useState(false);
   return (
     <header className="bg-[rgba(1,1,27,0.6)]  sticky top-0 z-50 shadow-md">
       <div className="max-w-[99%] mx-auto px-4 sm:px-6 lg:px-8">
@@ -67,41 +70,26 @@ const [isOpen, setIsOpen] = useState(false);
     onClick={() => alert("Mobile search coming soon!")}
     className="text-white"
   >
-    <img src={Search} alt="Search" className="h-6 w-6" />
+    <img src={Search} alt="Search" className="h-6 w-6 cursor-pointer" />
   </button>
 </div>
-
+{props.issignup&&
+<div className='hidden md:block'>
+  <img src={user} alt="user" className='w-11 h-11 cursor-pointer' />
+</div>
+}
           
           {/* Mobile Menu Button */}
          <div className="md:hidden">
   <button
-    onClick={() => setIsOpen(!isOpen)}
-    className="text-white text-3xl focus:outline-none"
+    onClick={props.changestatus}
+    className="text-white text-3xl cursor-pointer focus:outline-none"
   >
-    {isOpen ? '✖' : '☰'}
+    {props.isOpen ? '✖' : '☰' }
   </button>
 </div>
 
-      {/* Mobile Dropdown */}
-              {isOpen && (
-          <div className="md:hidden bg-gray-900 mt-2 rounded-md px-4 py-2">
-            {navigation.map((item) => (
-              <Link
-                key={item.path}
-                to={item.path}
-                onClick={() => setIsOpen(false)} // close menu after click
-                className={`block py-2 text-base ${
-                  location.pathname === item.path
-                    ? 'text-white font-bold'
-                    : 'text-gray-300 hover:text-white'
-                }`}
-              >
-                {item.name}
-              </Link>
-            ))}
-
-        </div>
-      )}
+      
           
         </div>
       </div>

@@ -5,7 +5,11 @@ import './login.css';
 import { useNavigate } from 'react-router-dom'
 
 
-function Login() {
+
+
+
+
+function Login(props) {
     const navigate=useNavigate();
 const [logininfo,setlogininfo]=useState({
     email:"",
@@ -30,6 +34,9 @@ const handlelogin = async (e)=>{
   const result= await res.json();
   if(res.ok){
     alert(result.message||'Login successful!');
+     localStorage.setItem('personinfo',JSON.stringify(logininfo));
+     props.setpersoninfo(logininfo);
+     props.setissignup(true);
     setlogininfo({
     email:"",
     password:""

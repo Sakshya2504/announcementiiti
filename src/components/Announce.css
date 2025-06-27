@@ -87,4 +87,8 @@ align-items: center;
   .announce_con {
     width: 90%;
   }
+  .announce_con input{
+    width: 90%;
+  }
+  
 }

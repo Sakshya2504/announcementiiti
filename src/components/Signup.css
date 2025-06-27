@@ -63,3 +63,14 @@ align-items: center;
         background: linear-gradient(to right, #0056b3, #0097d1);
         transform: scale(1.05);
     }
+     @media (max-width: 480px){
+    .signupcontainer{
+      width: 90%;
+    }
+    .signupsubmitbutton {
+      width: 90%;
+    }
+     .signupform input{
+      width: 90%;
+     }
+  }
