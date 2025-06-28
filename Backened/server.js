@@ -124,7 +124,7 @@ app.post('/Createevent', async (req, res) => {
 
 app.get('/Events', async (req, res) => {
     try {
-        const Events = await expressvent_.find();
+        const Events = await event_.find();
         res.status(200).json(Events);
     } catch (err) {
         console.error('Error fetching Events:', err);
