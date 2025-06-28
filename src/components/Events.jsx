@@ -1,4 +1,5 @@
 import exampleImage from './image.png'; // relative to Events.jsx
+import { useEffect, useState , React } from 'react';
 const events = [
   {
     id: 1,
@@ -19,6 +20,10 @@ const events = [
 ];
 
 export default function Events() {
+
+  
+  
+
   return (
     <div className="p-4 bg-[#01011b] min-h-screen">
       <h1 className="text-3xl font-bold mb-6 text-white text-center">Events</h1>
@@ -27,7 +32,7 @@ export default function Events() {
         {events.map((event) => (
           <div
             key={event.id}
-            className="event-detail border rounded-2xl shadow-md p-4  bg-gradient-to-r from-cyan-500/5 to-blue-500/5 space-y-3 border-2 border-[#87CEEB]/60
+            className="event-detail rounded-2xl shadow-md p-4  bg-gradient-to-r from-cyan-500/5 to-blue-500/5 space-y-3 border-2 border-[#87CEEB]/60
             hover:border-[#33bbcf] hover:scale-[1.03] "
           >
             <div className="event-logo flex items-center justify-center">

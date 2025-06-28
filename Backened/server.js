@@ -92,11 +92,11 @@ app.post('/announce', async (req, res) => {
 
 app.get('/notification', async (req, res) => {
     try {
-        const announcements = await Announce_.find();
-        res.status(200).json(announcements);
+        const Events = await Announce_.find();
+        res.status(200).json(Events);
     } catch (err) {
-        console.error('Error fetching announcements:', err);
-        res.status(500).json({ message: 'Failed to fetch announcements' });
+        console.error('Error fetching Events:', err);
+        res.status(500).json({ message: 'Failed to fetch Events' });
     }
 });
 
@@ -121,6 +121,18 @@ app.post('/Createevent', async (req, res) => {
         res.status(500).json({ message: 'Something went wrong while saving the event' });
     }
 });
+
+app.get('/Events', async (req, res) => {
+    try {
+        const Events = await expressvent_.find();
+        res.status(200).json(Events);
+    } catch (err) {
+        console.error('Error fetching Events:', err);
+        res.status(500).json({ message: 'Failed to fetch Events' });
+    }
+});
+
+
 
 app.listen(port, () => {
     console.log(`Server running at http://localhost:${port}`);
