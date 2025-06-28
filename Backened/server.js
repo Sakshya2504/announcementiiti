@@ -4,6 +4,7 @@ import cors from 'cors';
 import { User } from './models/UserSchema.js'; // or adjust path as needed
 import bcrypt from 'bcrypt';
 import { Announce_ } from './models/Announce.js'; // or adjust path as needed
+import {event_} from './models/Event.js'
 
 
 const app = express();
@@ -99,6 +100,27 @@ app.get('/notification', async (req, res) => {
     }
 });
 
+app.post('/Createevent', async (req, res) => {
+    console.log("Incoming body:", req.body);
+    try {
+        const { EventName, EventDateAndTime, ConductedBy, EventInfo } = req.body;
+
+        // Create and save the new event
+        const newEvent = new event_({
+            EventName,
+            EventDateAndTime,
+            ConductedBy,
+            EventInfo
+        });
+
+        await newEvent.save();
+
+        res.status(201).json({ message: 'Event Creation successful!' });
+    } catch (err) {
+        console.error('Error creating event:', err);
+        res.status(500).json({ message: 'Something went wrong while saving the event' });
+    }
+});
 
 app.listen(port, () => {
     console.log(`Server running at http://localhost:${port}`);

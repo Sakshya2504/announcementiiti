@@ -27,6 +27,9 @@ const handlelogin = async (e)=>{
     }
   );
   const result= await res.json();
+    //For fetching the data for profile name 
+    const profile = result.name;
+    console.log(profile);
   if(res.ok){
     alert(result.message||'Login successful!');
      localStorage.setItem('personinfo',JSON.stringify(logininfo));

@@ -34,6 +34,9 @@ function Signup(props) {
         });
       const result= await res.json();
       console.log(result);
+      //For fetching the data for profile name 
+      const profile = result.name;
+      console.log(profile);
       if(res.ok){
         alert(result.message||'signup successful');
         localStorage.setItem('personinfo',JSON.stringify(logininfo));
