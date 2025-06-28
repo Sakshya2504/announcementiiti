@@ -4,11 +4,6 @@ import { Link } from 'react-router-dom';
 import './login.css';
 import { useNavigate } from 'react-router-dom'
 
-
-
-
-
-
 function Login(props) {
     const navigate=useNavigate();
 const [logininfo,setlogininfo]=useState({

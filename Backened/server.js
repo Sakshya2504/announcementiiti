@@ -84,12 +84,22 @@ app.post('/announce', async (req, res) => {
 
         res.status(201).json({ message: 'Announcement created successfully!' });
     } catch (err) {
-        console.error('❌ Error creating announcement:', err);
+        console.error('Error creating announcement:', err);
         res.status(500).json({ message: 'Something went wrong while saving the announcement' });
+    }
+});
+
+app.get('/notification', async (req, res) => {
+    try {
+        const announcements = await Announce_.find();
+        res.status(200).json(announcements);
+    } catch (err) {
+        console.error('Error fetching announcements:', err);
+        res.status(500).json({ message: 'Failed to fetch announcements' });
     }
 });
 
 
 app.listen(port, () => {
-    console.log(`🚀 Server running at http://localhost:${port}`);
+    console.log(`Server running at http://localhost:${port}`);
 });
