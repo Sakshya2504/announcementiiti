@@ -20,7 +20,7 @@ function Signup(props) {
     }
     const handlesignup= async (e)=>{
       //  const {name1,email1,password1,confirmpassword1}={...logininfo};
-      e.preventDefaul();
+      e.preventDefault();
 
       // if(!name1||!email1||!password1||!confirmpassword1||password1!==confirmpassword1){
       // alert('PLEASE FILL ALL DETAILS CORRECTLY');
