@@ -36,13 +36,14 @@ function Announce() {
           heading: "",
           info: ""
         });
+      navigate('/notification')
 
      
       } else {
         alert(result.message || 'Announcement failed');
       }
     } catch (error) {
-      console.error('❌ Error submitting announcement:', error);
+      console.error(' Error submitting announcement:', error);
       alert('Announcement Submission Failed');
     }
   };

@@ -1,4 +1,5 @@
 import exampleImage from './image.png'; // relative to Events.jsx
+import { useEffect, useState , React } from 'react';
 const events = [
   {
     id: 1,
@@ -19,7 +20,36 @@ const events = [
 ];
 
 export default function Events() {
+  const [events, setEvents] = useState([]);
+
+  useEffect(() => {
+    const fetchEvents = async () => {
+      try {
+        const res = await fetch('http://localhost:3000/Events');
+        const data = await res.json();
+
+        const updatedEvents = data.map((eve, index) => ({
+          ...eve,
+          id: eve.id || index + 1,
+          image: exampleImage,
+        }));
+
+
+        setEvents(updatedEvents);
+      } catch (err) {
+        console.error("Failed to load events:", err);
+      }
+    };
+
+    fetchEvents();
+  }, []);
+
+
+  
+  
+
   return (
+    
     <div className="p-4 bg-[#01011b] min-h-screen">
       <h1 className="text-3xl font-bold mb-6 text-white text-center">Events</h1>
 
@@ -27,7 +57,7 @@ export default function Events() {
         {events.map((event) => (
           <div
             key={event.id}
-            className="event-detail border rounded-2xl shadow-md p-4  bg-gradient-to-r from-cyan-500/5 to-blue-500/5 space-y-3 border-2 border-[#87CEEB]/60
+            className="event-detail rounded-2xl shadow-md p-4  bg-gradient-to-r from-cyan-500/5 to-blue-500/5 space-y-3 border-2 border-[#87CEEB]/60
             hover:border-[#33bbcf] hover:scale-[1.03] "
           >
             <div className="event-logo flex items-center justify-center">
@@ -38,10 +68,11 @@ export default function Events() {
               />
             </div>
             <div className="event-description space-y-1">
-              <p className="text-white font-medium">🕒 Time: {event.time}</p>
-              <p className="text-white font-medium">📍 Location: {event.location}</p>
-              <p className="text-white font-semibold">🎭 Event: {event.name}</p>
-              <p className="text-white">Conducted by: {event.club}</p>
+              <p className="text-white font-medium">🕒 Time: {event.EventDateAndTime}</p>
+              <p className="text-white font-medium">📍 Info: {event.EventInfo}</p>
+              <p className="text-white font-semibold">🎭 Event: {event.EventName}</p>
+              <p className="text-white font-semibold">Conducted by: {event.ConductedBy}</p>
+
 
               <button
                 className="mt-2 bg-blue-500 cursor-pointer text-white px-4 py-2 rounded hover:bg-blue-700 transition"
@@ -55,5 +86,6 @@ export default function Events() {
       </div>
 
     </div>
+    
   );
 }

@@ -20,7 +20,7 @@ function Signup(props) {
     }
     const handlesignup= async (e)=>{
       //  const {name1,email1,password1,confirmpassword1}={...logininfo};
-      e.preventDefaul();
+      e.preventDefault();
 
       // if(!name1||!email1||!password1||!confirmpassword1||password1!==confirmpassword1){
       // alert('PLEASE FILL ALL DETAILS CORRECTLY');
@@ -34,6 +34,9 @@ function Signup(props) {
         });
       const result= await res.json();
       console.log(result);
+      //For fetching the data for profile name 
+      const profile = result.name;
+      console.log(profile);
       if(res.ok){
         alert(result.message||'signup successful');
         localStorage.setItem('personinfo',JSON.stringify(logininfo));
