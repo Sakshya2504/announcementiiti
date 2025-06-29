@@ -36,7 +36,10 @@ app.post('/api/signup', async (req, res) => {
         const newUser = new User({ name, email, password: hashedPassword }); // Store hashed password
         await newUser.save();
 
-        res.status(201).json({ message: 'User registered successfully!' });
+        res.status(201).json({ message: 'User registered successfully!',user: {
+        name: name,
+        email: email
+      } });
     } catch (err) {
         if (err.name === 'ValidationError') {
             return res.status(400).json({message : err.message });
@@ -62,7 +65,10 @@ app.post('/api/login', async (req, res) => {
         }
 
 
-        res.json({ message: 'Login successful!' });
+        res.json({ message: 'Login successful!',user: {
+        name: user.name,
+        email: user.email
+      } });
     } catch (err) {
       console.error(err);
         res.status(500).json({ message: 'Something went wrong' });

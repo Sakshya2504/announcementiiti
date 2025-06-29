@@ -1,12 +1,14 @@
  @import "tailwindcss";
 
 
-:root {
+#root {
   font-weight: 4;
    color-scheme:  black;
   color: rgba(0, 0, 0, 0.87);
   /* background-color: #0e0b27; */
 background-color: #D1D5DB;
+width: 100vw;
+height: 100vh;
   /* background-image: url("./components/image.png");
   background-repeat: no-repeat;
   background-position: center;

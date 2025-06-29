@@ -3,9 +3,13 @@ import { Link } from 'react-router-dom';
 import  Search  from './Search-white.png';
 import user from './user.png'
 import { useLocation } from 'react-router-dom';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 
 export default function NavBar(props) {
+  const navigate=useNavigate();
+  const [isuserinfoopen,setisuserinfoopen]=useState(false);
   const navigation = [
   { name: 'Clubs', path: '/clubs' },
   { name: 'Events', path: '/' },
@@ -19,6 +23,15 @@ const location=useLocation();
     <header className="bg-[rgba(1,1,27,0.6)]  sticky top-0 z-50 shadow-md">
       <div className="max-w-[99%] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-30">
+                  {/* Mobile Menu Button */}
+         <div className="md:hidden">
+  <button
+    onClick={props.changestatus}
+    className="text-white text-3xl cursor-pointer focus:outline-none"
+  >
+    {props.isOpen ? '✖' : '☰' }
+  </button>
+</div>
           <div className='flex items-center '>
           <a href="https://www.iiti.ac.in">
             <img
@@ -59,6 +72,7 @@ const location=useLocation();
   <button
     type="submit"
     className="bg-cyan-500 hover:bg-cyan-600 text-white px-4 py-1 cursor-pointer rounded-md transition"
+   
   ><img src={Search} alt="Search" className="h-5 w-5" />
   </button>
  
@@ -74,20 +88,31 @@ const location=useLocation();
   </button>
 </div>
 {props.issignup&&
-<div className='hidden md:block'>
-  <img src={user} alt="user" className='w-11 h-11 cursor-pointer' />
+<div className='hidden md:block'  onClick={()=>setisuserinfoopen(!isuserinfoopen)}>
+  <img src={user} alt="user" className='w-11 h-11 cursor-pointer hover:h-12 hover:w-12 hover:opacity-75' />
 </div>
 }
+{isuserinfoopen&&(
+  <div className='w-80 hidden md:block absolute border border-radius-2 top-32 right-3 z-100 bg-white rounded-md '>
+    <div className='flex flex-col items-center my-5 mx-5 border rounded bg-gray-300' >
+    <img src={user} alt="user"  className='w-15 h-15 my-2 '/>
+    <h2 className='font-bold py-1'>{props.personinfo?.name||'No name'}</h2>
+    <h2>{props.personinfo?.email||'No email '}</h2>
+    </div>
+    <button className='logout' onClick={() => {
+           if(window.confirm('Do you want to logout?')){
+             localStorage.removeItem('personinfo');
+            props.setissignup(false);
+            props.setpersoninfo(null);
+            setisuserinfoopen(false);
+            navigate('/signup') ;
+           }
+            }}>🔓 Logout
+            </button>
+  </div>
+)}
           
-          {/* Mobile Menu Button */}
-         <div className="md:hidden">
-  <button
-    onClick={props.changestatus}
-    className="text-white text-3xl cursor-pointer focus:outline-none"
-  >
-    {props.isOpen ? '✖' : '☰' }
-  </button>
-</div>
+  
 
       
           
