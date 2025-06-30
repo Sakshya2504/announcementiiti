@@ -20,15 +20,24 @@ const events = [
 ];
 
 export default function Events() {
+  // This component fetches and displays a list of events
+  // It uses the useState hook to manage the state of events
   const [events, setEvents] = useState([]);
-
+  
+  // useEffect is used to fetch the events from the server when the component mounts
+  // It sends a GET request to the server to retrieve the events data
   useEffect(() => {
     const fetchEvents = async () => {
+
+      // Fetch API is used to send a GET request to the server with the events data
+      // The server will then process this data and return the list of events
       try {
         const res = await fetch('http://localhost:3000/Events');
         const data = await res.json();
 
+
         const updatedEvents = data.map((eve, index) => ({
+          // ...eve is used to spread the properties of the event object
           ...eve,
           id: eve.id || index + 1,
           image: exampleImage,
@@ -40,13 +49,11 @@ export default function Events() {
         console.error("Failed to load events:", err);
       }
     };
-
+    //fecthEvents is called to fetch the events when the component mounts
+    // This will trigger the useEffect hook and fetch the events from the server
     fetchEvents();
   }, []);
 
-
-  
-  
 
   return (
     
