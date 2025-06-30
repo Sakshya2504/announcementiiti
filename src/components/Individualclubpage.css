@@ -36,6 +36,12 @@
     .imagelogo:hover{
         opacity: 0.75;
     }
+    .clubhead{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
     
  
   

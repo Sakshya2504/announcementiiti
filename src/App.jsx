@@ -21,10 +21,12 @@ function App() {
     const [issignup,setissignup] = useState(false);
   const changestatus =() => setIsOpen(!isOpen);
   const closeset=()=> setIsOpen(false);
-const [personinfo,setpersoninfo]=useState('');
+const [personinfo, setpersoninfo] = useState(null);
+
+
   useEffect(() => {
   const storedInfo = localStorage.getItem('personinfo');
-  if (storedInfo) {
+  if (storedInfo&&storedInfo!=="undefined") {
     setpersoninfo(JSON.parse(storedInfo));
     setissignup(true);
   }
@@ -36,7 +38,7 @@ const [personinfo,setpersoninfo]=useState('');
      
   
       <div className="bg-[rgba(1,1,27)]">
-        <NavBar changestatus={changestatus} closeset={closeset} issignup={issignup} isOpen={isOpen} />
+        <NavBar changestatus={changestatus} setissignup={setissignup} closeset={closeset} personinfo={personinfo} setpersoninfo={setpersoninfo} issignup={issignup} isOpen={isOpen} />
        {isOpen&&<Set changestatus={changestatus} setissignup={setissignup} issignup={issignup} personinfo={personinfo}  setpersoninfo={setpersoninfo} closeset={closeset} isOpen={isOpen}/>} 
         <Routes>
           <Route path="/" element={<Events />} />
@@ -56,7 +58,7 @@ const [personinfo,setpersoninfo]=useState('');
         
       </div>
 
-          <div className="footer-container border border-t-[#3f3e45] bottom-0 w-full bg-[rgba(1,1,27)] text-white py-4 text-center z-50">
+          <div className="footer-container border border-t-[#3f3e45] bottom-0 w-full bg-[rgba(1,1,27)] text-white py-4 text-center ">
                  <footer className="bg-[rgba(1,1,27)] border-t-[#3f3e45] text-white  bottom-0 py-10">
             <div className="max-w-7xl mx-auto px-4 text-center">
               <div className="mb-4 space-x-4 text-xl">

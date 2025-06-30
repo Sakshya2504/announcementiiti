@@ -28,12 +28,11 @@ const handlelogin = async (e)=>{
   );
   const result= await res.json();
     //For fetching the data for profile name 
-    const profile = result.name;
-    console.log(profile);
+  
   if(res.ok){
     alert(result.message||'Login successful!');
-     localStorage.setItem('personinfo',JSON.stringify(logininfo));
-     props.setpersoninfo(logininfo);
+     localStorage.setItem('personinfo',JSON.stringify(result.user));
+     props.setpersoninfo(result.user);
      props.setissignup(true);
     setlogininfo({
     email:"",
