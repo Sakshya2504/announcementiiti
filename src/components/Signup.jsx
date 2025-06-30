@@ -18,8 +18,8 @@ function Signup(props) {
     // The initial state is an object with empty strings for name, email, and password
      const change = (e) => {
         const copylogininfo={...logininfo};
-        const {name,value}=e.target;
-        copylogininfo[name]=value;
+        const {className,value}=e.target;
+        copylogininfo[className]=value;
         setlogininfo(copylogininfo);
     
     }
