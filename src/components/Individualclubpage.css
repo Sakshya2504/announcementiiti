@@ -1,0 +1,56 @@
+ .createeventbutton,.announcebutton ,.submitbutton{
+        width: 200px;
+        margin: 20px auto;
+        padding: 12px;
+        font-size: 18px;
+        font-weight: bold;
+        color: white;
+        background: linear-gradient(to right, #007bff, #00c3ff);
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background 0.3s, transform 0.2s;
+    }
+
+    .createeventbutton:hover ,.announcebutton:hover,.submitbutton:hover{
+        background: linear-gradient(to right, #0056b3, #0097d1);
+        transform: scale(1.05);
+    }
+    .button_con{
+        display: flex;
+        flex-direction: row;
+        gap: 5px;
+    }
+    .footer{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+    }
+    .imagelogo{
+        height: 30px;
+        width: 30px;
+    }
+    .imagelogo:hover{
+        opacity: 75%;
+    }
+    
+ 
+  
+   
+   
+    .clubbody{
+      display: flex;
+      justify-content: center;
+    }
+    .clubimage{
+        border-radius: 20px;
+        width: 90%;
+        object-fit: fill;
+
+    }
+
+     
+   
+    

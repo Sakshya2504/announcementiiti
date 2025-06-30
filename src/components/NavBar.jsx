@@ -1,20 +1,20 @@
 import { Link, useLocation } from 'react-router-dom';
 import { useState } from 'react';
-import  Search  from './Search.png';
+import  Search  from '../Images/Search-white.png';
 const navigation = [
   { name: 'Clubs', path: '/clubs' },
   { name: 'Events', path: '/' },
-  { name: 'Announcement', path: '/announcement' },
-  { name: 'Registration', path: '/registration' },
   { name: 'Notification', path: '/notification' },
+   { name: 'Signup', path: '/signup' },
+    { name: 'Announce', path: '/announce' },
 ];
 
 export default function NavBar() {
   const location = useLocation();
 const [isOpen, setIsOpen] = useState(false);
   return (
-    <header className="bg-white sticky top-0 z-50 shadow-md">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <header className="bg-[rgba(1,1,27,0.6)]  sticky top-0 z-50 shadow-md">
+      <div className="max-w-[99%] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-30">
           <a href="https://www.iiti.ac.in">
             <img
@@ -25,15 +25,15 @@ const [isOpen, setIsOpen] = useState(false);
           </a>
 
               
-          <nav className="hidden md:flex space-x-10 p-4">
+          <nav className="hidden md:flex space-x-15 p-4">
             {navigation.map((item) => (
               <Link
                 key={item.path}
                 to={item.path}
                 className={`text-xl ${
                   location.pathname === item.path
-                    ? 'text-black font-bold'
-                    : 'text-black hover:text-blue-500'
+                    ? 'text-white font-bold'
+                    : 'text-white  font-bold hover:text-blue-500'
                 }`}
               >
                 {item.name}
@@ -73,7 +73,7 @@ const [isOpen, setIsOpen] = useState(false);
          <div className="md:hidden">
   <button
     onClick={() => setIsOpen(!isOpen)}
-    className="text-black text-3xl focus:outline-none"
+    className="text-white text-3xl focus:outline-none"
   >
     {isOpen ? '✖' : '☰'}
   </button>
