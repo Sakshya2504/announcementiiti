@@ -1,23 +1,22 @@
 import mongoose from 'mongoose';
 import express from 'express';
 import cors from 'cors';
-import { User } from './models/UserSchema.js'; // or adjust path as needed
+import { User } from './models/UserSchema.js'; 
 import bcrypt from 'bcrypt';
-import { Announce_ } from './models/Announce.js'; // or adjust path as needed
+import { Announce_ } from './models/Announce.js'; 
 import {event_} from './models/Event.js'
 
 
 const app = express();
 const port = 3000;
 
-// Middleware
 app.use(cors());
-app.use(express.json()); // important to parse JSON body
+app.use(express.json()); 
 
-// Connect to MongoDB
+// Connect to MongoDB with the validation using Mongoose
 await mongoose.connect("mongodb://localhost:27017/todo", {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
+    useNewUrlParser: true, //useNewUrlParse is used for parsing the MongoDB connection string
+    useUnifiedTopology: true // useUnifiedTopology is used to opt in to the MongoDB driver's new connection management engine
 });
 
 // Signup route
@@ -31,10 +30,13 @@ app.post('/api/signup', async (req, res) => {
         }
 
         const saltRounds = 10;
-        const hashedPassword = await bcrypt.hash(password, saltRounds); // 🔐 Hashing here
+        //We use bcrypt to hash the password before storing it in the database 
+        //To ensure that passwords are stored securely, we use bcrypt to hash the password before storing it in the database.
+        const hashedPassword = await bcrypt.hash(password, saltRounds); 
 
-        const newUser = new User({ name, email, password: hashedPassword }); // Store hashed password
+        // Store hashed password
         await newUser.save();
+        const newUser = new User({ name, email, password: hashedPassword }); 
 
         res.status(201).json({ message: 'User registered successfully!',user: {
         name: name,
@@ -57,13 +59,13 @@ app.post('/api/login', async (req, res) => {
         if (!user) {
             return res.status(401).json({ message: 'Invalid credentials' });
         }
-        // Compare the provided password with the hashed password in the database
-        // bcrypt.compare returns a promise that resolves to true or false
+
+        // If user exists, compare the provided password with the hashed password in the database
+        // bcrypt.compare is used to compare the provided password with the hashed password in the database
         const isMatch = await bcrypt.compare(password, user.password);
         if (!isMatch) {
             return res.status(401).json({ message: "Invalid credentials" });
         }
-
 
         res.json({ message: 'Login successful!',user: {
         name: user.name,
@@ -75,8 +77,10 @@ app.post('/api/login', async (req, res) => {
     }
 });
 
+// Announcement routes
+// This route is used to create a new announcement
 app.post('/announce', async (req, res) => {
-    console.log("📨 Incoming body:", req.body);
+    console.log("Incoming body:", req.body);
     try {
         const { clubname, heading, info } = req.body;
 
@@ -106,6 +110,8 @@ app.get('/notification', async (req, res) => {
     }
 });
 
+// Event routes
+// This route is used to create a new event
 app.post('/Createevent', async (req, res) => {
     console.log("Incoming body:", req.body);
     try {
@@ -128,6 +134,8 @@ app.post('/Createevent', async (req, res) => {
     }
 });
 
+// This route is used to fetch all events
+// It retrieves all events from the database and returns them as a JSON response
 app.get('/Events', async (req, res) => {
     try {
         const Events = await event_.find();

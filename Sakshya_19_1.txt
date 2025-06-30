@@ -1,0 +1,49 @@
+Indian Institute of Technology Indore Project
+ Proposal
+ Team Details
+ Team Leader: Sakshya Singh Kasera
+ Roll Number: 240021015
+ GitHub: https://github.com/Sakshya2504
+ LinkedIn: https://www.linkedin.com/in/sakshya-singh-kasera-33a21531a
+ Skills: HTML5, CSS3, JavaScript, Tailwind, React, Node.js, Express.js,
+ Mongoose & MongoDB, Git & GitHub, Figma
+ Other Team Members:
+ Member 2: Shaik Riyaj
+ Roll No.: 240001068
+ Skills: HTML5, CSS3, JavaScript, React, Node.js, Git
+ Member 3: Anand Vivek
+ Roll No.: 240003006
+ Skills: HTML5, CSS3, JavaScript, Tailwind, React, Node.js, Express.js,
+ MongoDB, Git
+ Domain: Web Development
+ PS Name: Campus Announcements and Events Hub
+ PS and Preference Number: 19 & 1
+ Project Solution
+ We will include post events with title, date, description, image, registration
+ link, and tags and then try to make a dedicated page for each club/organization
+and its related information like contact info and more. We will also imple
+ment an announcement board for time-sensitive or important updates.
+ At the end, we will keep search and lters: by date, category, club, or
+ keywords to help the user interact, and nally, ensure a responsive design for
+ a seamless user experience.
+ As an additional feature, we will try to include registration and atten
+dance tracking. The interface of the project will be made using HTML, CSS,
+ React, and Tailwind. For logic building, we will use JavaScript. For the
+ backend, we will use Node.js or Express.js, and for the database, we will use
+ Mongoose and MongoDB.
+ Technologies to be Used
+ Frontend: React.js / HTML / CSS / Tailwind / JavaScript
+ Backend: Node.js with Express.js
+ Database: MongoDB with Mongoose
+ Deployment: GitHub
+ Design: Figma
+ Version Control: Git + GitHub / VS Code
+ Timeline
+ We will start on 2 June
+ Week 1: Designing
+ Week 2 & 3: Frontend
+ Week 4: Backend (at least half)
+ Mid term evaluation of project
+ Week 5 & 6: Backend plus database
+ Week 7: Deployment, report, README
+Week 8: Presentation and some improvement

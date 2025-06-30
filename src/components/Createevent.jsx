@@ -5,20 +5,29 @@ import { useNavigate } from 'react-router-dom'
  function Createevent() {
 
   const navigate = useNavigate();
+  // This component allows users to create an event for a club
+  // It includes a form where users can input the event name, date and time, conducted by, and event info
+    // useState is used to manage the state of the event information
     const [logininfo, setlogininfo] = useState({
       EventName: "",
       EventDateAndTime: "",
       ConductedBy: "",
       EventInfo: ""
     })
+
+    // This function updates the state of logininfo when the user types in the input fields
     const handleChange = (e) => {
       const { name, value } = e.target;
       setlogininfo(prev => ({ ...prev, [name]: value }));
     };
     
     const handleSubmit = async (e) => {
+      // This function handles the form submission
+      // It prevents the default form submission behavior, sends the data to the server,
       e.preventDefault();
-  
+      
+      //Fetch API is used to send a POST request to the server with the event data
+      // The server will then process this data and create a new event in the database
       try {
         const res = await fetch('http://localhost:3000/Createevent', {
           method: 'POST',
@@ -38,6 +47,9 @@ import { useNavigate } from 'react-router-dom'
             ConductedBy: "",
             EventInfo: ""            
           });
+
+          // If the event creation is successful, navigate to the individual club page
+          // This will redirect the user to the individual club page where they can see the event
         navigate('/')
   
        

@@ -3,7 +3,10 @@ import React,
 import { Link } from 'react-router-dom'
 import './Signup.css'
 import { useNavigate } from 'react-router-dom'
+
 function Signup(props) {
+  // This component allows users to sign up for an account
+  // It includes a form where users can input their name, email, and password
   const navigate=useNavigate();
     const [logininfo,setlogininfo]= useState({
         name:"",
@@ -11,6 +14,8 @@ function Signup(props) {
         password:""
       
     })
+    // useState is used to manage the state of the login information
+    // The initial state is an object with empty strings for name, email, and password
      const change = (e) => {
         const copylogininfo={...logininfo};
         const {className,value}=e.target;
@@ -19,13 +24,11 @@ function Signup(props) {
     
     }
     const handlesignup= async (e)=>{
-      //  const {name1,email1,password1,confirmpassword1}={...logininfo};
+     // This function handles the signup form submission
+     // It prevents the default form submission behavior, sends the data to the server,
       e.preventDefault();
-
-      // if(!name1||!email1||!password1||!confirmpassword1||password1!==confirmpassword1){
-      // alert('PLEASE FILL ALL DETAILS CORRECTLY');
-      // }
     
+      //Fetch API is used to send a POST request to the server with the signup data 
        try{ 
         const res = await fetch('http://localhost:3000/api/signup',{
           method:'POST',
@@ -46,6 +49,9 @@ function Signup(props) {
         email:"",
         password:""
     });
+
+    // After a successful signup, the user is redirected to the home page
+    // This will redirect the user to the home page where they can see the announcements
     navigate('/');
 
       }
@@ -56,10 +62,8 @@ function Signup(props) {
       catch(error){
         console.log(error);
         alert('signup failed');
-
-
-      }
-      }
+     }
+    }
 
     
      
