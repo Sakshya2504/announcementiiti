@@ -14,6 +14,7 @@ const events = [
     name: 'Nukkad Natak',
     club: 'Avana and Aaina collab',
     image: exampleImage,
+    info:'An online hackathon by Nuvepro with 400+ participants and 50 teams developing blockchain-based solutions The event featured expert-led workshops, coding sessions, and industry interactions. Total prize pool was 40k INR'
   }, {
     id: 2,
     time: '6pm today',
@@ -21,6 +22,7 @@ const events = [
     name: 'Nukkad Natak',
     club: 'Avana and Aaina collab',
     image: exampleImage,
+    info:'An online hackathon by Nuvepro with 400+ participants and 50 teams developing blockchain-based solutions The event featured expert-led workshops, coding sessions, and industry interactions. Total prize pool was 40k INR'
   }, {
     id: 3,
     time: '6pm today',
@@ -28,6 +30,7 @@ const events = [
     name: 'Nukkad Natak',
     club: 'Avana and Aaina collab',
     image: exampleImage,
+    info:'An online hackathon by Nuvepro with 400+ participants and 50 teams developing blockchain-based solutions The event featured expert-led workshops, coding sessions, and industry interactions. Total prize pool was 40k INR',
   }]
 
  
@@ -78,27 +81,36 @@ function Individualclubpage() {
             className="event-detail border rounded-2xl shadow-md p-4 bg-gradient-to-r from-cyan-500/5 to-blue-500/5 space-y-3 border-2 border-[#87CEEB]/60
             hover:border-[#33bbcf] hover:scale-[1.03] space-y-3"
           >
-            <div className="event-logo flex items-center justify-center">
+           
+
+         <div className='box'>
+          <div className='card'>
+            <div id='front' className="event-description space-y-1">
+              <div className="event-logo flex items-center justify-center">
               <img
                 alt="Event Logo"
                 src={event.image}
                 className="h-100 w-100"
               />
             </div>
-            <div className="event-description space-y-1">
               <p className="text-white font-medium">🕒 Time: {event.time}</p>
               <p className="text-white font-medium">📍 Location: {event.location}</p>
               <p className="text-white font-semibold">🎭 Event: {event.name}</p>
-              <p className="text-white">Conducted by: {event.club}</p>
-
-              <button
-                className="mt-2 bg-blue-500 cursor-pointer text-white px-4 py-2 rounded hover:bg-blue-700 transition"
+              <p className="text-white font-semibold">Conducted by: {event.club}</p>
+              </div>
+              <div id='back'>
+                <h1 >{event.name}</h1>
+                <p> {event.info} </p>
+                 <button
+                className="my-10 bg-blue-500 cursor-pointer text-white px-4 py-2  rounded hover:bg-blue-700 transition"
                 id={`joinEvent${event.id}`}
               >
-                Explore Event
+                Join Event
               </button>
-            </div>
+              </div>
+              </div>
           </div>
+      </div>
         ))}
       </div>
       <div className='clubhead'>

@@ -5,6 +5,7 @@
   z-index: 50;
   background-color: black;
   height: 100vh;
+  animation: slideright 0.3s ease 0s 1 ;
   
 }
 .profile{
@@ -24,4 +25,13 @@
 }
 .logout:hover {
   opacity: 0.8;
+}
+@keyframes slideright{
+  from{
+    transform: translateX(-75%);
+
+  }
+  to{
+    transform: translateX(0px);
+  }
 }
