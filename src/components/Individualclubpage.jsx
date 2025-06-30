@@ -130,7 +130,7 @@ function Individualclubpage() {
          >
          <img src={linkedIn} alt="linkedin" className="w-5 h-5 my-2" />
           </a>
-          <p className='py-2'>mail : cse240001068@iiti.ac.in</p>
+          <p className='py-2'>📧 cse240001068@iiti.ac.in</p>
 
        </div>
       </div>
