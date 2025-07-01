@@ -99,7 +99,7 @@ const location=useLocation();
     <h2 className='font-bold py-1'>{props.personinfo?.name||'No name'}</h2>
     <h2>{props.personinfo?.email||'No email '}</h2>
     </div>
-    <button className='logout' onClick={() => {
+    <button className='logout text-red-500 font-bold cursor-pointer pl-[17px] mb-[10px] hover:opacity-75' onClick={() => {
            if(window.confirm('Do you want to logout?')){
              localStorage.removeItem('personinfo');
             props.setissignup(false);

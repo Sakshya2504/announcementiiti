@@ -1,6 +1,7 @@
 import exampleImage from './image.png'; // relative to Events.jsx
 import { useEffect, useState , React } from 'react';
-import './Event.css'
+import './Animation.css'
+
 // const events = [
 //   {
 //     id: 1,
@@ -69,9 +70,9 @@ export default function Events() {
             hover:border-[#33bbcf] hover:scale-[1.03] "
           >
             
-    <div className='box'>
-       <div className='card'>
-          <div id='front' className="event-description space-y-1">
+    <div className='box block transform-3d perspective-[1000px] hover:rotate-y-180 transition delay-[2s]'>
+       <div className='card grid relative transform-3d'>
+          <div id='front ' className="event-description  col-start-1 row-start-1 space-y-1 relative backface-hidden">
               <div className="event-logo flex items-center justify-center">
               <img
                 alt="Event Logo"
@@ -92,9 +93,9 @@ export default function Events() {
                 Join Event
               </button>
           </div>
-          <div id='back'>
-                <h1>{event.EventName}</h1>
-                <p> {event.EventInfo}</p>
+          <div id='back' className=' absolute col-start-1 row-start-1 flex flex-col justify-center items-center top-0 left-0 w-[100%] h-[100%] backface-hidden rotate-y-180 '>
+                <h1 className='text-[#11E3FB] font-bold text-[32px] pt-[10px] pb-[10px]'>{event.EventName}</h1>
+                <p className='text-white font-bold'> {event.EventInfo}</p>
                  <button
                 className="mt-2 bg-blue-500 cursor-pointer text-white px-4 py-2 rounded hover:bg-blue-700 transition"
                 id={`joinEvent${event.id}`}
