@@ -1,0 +1,30 @@
+.dropdown{
+ 
+  animation: slideright 0.3s ease 0s 1 ;
+  
+}
+
+
+@keyframes slideright{
+  from{
+    transform: translateX(-75%);
+
+  }
+  to{
+    transform: translateX(0px);
+  }
+}
+  .card:hover{
+        animation:rotate 1s ease 0s 1 ;
+    }
+   
+
+     @keyframes rotate {
+        from{
+            transform: rotateY(0);
+        }
+        to{
+            transform: rotateY(180deg);
+        }
+     }
+ 

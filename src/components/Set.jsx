@@ -1,6 +1,5 @@
 import React from 'react'
 import { useLocation } from 'react-router-dom';
-import './Set.css'
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 // import { useEffect } from 'react';
@@ -18,7 +17,7 @@ function Set(props) {
     <>
      {/* Mobile Dropdown */}
                (
-          <div className="dropdown">
+          <div className="dropdown md:hidden w-[50%] fixed top-[120px] z-50 bg-black h-[100vh]  ">
             {navigation.map((item) => (
               <Link
                 key={item.path}
@@ -35,8 +34,8 @@ function Set(props) {
             ))}
             {props.issignup&&
             <div className=''>
-            <div className='profile'>{`🙍 ${props.personinfo.name}`}</div>
-            <div className='logout' onClick={() => {
+            <div className='profile text-white font-bold pl-[15px] mb-[15px] mt-[6px] '>{`🙍 ${props.personinfo.name}`}</div>
+            <div className='logout text-red-500 font-bold cursor-pointer pl-[17px] mb-[10px] hover:opacity-75' onClick={() => {
            if(window.confirm('Do you want to logout?')){
              localStorage.removeItem('personinfo');
             props.setissignup(false);

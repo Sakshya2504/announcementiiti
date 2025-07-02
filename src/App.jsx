@@ -41,7 +41,7 @@ const [personinfo, setpersoninfo] = useState(null);
         <NavBar changestatus={changestatus} setissignup={setissignup} closeset={closeset} personinfo={personinfo} setpersoninfo={setpersoninfo} issignup={issignup} isOpen={isOpen} />
        {isOpen&&<Set changestatus={changestatus} setissignup={setissignup} issignup={issignup} personinfo={personinfo}  setpersoninfo={setpersoninfo} closeset={closeset} isOpen={isOpen}/>} 
         <Routes>
-          <Route path="/" element={<Events />} />
+          <Route path="/" element={<Events issignup={issignup}/>} />
           <Route path="/clubs" element={<ClubPage />} />
         
            <Route path="/notification" element={<Notification />} />
@@ -51,7 +51,7 @@ const [personinfo, setpersoninfo] = useState(null);
           
           
           
-          <Route path="/individualclubpage" element={<Individualclubpage />} />
+          <Route path="/individualclubpage" element={<Individualclubpage issignup={issignup} />} />
           <Route path="/createevent" element={<Createevent/>} />
            <Route path="/announce" element={<Announce/>} />
         </Routes>

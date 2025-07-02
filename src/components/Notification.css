@@ -33,8 +33,8 @@ border-width: 1px;
 }
 .notifi:hover{
     border-color: #33bbcf;
-scale: 1.02;
-border-width: 2px;
+    scale: 1.02;
+    border-width: 2px;
 }
 .notifi img{
     height: 60px;

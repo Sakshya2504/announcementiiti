@@ -1,5 +1,4 @@
 import {React,useState} from 'react'
-import './Announce.css'
 import { useNavigate } from 'react-router-dom'
 
 function Announce() {
@@ -63,17 +62,18 @@ function Announce() {
 
   return (
     <>
-      <div className='announce'>
-        <div className='announce_con'>
-          <button className='back' onClick={() => navigate(-1)}>❌</button>
-          <form action="/individualclubpage" onSubmit={handleSubmit}>
-            <h2>Announcement Details</h2>
+      <div className='announce w-full h-full flex justify-center items-center bg-[rbga(1,1,27)]'>
+        <div className='announce_con relative flex flex-col w-[90%] md:w-[400px] m-[30px] p-[20px] bg-[linear-gradient(to_right,_rgba(6,182,212,0.3),_rgba(59,130,246,0.3))]  border-2 rounded-[10px] border-black  shadow-[0px_4px_15px_rgba(0, 0, 0, 0.1)] hover:shadow-[0_0_25px_#00ffff66]'>
+          <button className='back absolute top-[2px] right-[2px] cursor-pointer w-[30px] h-[30px] rounded-[5px] hover:bg-red-500 ' onClick={() => navigate(-1)}>❌</button>
+          <form action="/individualclubpage" onSubmit={handleSubmit} className='flex flex-col items-center justify-center  w-[100%] h-[100%]'>
+            <h2 className='text-white font-bold text-[22px] '>Announcement Details</h2>
             <input
               type="text"
               placeholder="Clubname"
               name="clubname"
               value={logininfo.clubname}
               onChange={handleChange}
+              className='text-black block bg-white border rounded-[10px] w-[90%] md:w-[75%] h-[50px] m-[10px]'
             />
 
             <input
@@ -82,6 +82,7 @@ function Announce() {
               name="heading"
               value={logininfo.heading}
               onChange={handleChange}
+              className='text-black block bg-white border rounded-[10px] w-[90%] md:w-[75%] h-[50px] m-[10px]'
             />
 
             <input
@@ -90,8 +91,9 @@ function Announce() {
               name="info"
               value={logininfo.info}
               onChange={handleChange}
+              className='text-black block bg-white border rounded-[10px] w-[90%] md:w-[75%] h-[50px] m-[10px]'
             />
-            <button type="submit" className="submitbutton">Submit</button>
+            <button type="submit" className="submitbutton block w-[90%] md:w-[200px] m-[20px] p-[12px] text-white text-[18px] font-bold bg-[linear-gradient(to_right,_#007bff,_#00c3ff)] border-none rounded-[8px] cursor-pointer hover:bg-[linear-gradient(to_right,_#0056b3,_#0097d1)] hover:scale-105 transition-[background,transform] duration-[300ms,200ms]">Submit</button>
 
           </form>
         </div>
