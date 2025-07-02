@@ -27,7 +27,7 @@ align-items: center;
   rgba(1, 1, 27, 0.95)
 );
 
-  border-color: rgba(135, 206, 235, 0.6);
+  border-color: rgba(135, 206, 235);
 border-width: 1px;
    border-radius: 40px;
 }

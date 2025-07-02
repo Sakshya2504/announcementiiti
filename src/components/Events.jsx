@@ -87,11 +87,11 @@ export default function Events(props) {
         {events.map((event) => (
           <div
             key={event.id}
-            className="event-detail rounded-2xl shadow-md p-4  bg-gradient-to-r from-cyan-500/5 to-blue-500/5 space-y-3 border-2 border-[#87CEEB]/60
+            className="event-detail rounded-2xl shadow-md p-4  bg-gradient-to-r from-cyan-500/5 to-blue-500/5 space-y-3 border-2 border-[#87CEEB]
             hover:border-[#33bbcf] hover:scale-[1.03] "
           >
             
-    <div className='box block transform-3d perspective-[1000px] hover:rotate-y-180 transition delay-[1s]'>
+    <div className='box block transform-3d perspective-[1000px] hover:rotate-y-180 transition delay-[0.3s]'>
        <div className='card grid relative transform-3d'>
           <div id='front ' className="event-description  col-start-1 row-start-1 space-y-1 relative backface-hidden">
               <div className="event-logo flex items-center justify-center">

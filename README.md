@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 Frontend (React)
 Post and view announcements
 Explore and create events
@@ -12,7 +12,7 @@ User authentication using 'bcrypt'
 Event creation & listing
 Announcement posting & retrieval
 MongoDB via 'Mongoose'
-=======
+
 #  Club Connect – IIT Indore Student Club Portal
 
 A full-stack web application for managing club events, announcements, and student engagement at IIT Indore.
@@ -99,6 +99,3 @@ Email: cse240001068@iiti.ac.in
 ### License
 This project is for educational use at IIT Indore. 
 
-
-
->>>>>>> riyaz/riyaz

@@ -70,7 +70,7 @@
        
     }
     .card:hover{
-        animation:rotate 1s ease 0s 1 ;
+        animation:rotate 0.3s ease 0s 1 ;
 
     }
     #front{
@@ -95,7 +95,7 @@ transform: rotateY(180deg);
     }
     .box:hover{
         transform: rotateY(180deg);
-        transition-delay: 1s;
+        transition-delay: 0.3s;
     }
     #back p{
         color: white;
