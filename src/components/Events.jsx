@@ -1,6 +1,7 @@
 import exampleImage from './image.png'; // relative to Events.jsx
 import { useEffect, useState , React } from 'react';
 import './Animation.css'
+import { useNavigate } from 'react-router-dom';
 
 // const events = [
 //   {
@@ -21,10 +22,29 @@ import './Animation.css'
 //   })),
 // ];
 
-export default function Events() {
+export default function Events(props) {
   // This component fetches and displays a list of events
   // It uses the useState hook to manage the state of events
+  const navigate=useNavigate();
   const [events, setEvents] = useState([]);
+  const [register,setregister]=useState(false);
+    const [logininfo, setlogininfo] = useState({
+        Name: "",
+        EmailAddress: "",
+        PhoneNumber: "",
+       
+      })
+      const handleChange = (e) => {
+      const { name, value } = e.target;
+      setlogininfo(prev => ({ ...prev, [name]: value }));
+    };
+     
+    const handleSubmit = async (e) => {
+      // This function handles the form submission
+      // It prevents the default form submission behavior, sends the data to the server,
+      e.preventDefault();
+      navigate('/')
+    }
   
   // useEffect is used to fetch the events from the server when the component mounts
   // It sends a GET request to the server to retrieve the events data
@@ -58,6 +78,7 @@ export default function Events() {
 
 
   return (
+    <>
     
     <div className="p-4 bg-[#01011b] min-h-screen">
       <h1 className="text-3xl font-bold mb-6 text-white text-center">Events</h1>
@@ -70,7 +91,7 @@ export default function Events() {
             hover:border-[#33bbcf] hover:scale-[1.03] "
           >
             
-    <div className='box block transform-3d perspective-[1000px] hover:rotate-y-180 transition delay-[2s]'>
+    <div className='box block transform-3d perspective-[1000px] hover:rotate-y-180 transition delay-[1s]'>
        <div className='card grid relative transform-3d'>
           <div id='front ' className="event-description  col-start-1 row-start-1 space-y-1 relative backface-hidden">
               <div className="event-logo flex items-center justify-center">
@@ -86,21 +107,20 @@ export default function Events() {
               <p className="text-white font-semibold">Conducted by: {event.ConductedBy}</p>
 
 
-              <button
-                className="mt-10 bg-blue-500 cursor-pointer text-white px-4 py-2 rounded hover:bg-blue-700 transition"
-                id={`joinEvent${event.id}`}
-              >
-                Join Event
-              </button>
           </div>
           <div id='back' className=' absolute col-start-1 row-start-1 flex flex-col justify-center items-center top-0 left-0 w-[100%] h-[100%] backface-hidden rotate-y-180 '>
                 <h1 className='text-[#11E3FB] font-bold text-[32px] pt-[10px] pb-[10px]'>{event.EventName}</h1>
                 <p className='text-white font-bold'> {event.EventInfo}</p>
                  <button
-                className="mt-2 bg-blue-500 cursor-pointer text-white px-4 py-2 rounded hover:bg-blue-700 transition"
-                id={`joinEvent${event.id}`}
+                className="mt-10 bg-blue-500 cursor-pointer text-white px-4 py-2 rounded hover:bg-blue-700 transition"
+                id={`joinEvent${event.id}`} onClick={()=>{
+                   if(props.issignup){setregister(true)}
+                   else{navigate('/signup')
+                    alert('Please verify your email to continue.')
+                   }
+                }}
               >
-                Explore Event
+                Join Event
               </button>
           </div>
       </div>
@@ -111,6 +131,27 @@ export default function Events() {
       </div>
 
     </div>
+    {register&&
+      
+   <div className='fixed top-0 z-1000 w-[100%] h-[100%] flex justify-center items-center '>
+      <div className=' fixed flex flex-col w-[90%] md:w-[400px] m-[30px] p-[20px] bg-[linear-gradient(to_right,_rgba(6,182,212),_rgba(59,130,246))]  border-2 rounded-[10px] border-black  shadow-[0px_4px_15px_rgba(0, 0, 0, 0.1)]  hover:shadow-[0_0_25px_#00ffff66]'>
+        <button className='back absolute top-[2px] right-[2px] cursor-pointer w-[30px] h-[30px] rounded-[5px] hover:bg-red-500 ' onClick={()=>setregister(false)}> ❌ </button>
+        
+          <form action="/" onSubmit={handleSubmit} className='flex flex-col items-center justify-center  w-[100%] h-[100%]'>
+     
     
-  );
+      <h2 className='text-white font-bold text-[22px] '>Event Registration</h2>
+      <input type="text" placeholder=' Name' className='text-black block bg-white border rounded-[10px] w-[90%] md:w-[75%] h-[50px] m-[10px]' name='Name' value={logininfo.Name} onChange={handleChange} />
+      <input type="text" placeholder='EmailAddress'className='text-black block bg-white border rounded-[10px] w-[90%] md:w-[75%] h-[50px] m-[10px]' name='EmailAddress' value={logininfo.EmailAddress} onChange={handleChange}/>
+      <input type="text" placeholder='PhoneNumber' name='PhoneNumber'className='text-black block bg-white border rounded-[10px] w-[90%] md:w-[75%] h-[50px] m-[10px]' value={logininfo.PhoneNumber} onChange={handleChange}/>
+      <button type="submit" className="submitbutton block w-[90%] md:w-[200px] m-[20px] p-[12px] text-white text-[18px] font-bold bg-[linear-gradient(to_right,_#007bff,_#00c3ff)] border-none rounded-[8px] cursor-pointer hover:bg-[linear-gradient(to_right,_#0056b3,_#0097d1)] hover:scale-105 transition-[background,transform] duration-[300ms,200ms]">Register</button>
+    
+      </form>
+    
+
+     </div>
+   </div>
+
+    }
+  </>);
 }

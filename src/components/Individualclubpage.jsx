@@ -5,6 +5,8 @@ import insta from './insta.png';
 import linkedIn from './linkedIn.png';
 import facebook from './facebook.png';
 import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
+
 import exampleImage from './image.png'; // relative to Events.jsx
 const events = [
   {
@@ -39,11 +41,29 @@ const events = [
   
 
 
-function Individualclubpage() {
+function Individualclubpage(props) {
+  const [register,setregister]=useState(false);
+      const [logininfo, setlogininfo] = useState({
+          Name: "",
+          EmailAddress: "",
+          PhoneNumber: "",
+          
+        })
+        const handleChange = (e) => {
+        const { name, value } = e.target;
+        setlogininfo(prev => ({ ...prev, [name]: value }));
+      };
+       
+      const handleSubmit = async (e) => {
+        // This function handles the form submission
+        // It prevents the default form submission behavior, sends the data to the server,
+        e.preventDefault();
+      }
    
    const navigate =useNavigate();
   return (
     <>
+    <div>
         <div className='clubbody'>
             <img src={cynapticlogo} alt="cynapticlogo" className='clubimage' />
         </div>
@@ -62,7 +82,7 @@ function Individualclubpage() {
            
         </div>
         <div>
-          <h1 className='text-white font-bold text-center'>About Club</h1>
+          <h1 className='text-transparent bg-clip-text bg-gradient-to-r from-[#00EAFF] via-[#4DD9FF] to-[#AAF0FF] font-bold text-center'>About Club</h1>
           <p className='text-white font-bold px-5 my-10'>Cynaptics Club is a dynamic community of students passionate about harnessing the power of AI and ML to push the boundaries of innovation. We believe that the future lies in the convergence of human intelligence and advanced technologies, and our club serves as a hub for knowledge sharing, skill development, and collaborative projects in this rapidly evolving field.
             Through a diverse range of activities, we provide valuable opportunities for our members to learn, experiment, and create. Our club organizes engaging guest talks by industry professionals who share their experiences, insights, and cutting-edge research, exposing our members to the latest trends and developments in AI and ML. We also host exhilarating hackathons, where you can put your skills to the test, collaborate with peers, and build innovative solutions within a limited timeframe.
              These hackathons foster teamwork, problem-solving, and creativity, and they serve as an excellent platform for honing your AI and ML skills. Additionally, we showcase our members' talents and achievements through exhibitions, where innovative AI and ML projects are displayed for the college community to see. These exhibitions not only celebrate our members' hard work but also inspire others to delve into the world of AI and ML.
@@ -72,14 +92,14 @@ function Individualclubpage() {
         </div>
         
          <div className="p-4 bg-[#01011b] min-h-screen">
-      <h1 className="text-3xl font-bold text-white mb-6 text-center">Club Events</h1>
+      <h1 className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#00EAFF] via-[#4DD9FF] to-[#AAF0FF] mb-6 text-center">Club Events</h1>
 
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         {events.map((event) => (
           <div
             key={event.id}
-            className="event-detail border rounded-2xl shadow-md p-4 bg-gradient-to-r from-cyan-500/5 to-blue-500/5 space-y-3 border-2 border-[#87CEEB]/60
-            hover:border-[#33bbcf] hover:scale-[1.03] space-y-3"
+            className="event-detail  rounded-2xl shadow-md p-4 bg-gradient-to-r from-cyan-500/5 to-blue-500/5 space-y-3 border-2 border-[#87CEEB]/60
+            hover:border-[#33bbcf] hover:scale-[1.03] "
           >
            
 
@@ -104,6 +124,12 @@ function Individualclubpage() {
                  <button
                 className="my-10 bg-blue-500 cursor-pointer text-white px-4 py-2  rounded hover:bg-blue-700 transition"
                 id={`joinEvent${event.id}`}
+                onClick={()=>
+                 { if(props.issignup){setregister(true)}
+                   else{navigate('/signup')
+                    alert('Please verify your email to continue.')
+                   }
+                }}
               >
                 Join Event
               </button>
@@ -114,8 +140,8 @@ function Individualclubpage() {
         ))}
       </div>
       <div className='clubhead'>
-       <h1 className='text-white font-bold  py-8 text-center'> Club Head</h1> 
-       <div className='text-white w-70 lg:w-90 border rounded-2xl shadow-md p-4  bg-gradient-to-r from-cyan-500/5 to-blue-500/5 space-y-3 border-2 border-[#87CEEB]/60
+       <h1 className='text-transparent bg-clip-text bg-gradient-to-r from-[#00EAFF] via-[#4DD9FF] to-[#AAF0FF] font-bold  py-8 text-center'> Club Head</h1> 
+       <div className='text-white w-70 lg:w-90 border-2 rounded-2xl shadow-md p-4  bg-gradient-to-r from-cyan-500/5 to-blue-500/5 space-y-3  border-[#87CEEB]/60
             hover:border-[#33bbcf] hover:scale-[1.03]  '>
         <img src="" alt="Club Head Photo" className='text-center'/>
         <p className='text-center font-bold'>Club Head Name</p>
@@ -136,6 +162,7 @@ function Individualclubpage() {
       </div>
 
     </div>
+  
         
     <footer className="bg-[rgba(1,1,27)] border border-t-[#3f3e45] text-white  bottom-0 py-10">
       <div className='footer'>
@@ -165,6 +192,30 @@ function Individualclubpage() {
            
 
         </footer>
+
+    </div>
+    {register&&
+      
+   <div className='fixed top-0 z-1000 w-[100%] h-[100%] flex justify-center items-center '>
+      <div className=' fixed flex flex-col w-[90%] md:w-[400px] m-[30px] p-[20px] bg-[linear-gradient(to_right,_rgba(6,182,212),_rgba(59,130,246))]  border-2 rounded-[10px] border-black  shadow-[0px_4px_15px_rgba(0, 0, 0, 0.1)]  hover:shadow-[0_0_25px_#00ffff66]'>
+        <button className='back absolute top-[2px] right-[2px] cursor-pointer w-[30px] h-[30px] rounded-[5px] hover:bg-red-500 ' onClick={()=>setregister(false)}> ❌ </button>
+        
+          <form action="/" onSubmit={handleSubmit} className='flex flex-col items-center justify-center  w-[100%] h-[100%]'>
+     
+    
+      <h2 className='text-white font-bold text-[22px] '>Event Registration</h2>
+      <input type="text" placeholder=' Name' className='text-black block bg-white border rounded-[10px] w-[90%] md:w-[75%] h-[50px] m-[10px]' name='Name' value={logininfo.Name} onChange={handleChange} />
+      <input type="text" placeholder='EmailAddress'className='text-black block bg-white border rounded-[10px] w-[90%] md:w-[75%] h-[50px] m-[10px]' name='EmailAddress' value={logininfo.EmailAddress} onChange={handleChange}/>
+      <input type="text" placeholder='PhoneNumber' name='PhoneNumber'className='text-black block bg-white border rounded-[10px] w-[90%] md:w-[75%] h-[50px] m-[10px]' value={logininfo.PhoneNumber} onChange={handleChange}/>
+      <button type="submit" className="submitbutton block w-[90%] md:w-[200px] m-[20px] p-[12px] text-white text-[18px] font-bold bg-[linear-gradient(to_right,_#007bff,_#00c3ff)] border-none rounded-[8px] cursor-pointer hover:bg-[linear-gradient(to_right,_#0056b3,_#0097d1)] hover:scale-105 transition-[background,transform] duration-[300ms,200ms]">Register</button>
+    
+      </form>
+    
+
+     </div>
+   </div>
+
+    }
     </>
   )
 }
