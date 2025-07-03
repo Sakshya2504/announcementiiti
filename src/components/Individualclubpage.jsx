@@ -43,15 +43,18 @@ const events = [
 
 function Individualclubpage(props) {
   const [register,setregister]=useState(false);
-      const [logininfo, setlogininfo] = useState({
+      const [registerinfo, setregisterinfo] = useState({
           Name: "",
           EmailAddress: "",
+          RollNumber:"",
+          Program:"",
+          Branch:"",
           PhoneNumber: "",
           
         })
         const handleChange = (e) => {
         const { name, value } = e.target;
-        setlogininfo(prev => ({ ...prev, [name]: value }));
+        setregisterinfo(prev => ({ ...prev, [name]: value }));
       };
        
       const handleSubmit = async (e) => {
@@ -143,7 +146,7 @@ function Individualclubpage(props) {
        <h1 className='text-transparent bg-clip-text bg-gradient-to-r from-[#00EAFF] via-[#4DD9FF] to-[#AAF0FF] font-bold  py-8 text-center'> Club Head</h1> 
        <div className='text-white w-70 lg:w-90 border-4 rounded-2xl shadow-md p-4  bg-gradient-to-r from-cyan-500/5 to-blue-500/5 space-y-3  border-[#87CEEB]
             hover:border-[#33bbcf] hover:-translate-y-3  '>
-        <img src="" alt="Club Head Photo" className='text-center'/>
+        <img src={null} alt="Club Head Photo" className='text-center'/>
         <p className='text-center font-bold'>Club Head Name</p>
         <h2 className='font-bold'>About</h2>
         <p>I am a 4th Year Student, Currently Pursuing My B.Tech In CSE</p>
@@ -204,9 +207,12 @@ function Individualclubpage(props) {
      
     
       <h2 className='text-white font-bold text-[22px] '>Event Registration</h2>
-      <input type="text" placeholder=' Name' className='text-black block bg-white border rounded-[10px] w-[90%] md:w-[75%] h-[50px] m-[10px]' name='Name' value={logininfo.Name} onChange={handleChange} />
-      <input type="text" placeholder='EmailAddress'className='text-black block bg-white border rounded-[10px] w-[90%] md:w-[75%] h-[50px] m-[10px]' name='EmailAddress' value={logininfo.EmailAddress} onChange={handleChange}/>
-      <input type="text" placeholder='PhoneNumber' name='PhoneNumber'className='text-black block bg-white border rounded-[10px] w-[90%] md:w-[75%] h-[50px] m-[10px]' value={logininfo.PhoneNumber} onChange={handleChange}/>
+      <input type="text" placeholder=' Name' className='text-black block bg-white border rounded-[10px] w-[90%] md:w-[75%] h-[50px] m-[10px]' name='Name' value={registerinfo.Name} onChange={handleChange} />
+      <input type="text" placeholder='EmailAddress'className='text-black block bg-white border rounded-[10px] w-[90%] md:w-[75%] h-[50px] m-[10px]' name='EmailAddress' value={registerinfo.EmailAddress} onChange={handleChange}/>
+      <input type="text" placeholder='RollNumber'className='text-black block bg-white border rounded-[10px] w-[90%] md:w-[75%] h-[50px] m-[10px]' name='RollNumber' value={registerinfo.RollNumber} onChange={handleChange}/>
+      <input type="text" placeholder='Program'className='text-black block bg-white border rounded-[10px] w-[90%] md:w-[75%] h-[50px] m-[10px]' name='Program' value={registerinfo.Program} onChange={handleChange}/>
+      <input type="text" placeholder='Branch'className='text-black block bg-white border rounded-[10px] w-[90%] md:w-[75%] h-[50px] m-[10px]' name='Branch' value={registerinfo.Branch} onChange={handleChange}/>
+      <input type="text" placeholder='PhoneNumber' name='PhoneNumber'className='text-black block bg-white border rounded-[10px] w-[90%] md:w-[75%] h-[50px] m-[10px]' value={registerinfo.PhoneNumber} onChange={handleChange}/>
       <button type="submit" className="submitbutton block w-[90%] md:w-[200px] m-[20px] p-[12px] text-white text-[18px] font-bold bg-[linear-gradient(to_right,_#007bff,_#00c3ff)] border-none rounded-[8px] cursor-pointer hover:bg-[linear-gradient(to_right,_#0056b3,_#0097d1)] hover:scale-105 transition-[background,transform] duration-[300ms,200ms]">Register</button>
     
       </form>
