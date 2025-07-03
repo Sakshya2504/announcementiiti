@@ -1,5 +1,5 @@
 import './Notification.css';
-import image from './image.png';
+import image from '../Images/image.png';
 import { useEffect, useState } from 'react';
 
 
