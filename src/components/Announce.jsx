@@ -20,45 +20,61 @@ function Announce() {
     setlogininfo(prev => ({ ...prev, [name]: value }));
   };
   
+
+  const handleVerification = async (email) => {
+    try {
+      const res = await fetch('http://localhost:3000/api/verifyadmin', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email })
+      });
+      const data = await res.json();
+      return data.authorized;
+    } catch (err) {
+      console.error("Verification error:", err);
+      alert("Something went wrong. Try again later.");
+      return false;
+    }
+  };
+
   const handleSubmit = async (e) => {
-    // This function handles the form submission
-    // It prevents the default form submission behavior, sends the data to the server,
     e.preventDefault();
 
-    //Fetch API is used to send a POST request to the server with the announcement data
-    // The server will then process this data and create a new announcement in the database
+    const email = prompt("Enter your email to verify admin access:");
+    if (!email) {
+      alert("Email is required.");
+      return;
+    }
+
+    const authorized = await handleVerification(email);
+    if (!authorized) {
+      alert("You're not authorized to make announcements.");
+      navigate('/individualclubpage');
+      return;
+    }
+
     try {
       const res = await fetch('http://localhost:3000/announce', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(logininfo) 
+        body: JSON.stringify(logininfo)
       });
 
       const result = await res.json();
-      console.log(result);
 
       if (res.ok) {
         alert(result.message || 'Announcement successful');
-
-        setlogininfo({
-          clubname: "",
-          heading: "",
-          info: ""
-        });
-
-      // If the announcement is successful, navigate to the notification page
-      // This will redirect the user to the notification page where they can see the announcement
-      navigate('/notification')
-
-     
+        setlogininfo({ clubname: "", heading: "", info: "" });
+        navigate('/notification');
       } else {
         alert(result.message || 'Announcement failed');
       }
-    } catch (error) {
-      console.error(' Error submitting announcement:', error);
-      alert('Announcement Submission Failed');
+    } catch (err) {
+      console.error("Submit error:", err);
+      alert("Something went wrong: " + (err.message || err));
     }
   };
+
 
   return (
     <>

@@ -143,7 +143,7 @@ function Individualclubpage(props) {
        <h1 className='text-transparent bg-clip-text bg-gradient-to-r from-[#00EAFF] via-[#4DD9FF] to-[#AAF0FF] font-bold  py-8 text-center'> Club Head</h1> 
        <div className='text-white w-70 lg:w-90 border-2 rounded-2xl shadow-md p-4  bg-gradient-to-r from-cyan-500/5 to-blue-500/5 space-y-3  border-[#87CEEB]/60
             hover:border-[#33bbcf] hover:scale-[1.03]  '>
-        <img src="" alt="Club Head Photo" className='text-center'/>
+        <img src={null} alt="Club Head Photo" className='text-center'/>
         <p className='text-center font-bold'>Club Head Name</p>
         <h2 className='font-bold'>About</h2>
         <p>I am a 4th Year Student, Currently Pursuing My B.Tech In CSE</p>
