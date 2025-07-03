@@ -5,6 +5,7 @@ import { User } from './models/UserSchema.js';
 import bcrypt from 'bcrypt';
 import { Announce_ } from './models/Announce.js'; 
 import {event_} from './models/Event.js'
+import { Admin_ } from './models/Admins.js'; // Import the Admin model
 
 
 const app = express();
@@ -15,8 +16,8 @@ app.use(express.json());
 
 // Connect to MongoDB with the validation using Mongoose
 await mongoose.connect("mongodb://localhost:27017/todo", {
-    useNewUrlParser: true, //useNewUrlParse is used for parsing the MongoDB connection string
-    useUnifiedTopology: true // useUnifiedTopology is used to opt in to the MongoDB driver's new connection management engine
+    // useNewUrlParser: true, //useNewUrlParse is used for parsing the MongoDB connection string
+    // useUnifiedTopology: true // useUnifiedTopology is used to opt in to the MongoDB driver's new connection management engine
 });
 
 // Signup route
@@ -146,6 +147,23 @@ app.get('/Events', async (req, res) => {
     }
 });
 
+app.post('/api/verifyadmin', async (req, res) => {
+    const { email } = req.body;
+
+    try {
+        const admin = await Admin_.findOne({ email });
+        // Check if the email exists in the Admin collection
+        // If the email exists, it means the user is an admin
+        if (admin) {
+            res.status(200).json({ authorized: true });
+        } else {
+            res.status(401).json({ authorized: false, message: 'Unauthorized email' });
+        }
+    } catch (err) {
+        res.status(500).json({ error: 'Server error' });
+    }
+});
+  
 
 
 app.listen(port, () => {
