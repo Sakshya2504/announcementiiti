@@ -21,47 +21,65 @@ import { useNavigate } from 'react-router-dom'
       setlogininfo(prev => ({ ...prev, [name]: value }));
     };
     
-    const handleSubmit = async (e) => {
-      // This function handles the form submission
-      // It prevents the default form submission behavior, sends the data to the server,
-      e.preventDefault();
-      
-      //Fetch API is used to send a POST request to the server with the event data
-      // The server will then process this data and create a new event in the database
-      try {
-        const res = await fetch('http://localhost:3000/Createevent', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(logininfo) 
-        });
-  
-        const result = await res.json();
-        console.log(result);
-  
-        if (res.ok) {
-          alert(result.message || 'Event Creation successful');
-  
-          setlogininfo({
-            EventName: "",
-            EventDateAndTime: "",
-            ConductedBy: "",
-            EventInfo: ""            
-          });
+   const handleVerification = async (email) => {
+     try {
+       const res = await fetch('http://localhost:3000/api/verifyadmin', {
+         method: 'POST',
+         headers: { 'Content-Type': 'application/json' },
+         body: JSON.stringify({ email })
+       });
 
-          // If the event creation is successful, navigate to the individual club page
-          // This will redirect the user to the individual club page where they can see the event
-        navigate('/')
-  
-       
-        } else {
-          alert(result.message || 'Event Creation failed');
-        }
-      } catch (error) {
-        console.error('Error submitting Event:', error);
-        alert('Event Submission Failed');
-      }
+       const data = await res.json();
+       return data.authorized;
+     } catch (err) {
+       console.error("Verification error:", err);
+       alert("Something went wrong. Try again later.");
+       return false;
+     }
+   };
+
+   const handleSubmit = async (e) => {
+     e.preventDefault();
+
+     const email = prompt("Enter your email to verify admin access:");
+     if (!email || !/^\S+@\S+\.\S+$/.test(email)) {
+       alert("Invalid or missing email.");
+       return;
+     }
+
+     const authorized = await handleVerification(email);
+     if (!authorized) {
+       alert("You're not authorized to create events.");
+       navigate('/individualclubpage');
+       return;
+     }
+
+     try {
+       const res = await fetch('http://localhost:3000/Createevent', {
+         method: 'POST',
+         headers: { 'Content-Type': 'application/json' },
+         body: JSON.stringify(logininfo)
+       });
+
+       const result = await res.json();
+
+       if (res.ok) {
+         alert(result.message || 'Event creation successful');
+         setlogininfo({
+           EventName: "",
+           EventDateAndTime: "",
+           ConductedBy: "",
+           EventInfo: ""
+         });
+         navigate('/');
+       } else {
+         alert(result.message || 'Event creation failed');
+       }
+     } catch (error) {
+       console.error('Error submitting event:', error);
+       alert('Event submission failed');
+     }
     };
-
 
   return (
     <>
