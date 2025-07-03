@@ -28,15 +28,18 @@ export default function Events(props) {
   const navigate=useNavigate();
   const [events, setEvents] = useState([]);
   const [register,setregister]=useState(false);
-    const [logininfo, setlogininfo] = useState({
+    const [registerinfo, setregisterinfo] = useState({
         Name: "",
         EmailAddress: "",
+        RollNumber:"",
+        Program:"",
+        Branch:"",
         PhoneNumber: "",
        
       })
       const handleChange = (e) => {
       const { name, value } = e.target;
-      setlogininfo(prev => ({ ...prev, [name]: value }));
+      setregisterinfo(prev => ({ ...prev, [name]: value }));
     };
      
     const handleSubmit = async (e) => {
@@ -141,9 +144,12 @@ export default function Events(props) {
      
     
       <h2 className='text-white font-bold text-[22px] '>Event Registration</h2>
-      <input type="text" placeholder=' Name' className='text-black block bg-white border rounded-[10px] w-[90%] md:w-[75%] h-[50px] m-[10px]' name='Name' value={logininfo.Name} onChange={handleChange} />
-      <input type="text" placeholder='EmailAddress'className='text-black block bg-white border rounded-[10px] w-[90%] md:w-[75%] h-[50px] m-[10px]' name='EmailAddress' value={logininfo.EmailAddress} onChange={handleChange}/>
-      <input type="text" placeholder='PhoneNumber' name='PhoneNumber'className='text-black block bg-white border rounded-[10px] w-[90%] md:w-[75%] h-[50px] m-[10px]' value={logininfo.PhoneNumber} onChange={handleChange}/>
+      <input type="text" placeholder=' Name' className='text-black block bg-white border rounded-[10px] w-[90%] md:w-[75%] h-[50px] m-[10px]' name='Name' value={registerinfo.Name} onChange={handleChange} />
+      <input type="text" placeholder='EmailAddress'className='text-black block bg-white border rounded-[10px] w-[90%] md:w-[75%] h-[50px] m-[10px]' name='EmailAddress' value={registerinfo.EmailAddress} onChange={handleChange}/>
+      <input type="text" placeholder='RollNumber'className='text-black block bg-white border rounded-[10px] w-[90%] md:w-[75%] h-[50px] m-[10px]' name='RollNumber' value={registerinfo.RollNumber} onChange={handleChange}/>
+      <input type="text" placeholder='Program'className='text-black block bg-white border rounded-[10px] w-[90%] md:w-[75%] h-[50px] m-[10px]' name='Program' value={registerinfo.Program} onChange={handleChange}/>
+      <input type="text" placeholder='Branch'className='text-black block bg-white border rounded-[10px] w-[90%] md:w-[75%] h-[50px] m-[10px]' name='Branch' value={registerinfo.Branch} onChange={handleChange}/>
+      <input type="text" placeholder='PhoneNumber' name='PhoneNumber'className='text-black block bg-white border rounded-[10px] w-[90%] md:w-[75%] h-[50px] m-[10px]' value={registerinfo.PhoneNumber} onChange={handleChange}/>
       <button type="submit" className="submitbutton block w-[90%] md:w-[200px] m-[20px] p-[12px] text-white text-[18px] font-bold bg-[linear-gradient(to_right,_#007bff,_#00c3ff)] border-none rounded-[8px] cursor-pointer hover:bg-[linear-gradient(to_right,_#0056b3,_#0097d1)] hover:scale-105 transition-[background,transform] duration-[300ms,200ms]">Register</button>
     
       </form>
