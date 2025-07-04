@@ -6,6 +6,7 @@ import bcrypt from 'bcrypt';
 import { Announce_ } from './models/Announce.js'; 
 import {event_} from './models/Event.js'
 import { Admin_ } from './models/Admins.js'; // Import the Admin model
+import {Regis} from './models/Regis.js'
 
 
 const app = express();
@@ -161,6 +162,38 @@ app.post('/api/verifyadmin', async (req, res) => {
         }
     } catch (err) {
         res.status(500).json({ error: 'Server error' });
+    }
+});
+
+app.post('/api/register', async (req, res) => {
+    const { name, email, password } = req.body;
+
+    try {
+        const existingUser = await Regis.findOne({ email });
+        if (existingUser) {
+            return res.status(409).json({ message: 'User already registered with this email' });
+        }
+        
+
+        
+        const newRegis = new Regis({ Name, EmailAddress,RollNumber,Program,Branch,PhoneNumber });
+        await newRegis.save();
+
+        res.status(201).json({
+            message: 'User registered successfully!', user: {
+                Name: name,
+                EmailAddress: email,
+                RollNumber: RollNumber,
+                Program: Program,
+                Branch: Branch,
+                PhoneNumber: PhoneNumber
+            }
+        });
+    } catch (err) {
+        if (err.name === 'ValidationError') {
+            return res.status(401).json({ message: err.message });
+        }
+        res.status(500).json({ message: 'Something went wrong' });
     }
 });
   
