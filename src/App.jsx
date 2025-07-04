@@ -61,7 +61,7 @@ const [personinfo, setpersoninfo] = useState(null);
           <div className="footer-container  border border-t-[#3f3e45] bottom-0 w-full bg-[rgba(1,1,27)] text-white py-4  ">
                  <footer className="bg-[rgba(1,1,27)] border-t-[#3f3e45] text-white  bottom-0 py-5">
             <div className="max-w-7xl flex flex-col justify-between md:flex-row mx-auto px-auto  ">
-              <div className=''>
+              <div className='ml-3'>
                    <a href="https://www.iiti.ac.in">
             <img
               src="https://www.iiti.ac.in/public/themes/iitindore/demos/update-logo.png"
@@ -106,13 +106,13 @@ const [personinfo, setpersoninfo] = useState(null);
                 </a>
               </div>
               </div>
-              <div className="mt-12">
+              <div className="mt-12 ml-3">
                 <h2  className="hover:underline text-2xl text-[#00EAFF] font-bold">Contact us</h2>
                 <p className='font-bold'>✉️ cse240001068@iiti.ac.in</p> 
                 <p className='font-bold'>✉️ me240003006@iiti.ac.in</p>  
                  <p className='font-bold'>✉️ sse240021015@iiti.ac.in</p> 
               </div>
-             <div className='mt-12'>
+             <div className='mt-12 ml-3'>
                <h2  className="hover:underline text-2xl text-[#00EAFF] font-bold">Share</h2>
                <p className='font-bold '>https://campannounce.netlify.app</p>
              </div>
