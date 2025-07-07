@@ -9,6 +9,7 @@ const RegisSchema = new Schema({
         type: String,
         required: true,
         unique: true,
+        match: /^[a-zA-Z0-9._%+-]+@iiti\.ac\.in$/,
     },
     RollNumber: {
         type: Number,

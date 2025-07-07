@@ -165,38 +165,54 @@ app.post('/api/verifyadmin', async (req, res) => {
     }
 });
 
-app.post('/api/register', async (req, res) => {
-    const { name, email, password } = req.body;
+// app.post('/api/register', async (req, res) => {
+//     const { name, email, password } = req.body;
+
+//     try {
+//         const existingUser = await Regis.findOne({ email });
+//         if (existingUser) {
+//             return res.status(409).json({ message: 'User already registered with this email' });
+//         }
+        
+
+        
+//         const newRegis = new Regis({ name, EmailAddress,RollNumber,Program,Branch,PhoneNumber });
+//         await newRegis.save();
+
+//         res.status(201).json({
+//             message: 'User registered successfully!', user: {
+//                 Name: name,
+//                 EmailAddress: email,
+//                 RollNumber: RollNumber,
+//                 Program: Program,
+//                 Branch: Branch,
+//                 PhoneNumber: PhoneNumber
+//             }
+//         });
+//     } catch (err) {
+//         if (err.name === 'ValidationError') {
+//             return res.status(401).json({ message: err.message });
+//         }
+//         res.status(500).json({ message: 'Something went wrong' });
+//     }
+// });
+
+
+app.post('/events/:eventId/register', async (req, res) => {
+    const { eventId } = req.params;
+    const formData = req.body;
 
     try {
-        const existingUser = await Regis.findOne({ email });
-        if (existingUser) {
-            return res.status(409).json({ message: 'User already registered with this email' });
-        }
-        
-
-        
-        const newRegis = new Regis({ Name, EmailAddress,RollNumber,Program,Branch,PhoneNumber });
-        await newRegis.save();
-
-        res.status(201).json({
-            message: 'User registered successfully!', user: {
-                Name: name,
-                EmailAddress: email,
-                RollNumber: RollNumber,
-                Program: Program,
-                Branch: Branch,
-                PhoneNumber: PhoneNumber
-            }
-        });
+        const registration = new Regis({ eventId, ...formData });
+        await registration.save();
+        res.status(200).json({ message: 'Registered successfully' });
     } catch (err) {
-        if (err.name === 'ValidationError') {
-            return res.status(401).json({ message: err.message });
-        }
-        res.status(500).json({ message: 'Something went wrong' });
+        console.error('Error saving registration:', err.message);
+        res.status(500).json({ error: 'Internal Server Error' });
     }
 });
-  
+
+
 
 
 app.listen(port, () => {
