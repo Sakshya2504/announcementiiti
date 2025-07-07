@@ -4,6 +4,8 @@ const RegisSchema = new Schema({
     Name: {
         type: String,
         required: true,
+        minlength: 3,
+        maxlength: 50,
     },
     EmailAddress: {
         type: String,
@@ -15,6 +17,7 @@ const RegisSchema = new Schema({
         type: Number,
         required: true,
         unique: true,
+        minlength: 9,
     },
     Program: {
         type: String,
@@ -28,6 +31,8 @@ const RegisSchema = new Schema({
         type: Number,
         required: true,
         unique: true,
+        minlength: 10,
+        maxlength: 10,
     }
 });
 
