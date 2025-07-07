@@ -29,6 +29,7 @@ export default function Events(props) {
   const navigate=useNavigate();
   const [selectedEventId, setSelectedEventId] = useState(null);
   const [events, setEvents] = useState([]);
+  const [registrationCounts, setRegistrationCounts] = useState({});
   const [register,setregister]=useState(false);
     const [registerinfo, setregisterinfo] = useState({
         Name: "",
@@ -73,6 +74,37 @@ export default function Events(props) {
       alert('Something went wrong. Please try again.');
     }
     };
+
+  useEffect(() => {
+    const fetchEvents = async () => {
+      try {
+        const res = await fetch('http://localhost:3000/Events');
+        const data = await res.json();
+
+        const updatedEvents = data.map((eve, index) => ({
+          ...eve,
+          id: eve._id || index + 1, // Ensure the event ID is preserved
+          image: exampleImage,
+        }));
+
+        setEvents(updatedEvents);
+
+        // Fetch counts for each event
+        const counts = {};
+        for (const event of updatedEvents) {
+          const countRes = await fetch(`http://localhost:3000/events/${event._id}/registrations/count`);
+          const { count } = await countRes.json();
+          counts[event._id] = count;
+        }
+        setRegistrationCounts(counts);
+
+      } catch (err) {
+        console.error("Failed to load events or counts:", err);
+      }
+    };
+
+    fetchEvents();
+  }, []);
   
   // useEffect is used to fetch the events from the server when the component mounts
   // It sends a GET request to the server to retrieve the events data
@@ -132,7 +164,8 @@ export default function Events(props) {
               <p className="text-white font-medium">🕒 Time: {event.EventDateAndTime}</p>
               <p className="text-white font-medium">📍 Info: {event.EventInfo}</p>
               <p className="text-white font-semibold">🎭 Event: {event.EventName}</p>
-              <p className="text-white font-semibold">Conducted by: {event.ConductedBy}</p>
+              <p className="text-white font-semibold">📋 Registered: {registrationCounts[event._id] ?? '...'} students</p>
+              <p className="text-white font-semibold">🧑‍💼 Conducted by: {event.ConductedBy}</p>
 
 
           </div>
