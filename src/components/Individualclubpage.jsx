@@ -1,6 +1,7 @@
 import React from 'react'
-import cynapticlogo from './cynapticlogo.png'
+import cynapticlogo from '../Images/cynapticlogo.png'
 import './Individualclubpage.css'
+<<<<<<< HEAD
 import insta from '../Images/insta.png';
 import linkedIn from '../Images/linkedIn.png';
 import facebook from '../Images/facebook.png';
@@ -8,6 +9,67 @@ import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 
 import exampleImage from '../Images/image.png'; // relative to Events.jsx
+=======
+import insta from '../Images/Insta.png';
+import linkedIn from '../Images/linkedIn.png';
+import facebook from '../Images/facebook.png';
+import { useNavigate } from 'react-router-dom';
+import exampleImage from '../Images/image.png'; 
+import head from '../Images/user.png'
+
+const clubs = [
+   {
+          id:11,    
+        name: 'Aaina Club',
+        heading: 'Dramatics Club of IITI',
+        info: 'Aaina is the dramatics club of IITI. It conducts plays, nukkad nataks and workshops.',
+        logo: '../Images/iiti.png',
+        events: [
+          {
+            name: 'Street Play',
+            time: '6 PM',
+            location: 'Main Gate',
+            info: 'A powerful performance on social issues.',
+            image: '../images/image.png',
+          },
+        ],
+        clubHead: {
+          name: 'Anurag',
+          about: '4th Year EE Student, Passionate about theatre',
+          email: 'aainahead@iiti.ac.in',
+          image: '../Images/user.png',
+          linkedin: 'https://linkedin.com/in/anurag',
+        },
+        social: {
+          instagram: 'https://www.instagram.com/dramaticsclubiiti/',
+          linkedin: 'https://www.instagram.com/dramaticsclubiiti/',
+          facebook: 'https://www.instagram.com/dramaticsclubiiti/',
+        },
+      },
+      {
+        id: 12,
+        name: 'Avana Club',
+        heading: 'Cultural Expression & Dance',
+        info: 'Avana is the cultural dance club. It performs classical and contemporary forms in fests.',
+        logo: '../Images/iiti.png',
+        events: [],
+        clubHead: {
+          name: 'Shruti',
+          about: 'Dance lead, 4th Year ME',
+          email: 'shruti@iiti.ac.in',
+          image: '../Images/user.png',
+          linkedin: 'https://linkedin.com/in/shruti',
+        },
+        social: {
+          instagram: 'https://www.instagram.com/avana_iiti/',
+          linkedin: 'https://www.instagram.com/avana_iiti/',
+          facebook: 'https://www.instagram.com/avana_iiti/',
+        },
+      },
+      
+];
+
+>>>>>>> fffe534 (updated profile backend)
 const events = [
   {
     id: 1,
@@ -36,6 +98,7 @@ const events = [
   }]
 
  
+<<<<<<< HEAD
 
 
   
@@ -62,20 +125,32 @@ function Individualclubpage(props) {
         // It prevents the default form submission behavior, sends the data to the server,
         e.preventDefault();
       }
+=======
+function Individualclubpage() {
+>>>>>>> fffe534 (updated profile backend)
    
    const navigate =useNavigate();
   return (
     <>
+<<<<<<< HEAD
     <div>
+=======
+    <div className="individual-club-conainer">
+     
+>>>>>>> fffe534 (updated profile backend)
         <div className='clubbody'>
-            <img src={cynapticlogo} alt="cynapticlogo" className='clubimage' />
+           {clubs.map((club)=> (
+            <div key={club.id}>
+            <img src={club.logo} alt="cynapticlogo" className='clubimage' />
+              </div>
+         ))}
         </div>
         <div className='button_con'>
          
           <button className='createeventbutton'  onClick={()=> navigate('/createevent')} >
            
           Create Event
-          
+        
           </button>
          
          
@@ -101,8 +176,13 @@ function Individualclubpage(props) {
         {events.map((event) => (
           <div
             key={event.id}
+<<<<<<< HEAD
             className="event-detail  rounded-2xl shadow-md p-4 bg-gradient-to-r from-cyan-500/5 to-blue-500/5 space-y-3 border-3 border-[#87CEEB]
             hover:border-[#33bbcf] hover:-translate-y-3 "
+=======
+            className="event-detail border-0px rounded-2xl shadow-md p-4 bg-gradient-to-r from-cyan-500/5 to-blue-500/5 space-y-3 border-2 border-[#87CEEB]/60
+            hover:border-[#33bbcf] hover:scale-[1.03] space-py-3"
+>>>>>>> fffe534 (updated profile backend)
           >
            
 
@@ -143,10 +223,17 @@ function Individualclubpage(props) {
         ))}
       </div>
       <div className='clubhead'>
+<<<<<<< HEAD
        <h1 className='text-transparent bg-clip-text bg-gradient-to-r from-[#00EAFF] via-[#4DD9FF] to-[#AAF0FF] font-bold  py-8 text-center'> Club Head</h1> 
        <div className='text-white w-70 lg:w-90 border-4 rounded-2xl shadow-md p-4  bg-gradient-to-r from-cyan-500/5 to-blue-500/5 space-y-3  border-[#87CEEB]
             hover:border-[#33bbcf] hover:-translate-y-3  '>
         <img src={null} alt="Club Head Photo" className='text-center'/>
+=======
+       <h1 className='text-white font-bold  py-8 text-center'> Club Head</h1> 
+       <div className='text-white w-70 lg:w-90 border-0px rounded-2xl shadow-md p-4  bg-gradient-to-r from-cyan-500/5 to-blue-500/5 space-y-3 border-2 border-[#87CEEB]/60
+            hover:border-[#33bbcf] hover:scale-[1.03]  '>
+        <img src={head} alt="Club Head Photo" className='text-center'/>
+>>>>>>> fffe534 (updated profile backend)
         <p className='text-center font-bold'>Club Head Name</p>
         <h2 className='font-bold'>About</h2>
         <p>I am a 4th Year Student, Currently Pursuing My B.Tech In CSE</p>
@@ -182,7 +269,7 @@ function Individualclubpage(props) {
          target="_blank"
          rel="noopener noreferrer"
          >
-         <img src={linkedIn} alt="linkedin" className="imagelogo" />
+         <img src={linkedIn} alt="linkedin" className="imagelogo"/>
           </a>
           <a
         href="#"
@@ -193,8 +280,9 @@ function Individualclubpage(props) {
           </a>
           </div>
            
-
+)
         </footer>
+<<<<<<< HEAD
 
     </div>
     {register&&
@@ -222,8 +310,12 @@ function Individualclubpage(props) {
    </div>
 
     }
+=======
+   
+        </div> 
+>>>>>>> fffe534 (updated profile backend)
     </>
   )
 }
 
-export default Individualclubpage
+export default Individualclubpage;

@@ -41,7 +41,7 @@ export default function Notification() {
 
   return( 
   <>
-    <div className="con ">
+    <div className="con min-h-screen ">
      { notifi.map((e,index)=>(
       <div key={index} className="notifi "> 
     

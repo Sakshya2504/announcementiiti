@@ -83,9 +83,15 @@ import { useNavigate } from 'react-router-dom'
 
   return (
     <>
+<<<<<<< HEAD
    <div className='createvent w-full h-full flex justify-center items-center bg-[rbga(1,1,27)]'>
       <div className='createevent_con relative flex flex-col w-[90%] md:w-[400px] m-[30px] p-[20px] bg-[linear-gradient(to_right,_rgba(6,182,212,0.3),_rgba(59,130,246,0.3))]  border-2 rounded-[10px] border-black  shadow-[0px_4px_15px_rgba(0, 0, 0, 0.1)] hover:shadow-[0_0_25px_#00ffff66]'>
         <button className='back absolute top-[2px] right-[2px] cursor-pointer w-[30px] h-[30px] rounded-[5px] hover:bg-red-500 ' onClick={()=>navigate(-1)}> ❌ </button>
+=======
+   <div className='createvent bg-white text-black dark:bg-[#01011b] dark:text-white p-4 rounded-md shadow-md'>
+      <div className='createevent_con'>
+        <button className='back' onClick={()=>navigate(-1)}> ❌ </button>
+>>>>>>> fffe534 (updated profile backend)
         
           <form action="/individualclubpage" onSubmit={handleSubmit} className='flex flex-col items-center justify-center  w-[100%] h-[100%]'>
      

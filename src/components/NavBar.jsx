@@ -1,14 +1,19 @@
 import { Link } from 'react-router-dom';
+<<<<<<< HEAD
 
 import  Search  from '../Images/Search-white.png';
 import user from './user.png'
+=======
+import  Search  from '../Images/Search.png';
+import user from '../Images/user.png'
+>>>>>>> fffe534 (updated profile backend)
 import { useLocation } from 'react-router-dom';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-
 export default function NavBar(props) {
   const navigate=useNavigate();
+  //  const [darkMode, setDarkMode] = useState(false);
   const [isuserinfoopen,setisuserinfoopen]=useState(false);
   const navigation = [
   { name: 'Clubs', path: '/clubs' },
@@ -17,7 +22,14 @@ export default function NavBar(props) {
   { name: 'Notification', path: '/notification' },
    ...(!props.issignup?[{ name: 'Signup', path: '/signup'}]:[] )
 ];
-const location=useLocation();
+
+
+  // This   component allows users to log in to their account
+  // It includes a form where users can input their email and password
+    const location=useLocation();
+    const [Searchinfo,setSearchinfo]=useState({
+    Search : "",
+}) 
 
   return (
     <header className="bg-[rgba(1,1,27,0.6)]  sticky top-0 z-50 shadow-md">
@@ -77,16 +89,25 @@ const location=useLocation();
   </button>
  
 </form>
+{/* dark  mode toggle*/}
+   {/* <button
+              onClick={() => setDarkMode(!darkMode)}
+              className="border px-4 py-2 rounded bg-gray-800 hover:bg-gray-700 text-white text-sm"
+            >
+              {darkMode ? '☀️ Light Mode' : '🌙 Dark Mode'}
+            </button> */}
+
 
 {/* Mobile Search Icon */}
 <div className="md:hidden">
   <button
-    onClick={() => alert("Mobile search coming soon!")}
+    onClick={() => setSearchinfo(Searchinfo)}
     className="text-white"
   >
     <img src={Search} alt="Search" className="h-6 w-6 cursor-pointer" />
   </button>
 </div>
+
 {props.issignup&&
 <div className='hidden md:block'  onClick={()=>setisuserinfoopen(!isuserinfoopen)}>
   <img src={user} alt="user" className='w-11 h-11 cursor-pointer hover:h-12 hover:w-12 hover:opacity-75' />

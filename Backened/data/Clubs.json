@@ -1,0 +1,29 @@
+[
+{
+  "name": "Cynaptics",
+  "logo": "/images/cynapticslogo.png",
+  "heading": "Empowering AI & ML",
+  "info": "Cynaptics is a dynamic community of AI/ML enthusiasts.",
+  "events": [
+    {
+      "name": "AI Hackathon",
+      "time": "6pm today",
+      "location": "Auditorium",
+      "info": "An AI hackathon with workshops and prizes.",
+      "image": "/images/hackathon.png"
+    }
+  ],
+  "clubHead": {
+    "name": "Anurag",
+    "about": "4th Year CSE student.",
+    "email": "cse240001068@iiti.ac.in",
+    "image": "/images/anurag.png",
+    "linkedin": "https://linkedin.com/in/anurag"
+  },
+  "socialMedia": {
+    "instagram": "https://instagram.com/cynapticsclubiiti",
+    "linkedin": "https://linkedin.com/company/cynaptics-club-iiti-indore/mycompany",
+    "facebook": "https://facebook.com/cynapticsclub"
+  }
+}
+]
