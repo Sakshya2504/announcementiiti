@@ -58,16 +58,20 @@ const [personinfo, setpersoninfo] = useState(null);
         
       </div>
 
-          <div className="footer-container border border-t-[#3f3e45] bottom-0 w-full bg-[rgba(1,1,27)] text-white py-4 text-center ">
-                 <footer className="bg-[rgba(1,1,27)] border-t-[#3f3e45] text-white  bottom-0 py-10">
-            <div className="max-w-7xl mx-auto px-4 text-center">
-              <div className="mb-4 space-x-4 text-xl">
-                <a href="#" className="hover:underline font-bold">Contact us</a>     
-                <a href="#" className="hover:underline font-bold">Help</a>           
-                <a href="#" className="hover:underline font-bold">Share</a>
-              </div>
-              {/* Social Media Icons */}
-                <div className="Social-Handles mt-4 flex justify-center items-center  gap-10">
+          <div className="footer-container  border border-t-[#3f3e45] bottom-0 w-full bg-[rgba(1,1,27)] text-white py-4  ">
+                 <footer className="bg-[rgba(1,1,27)] border-t-[#3f3e45] text-white  bottom-0 py-5">
+            <div className="max-w-7xl flex flex-col justify-between md:flex-row mx-auto px-auto  ">
+              <div className='ml-3'>
+                   <a href="https://www.iiti.ac.in">
+            <img
+              src="https://www.iiti.ac.in/public/themes/iitindore/demos/update-logo.png"
+              className="logo h-15 w-15 p-0 lg:h-20 lg:w-20"
+              alt="IIT Indore Logo"
+            />
+          </a>
+                
+               <p className='font-bold text-xl'>Indian Institute of Technology Indore,<br></br> Khandwa Road, Simrol, Indore 453552</p>
+               <div className="Social-Handles mt-4 flex justify-start items-center  gap-10">
                                  
                 <a
                   href="https://www.instagram.com/iitindoreofficial"
@@ -101,6 +105,18 @@ const [personinfo, setpersoninfo] = useState(null);
                   <img src={facebook} alt="IIT Indore Facebook" className="h-6 w-6 md:h-8 md:w-8 hover:opacity-75" />
                 </a>
               </div>
+              </div>
+              <div className="mt-12 ml-3">
+                <h2  className="hover:underline text-2xl text-[#00EAFF] font-bold">Contact us</h2>
+                <p className='font-bold'>✉️ cse240001068@iiti.ac.in</p> 
+                <p className='font-bold'>✉️ me240003006@iiti.ac.in</p>  
+                 <p className='font-bold'>✉️ sse240021015@iiti.ac.in</p> 
+              </div>
+             <div className='mt-12 ml-3'>
+               <h2  className="hover:underline text-2xl text-[#00EAFF] font-bold">Share</h2>
+               <p className='font-bold '>https://campannounce.netlify.app</p>
+             </div>
+                
             </div>
             </footer>
             </div>

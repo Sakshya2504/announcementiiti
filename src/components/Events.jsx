@@ -22,10 +22,12 @@ import { useNavigate } from 'react-router-dom';
 //   })),
 // ];
 
+
 export default function Events(props) {
   // This component fetches and displays a list of events
   // It uses the useState hook to manage the state of events
   const navigate=useNavigate();
+  const [selectedEventId, setSelectedEventId] = useState(null);
   const [events, setEvents] = useState([]);
   const [register,setregister]=useState(false);
     const [registerinfo, setregisterinfo] = useState({
@@ -42,12 +44,35 @@ export default function Events(props) {
       setregisterinfo(prev => ({ ...prev, [name]: value }));
     };
      
-    const handleSubmit = async (e) => {
-      // This function handles the form submission
-      // It prevents the default form submission behavior, sends the data to the server,
-      e.preventDefault();
-      navigate('/')
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const res = await fetch(`http://localhost:3000/events/${selectedEventId}/register`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(registerinfo),
+      });
+      if(res.ok){
+        alert('Registered successfully!');
+        setregister(false); 
+        setregisterinfo({
+          Name: '',
+          EmailAddress: '',
+          RollNumber: '',
+          Program: '',
+          Branch: '',
+          PhoneNumber: ''
+        });
+        navigate('/');
+      }
+      
+      
+    } catch (err) {
+      console.error(err);
+      alert('Something went wrong. Please try again.');
     }
+    };
   
   // useEffect is used to fetch the events from the server when the component mounts
   // It sends a GET request to the server to retrieve the events data
@@ -116,11 +141,14 @@ export default function Events(props) {
                 <p className='text-white font-bold'> {event.EventInfo}</p>
                  <button
                 className="mt-10 bg-blue-500 cursor-pointer text-white px-4 py-2 rounded hover:bg-blue-700 transition"
-                id={`joinEvent${event.id}`} onClick={()=>{
-                   if(props.issignup){setregister(true)}
-                   else{navigate('/signup')
-                    alert('Please verify your email to continue.')
-                   }
+                    id={`joinEvent${event.id}`} onClick={() => {
+                      if (props.issignup) {
+                        setSelectedEventId(event.id);
+                        setregister(true);
+                      } else {
+                        navigate('/signup');
+                        alert('Please verify your email to continue.');
+                      }
                 }}
               >
                 Join Event
