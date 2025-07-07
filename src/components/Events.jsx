@@ -29,6 +29,7 @@ export default function Events(props) {
   const navigate=useNavigate();
   const [selectedEventId, setSelectedEventId] = useState(null);
   const [events, setEvents] = useState([]);
+  const [registrationCounts, setRegistrationCounts] = useState({});
   const [register,setregister]=useState(false);
     const [registerinfo, setregisterinfo] = useState({
         Name: "",
@@ -73,34 +74,38 @@ export default function Events(props) {
       alert('Something went wrong. Please try again.');
     }
     };
+
+  
   
   // useEffect is used to fetch the events from the server when the component mounts
   // It sends a GET request to the server to retrieve the events data
   useEffect(() => {
     const fetchEvents = async () => {
-
-      // Fetch API is used to send a GET request to the server with the events data
-      // The server will then process this data and return the list of events
       try {
         const res = await fetch('http://localhost:3000/Events');
         const data = await res.json();
 
-
-        const updatedEvents = data.map((eve, index) => ({
-          // ...eve is used to spread the properties of the event object
+        const updatedEvents = data.map(eve => ({
           ...eve,
-          id: eve.id || index + 1,
+          id: eve._id,
           image: exampleImage,
         }));
 
-
         setEvents(updatedEvents);
+
+        const counts = {};
+        for (const event of updatedEvents) {
+          const response = await fetch(`http://localhost:3000/events/${event._id}/registrations/count`);
+          const { count } = await response.json();
+          counts[event._id] = count;
+        }
+
+        setRegistrationCounts(counts);
       } catch (err) {
-        console.error("Failed to load events:", err);
+        console.error("Failed to load events or counts:", err);
       }
     };
-    //fecthEvents is called to fetch the events when the component mounts
-    // This will trigger the useEffect hook and fetch the events from the server
+
     fetchEvents();
   }, []);
 
@@ -132,7 +137,12 @@ export default function Events(props) {
               <p className="text-white font-medium">🕒 Time: {event.EventDateAndTime}</p>
               <p className="text-white font-medium">📍 Info: {event.EventInfo}</p>
               <p className="text-white font-semibold">🎭 Event: {event.EventName}</p>
-              <p className="text-white font-semibold">Conducted by: {event.ConductedBy}</p>
+                  <p className="text-white font-semibold">
+                    📋 Registered: {registrationCounts[event._id] ?? '...'} students
+                  </p>
+                  <p className="text-white font-semibold">
+                    🧑‍💼 Conducted by: {event.ConductedBy}
+                  </p>
 
 
           </div>

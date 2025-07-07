@@ -212,6 +212,17 @@ app.post('/events/:eventId/register', async (req, res) => {
     }
 });
 
+app.get('/events/:eventId/registrations/count', async (req, res) => {
+    const { eventId } = req.params;
+
+    try {
+        const count = await Regis.countDocuments({ eventId });
+        res.json({ count });
+    } catch (err) {
+        console.error('Failed to fetch registration count:', err.message);
+        res.status(500).json({ error: 'Could not retrieve registration count' });
+    }
+});
 
 
 
