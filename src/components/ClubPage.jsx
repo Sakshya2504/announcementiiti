@@ -1,5 +1,5 @@
 // src/components/ClubPage.jsx
-import image from './iiti.png'
+import image from '../Images/iiti.png'
 import { Link } from 'react-router-dom';
 
 function ClubPage() {
