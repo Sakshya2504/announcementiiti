@@ -69,7 +69,7 @@ export default function NavBar({ searchQuery, setSearchQuery, ...props }) {
           >
             <input
               type="search"
-              placeholder="Search by club name..."
+              placeholder="Search by club name or event name"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               className="px-3 py-1 rounded-md bg-white text-black border border-black focus:outline-none w-64"
