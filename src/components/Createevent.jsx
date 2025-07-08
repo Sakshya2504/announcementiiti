@@ -1,7 +1,7 @@
 import { React,useState } from 'react'
 
 import { useNavigate } from 'react-router-dom'
-import iiti from './iiti.png';
+import iiti from '../Images/iiti.png';
 
  function Createevent() {
 
@@ -19,7 +19,7 @@ import iiti from './iiti.png';
       Eventlogo:{eventlogo}
     })
 
-    // This function updates the state of logininfo when the user types in the input fields
+    
     const handlelogochange=(e)=>{
       console.log(e.target.files[0])
       const file =e.target.files[0];
@@ -32,6 +32,7 @@ import iiti from './iiti.png';
       }
 
     }
+    // This function updates the state of logininfo when the user types in the input fields
     const handleChange = (e) => {
       const { name, value } = e.target;
       setlogininfo(prev => ({ ...prev, [name]: value }));
