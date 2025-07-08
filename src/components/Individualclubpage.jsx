@@ -1,21 +1,14 @@
 import React from 'react'
-import cynapticlogo from '../Images/cynapticlogo.png'
+// import cynapticlogo from './Images/cynapticlogo.png'
 import './Individualclubpage.css'
-<<<<<<< HEAD
-import insta from '../Images/insta.png';
-import linkedIn from '../Images/linkedIn.png';
-import facebook from '../Images/facebook.png';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 
-import exampleImage from '../Images/image.png'; // relative to Events.jsx
-=======
-import insta from '../Images/Insta.png';
-import linkedIn from '../Images/linkedIn.png';
-import facebook from '../Images/facebook.png';
-import { useNavigate } from 'react-router-dom';
-import exampleImage from '../Images/image.png'; 
-import head from '../Images/user.png'
+import exampleImage from './Images/image.png'; // relative to Events.jsx
+import insta from './Images/Insta.png';
+import linkedIn from './Images/linkedIn.png';
+import facebook from './Images/facebook.png';
+import head from './Images/user.png'
 
 const clubs = [
    {
@@ -69,7 +62,6 @@ const clubs = [
       
 ];
 
->>>>>>> fffe534 (updated profile backend)
 const events = [
   {
     id: 1,
@@ -98,7 +90,6 @@ const events = [
   }]
 
  
-<<<<<<< HEAD
 
 
   
@@ -125,19 +116,14 @@ function Individualclubpage(props) {
         // It prevents the default form submission behavior, sends the data to the server,
         e.preventDefault();
       }
-=======
-function Individualclubpage() {
->>>>>>> fffe534 (updated profile backend)
+
    
    const navigate =useNavigate();
   return (
-    <>
-<<<<<<< HEAD
+    
     <div>
-=======
     <div className="individual-club-conainer">
      
->>>>>>> fffe534 (updated profile backend)
         <div className='clubbody'>
            {clubs.map((club)=> (
             <div key={club.id}>
@@ -176,17 +162,11 @@ function Individualclubpage() {
         {events.map((event) => (
           <div
             key={event.id}
-<<<<<<< HEAD
             className="event-detail  rounded-2xl shadow-md p-4 bg-gradient-to-r from-cyan-500/5 to-blue-500/5 space-y-3 border-3 border-[#87CEEB]
             hover:border-[#33bbcf] hover:-translate-y-3 "
-=======
-            className="event-detail border-0px rounded-2xl shadow-md p-4 bg-gradient-to-r from-cyan-500/5 to-blue-500/5 space-y-3 border-2 border-[#87CEEB]/60
-            hover:border-[#33bbcf] hover:scale-[1.03] space-py-3"
->>>>>>> fffe534 (updated profile backend)
-          >
            
-
-         <div className='box'>
+         >
+          <div className='box'>
           <div className='card'>
             <div id='front' className="event-description space-y-1">
               <div className="event-logo flex items-center justify-center">
@@ -223,18 +203,14 @@ function Individualclubpage() {
         ))}
       </div>
       <div className='clubhead'>
-<<<<<<< HEAD
        <h1 className='text-transparent bg-clip-text bg-gradient-to-r from-[#00EAFF] via-[#4DD9FF] to-[#AAF0FF] font-bold  py-8 text-center'> Club Head</h1> 
        <div className='text-white w-70 lg:w-90 border-4 rounded-2xl shadow-md p-4  bg-gradient-to-r from-cyan-500/5 to-blue-500/5 space-y-3  border-[#87CEEB]
             hover:border-[#33bbcf] hover:-translate-y-3  '>
         <img src={null} alt="Club Head Photo" className='text-center'/>
-=======
        <h1 className='text-white font-bold  py-8 text-center'> Club Head</h1> 
        <div className='text-white w-70 lg:w-90 border-0px rounded-2xl shadow-md p-4  bg-gradient-to-r from-cyan-500/5 to-blue-500/5 space-y-3 border-2 border-[#87CEEB]/60
             hover:border-[#33bbcf] hover:scale-[1.03]  '>
         <img src={head} alt="Club Head Photo" className='text-center'/>
->>>>>>> fffe534 (updated profile backend)
-        <p className='text-center font-bold'>Club Head Name</p>
         <h2 className='font-bold'>About</h2>
         <p>I am a 4th Year Student, Currently Pursuing My B.Tech In CSE</p>
         <h2 className='font-bold'>Contact</h2>
@@ -282,7 +258,6 @@ function Individualclubpage() {
            
 )
         </footer>
-<<<<<<< HEAD
 
     </div>
     {register&&
@@ -310,11 +285,10 @@ function Individualclubpage() {
    </div>
 
     }
-=======
    
         </div> 
->>>>>>> fffe534 (updated profile backend)
-    </>
+    </div>
+      
   )
 }
 

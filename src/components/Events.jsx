@@ -1,4 +1,4 @@
-import exampleImage from '../Images/image.png'; // relative to Events.jsx
+import exampleImage from './Images/image.png'; // relative to Events.jsx
 import { useEffect, useState , React } from 'react';
 import './Animation.css'
 import { useNavigate } from 'react-router-dom';

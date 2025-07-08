@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+ 
 import mongoose from 'mongoose';
 import express from 'express';
 import cors from 'cors';
@@ -9,18 +9,9 @@ import {event_} from './models/Event.js'
 import { Admin_ } from './models/Admins.js'; // Import the Admin model
 import {Regis} from './models/Regis.js'
 
-=======
-import mongoose from "mongoose";
-import express from "express";
 import dotenv from "dotenv";
 dotenv.config();
->>>>>>> fffe534 (updated profile backend)
-
-import cors from "cors";
-import { User } from "./models/UserSchema.js";
-import bcrypt from "bcrypt";
-import { Announce_ } from "./models/Announce.js";
-import { event_ } from "./models/Event.js";
+ 
 // import {ClubPOJO} from './models/Seed.js'
 import { Club } from "./models/Club.js";
 import Clubroutes from "./routes/ClubRoutes.js";
@@ -34,12 +25,12 @@ app.use(cors());
 app.use(express.json());
 app.use("/api/clubs", Clubroutes);
 // Connect to MongoDB with the validation using Mongoose
-<<<<<<< HEAD
+ 
 await mongoose.connect("mongodb://localhost:27017/todo", {
     // useNewUrlParser: true, //useNewUrlParse is used for parsing the MongoDB connection string
     // useUnifiedTopology: true // useUnifiedTopology is used to opt in to the MongoDB driver's new connection management engine
 });
-=======
+  
 await mongoose
   .connect("mongodb://localhost:27017/todo", {
     // useNewUrlParser: true, //useNewUrlParse is used for parsing the MongoDB connection string
@@ -48,7 +39,7 @@ await mongoose
   .then(() => console.log("MongoDB connected"))
   .catch((err) => console.error(err));
 // Connect to MongoDB
->>>>>>> fffe534 (updated profile backend)
+ 
 
 // Signup route
 app.post("/api/signup", async (req, res) => {
