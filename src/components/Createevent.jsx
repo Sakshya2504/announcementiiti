@@ -1,21 +1,37 @@
 import { React,useState } from 'react'
 
 import { useNavigate } from 'react-router-dom'
+import iiti from './iiti.png';
 
  function Createevent() {
 
   const navigate = useNavigate();
+
   // This component allows users to create an event for a club
   // It includes a form where users can input the event name, date and time, conducted by, and event info
     // useState is used to manage the state of the event information
+    const [eventlogo,seteventlogo]=useState(iiti);
     const [logininfo, setlogininfo] = useState({
       EventName: "",
       EventDateAndTime: "",
       ConductedBy: "",
-      EventInfo: ""
+      EventInfo: "",
+      Eventlogo:{eventlogo}
     })
 
     // This function updates the state of logininfo when the user types in the input fields
+    const handlelogochange=(e)=>{
+      console.log(e.target.files[0])
+      const file =e.target.files[0];
+      if(file){
+        const reader= new FileReader();
+        reader.onloadend=()=>{
+          seteventlogo(reader.result);
+        }
+        reader.readAsDataURL(file);
+      }
+
+    }
     const handleChange = (e) => {
       const { name, value } = e.target;
       setlogininfo(prev => ({ ...prev, [name]: value }));
@@ -65,11 +81,13 @@ import { useNavigate } from 'react-router-dom'
 
        if (res.ok) {
          alert(result.message || 'Event creation successful');
+         seteventlogo(iiti);
          setlogininfo({
            EventName: "",
            EventDateAndTime: "",
            ConductedBy: "",
-           EventInfo: ""
+           EventInfo: "",
+           Eventlogo:{eventlogo}
          });
          navigate('/');
        } else {
@@ -95,6 +113,13 @@ import { useNavigate } from 'react-router-dom'
       <input type="text" placeholder='Event Date And Time'className='text-black block bg-white border rounded-[10px] w-[90%] md:w-[75%] h-[50px] m-[10px]' name='EventDateAndTime' value={logininfo.EventDateAndTime} onChange={handleChange}/>
       <input type="text" placeholder='Conducted By' name='ConductedBy'className='text-black block bg-white border rounded-[10px] w-[90%] md:w-[75%] h-[50px] m-[10px]' value={logininfo.ConductedBy} onChange={handleChange}/>
       <input type="text" placeholder='Event Info' name='EventInfo'className='text-black block bg-white border rounded-[10px] w-[90%] md:w-[75%] h-[50px] m-[10px]' value={logininfo.EventInfo} onChange={handleChange}/>
+      <div className='flex justify-around items-center gap-17 py-2'>
+      <h2 className='text-white font-bold '>Event logo :</h2>
+      <label className='w-20 h-20 border-2 rounded-2xl overflow-clip flex items-center cursor-pointer bg-white ' >
+        <img src={eventlogo} className=' w-full h-full object-cover' alt="logo" />
+        <input type="file" accept='image/*' className='text-white font-bold hidden' onChange={handlelogochange} />
+      </label>
+      </div>
       <button type="submit" className="submitbutton block w-[90%] md:w-[200px] m-[20px] p-[12px] text-white text-[18px] font-bold bg-[linear-gradient(to_right,_#007bff,_#00c3ff)] border-none rounded-[8px] cursor-pointer hover:bg-[linear-gradient(to_right,_#0056b3,_#0097d1)] hover:scale-105 transition-[background,transform] duration-[300ms,200ms]">Submit</button>
     
       </form>
