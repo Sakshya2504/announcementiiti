@@ -16,12 +16,14 @@ import Announce from './components/Announce';
 import { useState } from 'react';
 import Set from './components/Set';
 import { useEffect } from 'react';
+
 function App() {
   const [isOpen, setIsOpen] = useState(false);
     const [issignup,setissignup] = useState(false);
   const changestatus =() => setIsOpen(!isOpen);
   const closeset=()=> setIsOpen(false);
 const [personinfo, setpersoninfo] = useState(null);
+  const [searchQuery, setSearchQuery] = useState("");
 
 
   useEffect(() => {
@@ -38,10 +40,14 @@ const [personinfo, setpersoninfo] = useState(null);
      
   
       <div className="bg-[rgba(1,1,27)]">
-        <NavBar changestatus={changestatus} setissignup={setissignup} closeset={closeset} personinfo={personinfo} setpersoninfo={setpersoninfo} issignup={issignup} isOpen={isOpen} />
+        <NavBar changestatus={changestatus} setissignup={setissignup} closeset={closeset} personinfo={personinfo} setpersoninfo={setpersoninfo} issignup={issignup} isOpen={isOpen} 
+          searchQuery={searchQuery}
+          setSearchQuery={setSearchQuery}
+      />
        {isOpen&&<Set changestatus={changestatus} setissignup={setissignup} issignup={issignup} personinfo={personinfo}  setpersoninfo={setpersoninfo} closeset={closeset} isOpen={isOpen}/>} 
         <Routes>
-          <Route path="/" element={<Events issignup={issignup}/>} />
+          <Route path="/" element={<Events issignup={issignup} searchQuery={searchQuery}
+          />} />
           <Route path="/clubs" element={<ClubPage />} />
         
            <Route path="/notification" element={<Notification />} />

@@ -1,4 +1,4 @@
-import exampleImage from './image.png'; // relative to Events.jsx
+import exampleImage from '../Images/image.png'; // relative to Events.jsx
 import { useEffect, useState , React } from 'react';
 import './Animation.css'
 import { useNavigate } from 'react-router-dom';
@@ -22,12 +22,16 @@ import { useNavigate } from 'react-router-dom';
 //   })),
 // ];
 
+
 export default function Events(props) {
   // This component fetches and displays a list of events
   // It uses the useState hook to manage the state of events
   const navigate=useNavigate();
+  const [selectedEventId, setSelectedEventId] = useState(null);
   const [events, setEvents] = useState([]);
+  const [registrationCounts, setRegistrationCounts] = useState({});
   const [register,setregister]=useState(false);
+  const [filteredEvents, setFilteredEvents] = useState([]);
     const [registerinfo, setregisterinfo] = useState({
         Name: "",
         EmailAddress: "",
@@ -42,42 +46,83 @@ export default function Events(props) {
       setregisterinfo(prev => ({ ...prev, [name]: value }));
     };
      
-    const handleSubmit = async (e) => {
-      // This function handles the form submission
-      // It prevents the default form submission behavior, sends the data to the server,
-      e.preventDefault();
-      navigate('/')
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const res = await fetch(`http://localhost:3000/events/${selectedEventId}/register`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(registerinfo),
+      });
+      if(res.ok){
+        alert('Registered successfully!');
+        setregister(false); 
+        setregisterinfo({
+          Name: '',
+          EmailAddress: '',
+          RollNumber: '',
+          Program: '',
+          Branch: '',
+          PhoneNumber: ''
+        });
+        navigate('/');
+      }
+      
+      
+    } catch (err) {
+      console.error(err);
+      alert('Something went wrong. Please try again.');
     }
+    };
+
+  
   
   // useEffect is used to fetch the events from the server when the component mounts
   // It sends a GET request to the server to retrieve the events data
   useEffect(() => {
     const fetchEvents = async () => {
-
-      // Fetch API is used to send a GET request to the server with the events data
-      // The server will then process this data and return the list of events
       try {
         const res = await fetch('http://localhost:3000/Events');
         const data = await res.json();
 
-
-        const updatedEvents = data.map((eve, index) => ({
-          // ...eve is used to spread the properties of the event object
+        const updatedEvents = data.map(eve => ({
           ...eve,
-          id: eve.id || index + 1,
+          id: eve._id,
           image: exampleImage,
         }));
 
-
         setEvents(updatedEvents);
+
+        const counts = {};
+        for (const event of updatedEvents) {
+          const response = await fetch(`http://localhost:3000/events/${event._id}/registrations/count`);
+          const { count } = await response.json();
+          counts[event._id] = count;
+        }
+
+        setRegistrationCounts(counts);
       } catch (err) {
-        console.error("Failed to load events:", err);
+        console.error("Failed to load events or counts:", err);
       }
     };
-    //fecthEvents is called to fetch the events when the component mounts
-    // This will trigger the useEffect hook and fetch the events from the server
+
     fetchEvents();
   }, []);
+
+  useEffect(() => {
+    if (!props.searchQuery) {
+      setFilteredEvents([]);
+      return;
+    }
+
+    const filtered = events.filter(event =>
+      event.EventName.toLowerCase().includes(props.searchQuery.toLowerCase()) ||
+      event.ConductedBy.toLowerCase().includes(props.searchQuery.toLowerCase())
+    );
+
+    setFilteredEvents(filtered);
+  }, [props.searchQuery, events]);
 
 
   return (
@@ -87,12 +132,19 @@ export default function Events(props) {
       <h1 className="text-3xl font-bold mb-6 text-white text-center">Events</h1>
 
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-        {events.map((event) => (
+          {(filteredEvents.length > 0 ? filteredEvents : events).map((event) => (
           <div
             key={event.id}
             className="event-detail rounded-2xl shadow-md p-4  bg-gradient-to-r from-cyan-500/5 to-blue-500/5 space-y-3 border-2 border-[#87CEEB]
             hover:border-[#33bbcf] hover:scale-[1.03] "
           >
+            
+              {filteredEvents.length === 0 && props.searchQuery && (
+                <p className="text-white text-center mt-4">
+                  No events found for "{props.searchQuery}"
+                </p>
+              )}
+
             
     <div className='box block transform-3d perspective-[1000px] hover:rotate-y-180 transition delay-[0.3s]'>
        <div className='card grid relative transform-3d'>
@@ -107,7 +159,12 @@ export default function Events(props) {
               <p className="text-white font-medium">🕒 Time: {event.EventDateAndTime}</p>
               <p className="text-white font-medium">📍 Info: {event.EventInfo}</p>
               <p className="text-white font-semibold">🎭 Event: {event.EventName}</p>
-              <p className="text-white font-semibold">Conducted by: {event.ConductedBy}</p>
+                  <p className="text-white font-semibold">
+                    📋 Registered: {registrationCounts[event._id] ?? '...'} students
+                  </p>
+                  <p className="text-white font-semibold">
+                    🧑‍💼 Conducted by: {event.ConductedBy}
+                  </p>
 
 
           </div>
@@ -116,11 +173,14 @@ export default function Events(props) {
                 <p className='text-white font-bold'> {event.EventInfo}</p>
                  <button
                 className="mt-10 bg-blue-500 cursor-pointer text-white px-4 py-2 rounded hover:bg-blue-700 transition"
-                id={`joinEvent${event.id}`} onClick={()=>{
-                   if(props.issignup){setregister(true)}
-                   else{navigate('/signup')
-                    alert('Please verify your email to continue.')
-                   }
+                    id={`joinEvent${event.id}`} onClick={() => {
+                      if (props.issignup) {
+                        setSelectedEventId(event.id);
+                        setregister(true);
+                      } else {
+                        navigate('/signup');
+                        alert('Please verify your email to continue.');
+                      }
                 }}
               >
                 Join Event

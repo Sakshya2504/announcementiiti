@@ -1,13 +1,13 @@
 import React from 'react'
 import cynapticlogo from './cynapticlogo.png'
 import './Individualclubpage.css'
-import insta from './insta.png';
-import linkedIn from './linkedIn.png';
-import facebook from './facebook.png';
+import insta from '../Images/insta.png';
+import linkedIn from '../Images/linkedIn.png';
+import facebook from '../Images/facebook.png';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 
-import exampleImage from './image.png'; // relative to Events.jsx
+import exampleImage from '../Images/image.png'; // relative to Events.jsx
 const events = [
   {
     id: 1,
