@@ -76,7 +76,6 @@ export default function NavBar({ searchQuery, setSearchQuery, ...props }) {
             />
             <button
               type="submit"
-              
               className="bg-cyan-500 hover:bg-cyan-600 text-white px-4 py-1 cursor-pointer rounded-md transition"
 
             ><img src={Search} alt="Search" className="h-5 w-5" />
