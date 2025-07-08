@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import "./App.css";
 import Events from "./components/Events";
 import NavBar from "./components/NavBar";
@@ -23,6 +24,34 @@ function App() {
   const [issignup, setissignup] = useState(false);
   const [personinfo, setpersoninfo] = useState(null);
   const [darkMode, setDarkMode] = useState(false);
+=======
+import './App.css';
+import Events from './components/Events';
+import NavBar from './components/NavBar';
+import Individualclubpage from './components/Individualclubpage';
+import ClubPage from './components/ClubPage';
+import Notification from './components/Notification';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import insta from './Images/Insta.png';
+import linkedIn from './Images/linkedIn.png';
+import twitter from './Images/twitter.png';
+import facebook from './Images/facebook.png';
+import Signup from './components/Signup';
+import Login from './components/Login';
+import Createevent from './components/Createevent';
+import Announce from './components/Announce';
+import { useState } from 'react';
+import Set from './components/Set';
+import { useEffect } from 'react';
+
+function App() {
+  const [isOpen, setIsOpen] = useState(false);
+    const [issignup,setissignup] = useState(false);
+  const changestatus =() => setIsOpen(!isOpen);
+  const closeset=()=> setIsOpen(false);
+const [personinfo, setpersoninfo] = useState(null);
+  const [searchQuery, setSearchQuery] = useState("");
+>>>>>>> 90b235715ac9baa93ea75837b7dfe3cdff0d84c5
 
   const changestatus = () => setIsOpen(!isOpen);
   const closeset = () => setIsOpen(false);
@@ -46,6 +75,7 @@ function App() {
   }, []);
 
   return (
+<<<<<<< HEAD
    
       <div className="min-h-screen flex flex-col bg-white text-black dark:bg-[#01011b] dark:text-white transition-colors duration-300">
         <NavBar
@@ -74,6 +104,20 @@ function App() {
 
         <Routes>
           <Route path="/" element={<Events issignup={issignup} />} />
+=======
+    <div className="min-h-screen flex flex-col ">
+     
+  
+      <div className="bg-[rgba(1,1,27)]">
+        <NavBar changestatus={changestatus} setissignup={setissignup} closeset={closeset} personinfo={personinfo} setpersoninfo={setpersoninfo} issignup={issignup} isOpen={isOpen} 
+          searchQuery={searchQuery}
+          setSearchQuery={setSearchQuery}
+      />
+       {isOpen&&<Set changestatus={changestatus} setissignup={setissignup} issignup={issignup} personinfo={personinfo}  setpersoninfo={setpersoninfo} closeset={closeset} isOpen={isOpen}/>} 
+        <Routes>
+          <Route path="/" element={<Events issignup={issignup} searchQuery={searchQuery}
+          />} />
+>>>>>>> 90b235715ac9baa93ea75837b7dfe3cdff0d84c5
           <Route path="/clubs" element={<ClubPage />} />
           <Route path="/clubs/:clubName" element={<ClubDetails />} />
           <Route path="/notification" element={<Notification />} />

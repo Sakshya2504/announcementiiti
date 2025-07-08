@@ -31,6 +31,7 @@ export default function Events(props) {
   const [events, setEvents] = useState([]);
   const [registrationCounts, setRegistrationCounts] = useState({});
   const [register,setregister]=useState(false);
+  const [filteredEvents, setFilteredEvents] = useState([]);
     const [registerinfo, setregisterinfo] = useState({
         Name: "",
         EmailAddress: "",
@@ -109,6 +110,20 @@ export default function Events(props) {
     fetchEvents();
   }, []);
 
+  useEffect(() => {
+    if (!props.searchQuery) {
+      setFilteredEvents([]);
+      return;
+    }
+
+    const filtered = events.filter(event =>
+      event.EventName.toLowerCase().includes(props.searchQuery.toLowerCase()) ||
+      event.ConductedBy.toLowerCase().includes(props.searchQuery.toLowerCase())
+    );
+
+    setFilteredEvents(filtered);
+  }, [props.searchQuery, events]);
+
 
   return (
     <>
@@ -117,12 +132,19 @@ export default function Events(props) {
       <h1 className="text-3xl font-bold mb-6 text-white text-center">Events</h1>
 
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-        {events.map((event) => (
+          {(filteredEvents.length > 0 ? filteredEvents : events).map((event) => (
           <div
             key={event.id}
             className="event-detail rounded-2xl shadow-md p-4  bg-gradient-to-r from-cyan-500/5 to-blue-500/5 space-y-3 border-2 border-[#87CEEB]
             hover:border-[#33bbcf] hover:scale-[1.03] "
           >
+            
+              {filteredEvents.length === 0 && props.searchQuery && (
+                <p className="text-white text-center mt-4">
+                  No events found for "{props.searchQuery}"
+                </p>
+              )}
+
             
     <div className='box block transform-3d perspective-[1000px] hover:rotate-y-180 transition delay-[0.3s]'>
        <div className='card grid relative transform-3d'>
