@@ -1,6 +1,6 @@
 // routes/searchRoute.js
 import express from 'express';
-import { Search} from '../models/Search.js';
+import { Search } from '../models/Search.js';
 
 const SearchRoute = express.Router();
 
@@ -10,7 +10,7 @@ SearchRoute.get('/', async (req, res) => {
   const query = {};
 
   if (searchTerm) {
-    query.title = { $regex: searchTerm, $options: 'i' }; 
+    query.title = { $regex: searchTerm, $options: 'i' };
   }
 
   if (category) {
