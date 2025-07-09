@@ -1,4 +1,4 @@
-import {React,useState} from 'react'
+import { React, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 function Announce() {
@@ -19,7 +19,7 @@ function Announce() {
     //...value is the new value entered by the user
     setlogininfo(prev => ({ ...prev, [name]: value }));
   };
-  
+
 
   const handleVerification = async (email) => {
     try {

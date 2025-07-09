@@ -1,79 +1,91 @@
-.dropdown{
- 
-  animation: slideright 0.3s ease 0s 1 ;
-  
+.dropdown {
+
+  animation: slideright 0.3s ease 0s 1;
+
 }
 
 
-@keyframes slideright{
-  from{
+@keyframes slideright {
+  from {
     transform: translateX(-75%);
 
   }
-  to{
+
+  to {
     transform: translateX(0px);
   }
 }
-  .card:hover{
-        animation:rotate 0.3s ease 0s 1 ;
-    }
-   
 
-     @keyframes rotate {
-        from{
-            transform: rotateY(0);
-        }
-        to{
-            transform: rotateY(180deg);
-        }
-     }
-     @keyframes appear {
-      0%{
-        opacity: 0;
-        transform: translateX(-100%);
-      }
-      5%{
-        opacity: 0;
-      }
-      45%{
-        opacity: 1;
-        transform: translateX(0);
-      }
-      65%{
-        opacity: 1;
-        transform: translateX(0);
-      }
-      95%{
-        opacity: 0;
-      }
-      
-      100%{
-        opacity: 0;
-        transform: translateX(100%);
-      }
-     }
-     .club-info{
-      animation: appear ease;
-      animation-timeline: view();
-      animation-range: entry 0% cover 100%;
-     }
-     .clubhead{
-      animation: appear ease-out;
-      animation-timeline: view();
-      animation-range: entry 0% cover 100%;
-     }
-     @keyframes slide-up {
-      from{
-        clip-path: inset(100% 100% 100% 100%);
+.card:hover {
+  animation: rotate 0.3s ease 0s 1;
+}
 
-      }
-      to{
-        clip-path: inset(0 0 0 0);
-      }
-     }
-     .clubpage{
-      animation: slide-up ease;
-      animation-timeline: view();
-      animation-range: entry 0% cover 46%;
-     }
- 
+
+@keyframes rotate {
+  from {
+    transform: rotateY(0);
+  }
+
+  to {
+    transform: rotateY(180deg);
+  }
+}
+
+@keyframes appear {
+  0% {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+
+  5% {
+    opacity: 0;
+  }
+
+  45% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  65% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  95% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+}
+
+.club-info {
+  animation: appear ease;
+  animation-timeline: view();
+  animation-range: entry 0% cover 100%;
+}
+
+.clubhead {
+  animation: appear ease-out;
+  animation-timeline: view();
+  animation-range: entry 0% cover 100%;
+}
+
+@keyframes slide-up {
+  from {
+    clip-path: inset(100% 100% 100% 100%);
+
+  }
+
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+.clubpage {
+  animation: slide-up ease;
+  animation-timeline: view();
+  animation-range: entry 0% cover 46%;
+}
