@@ -63,26 +63,26 @@ export default function NavBar({ searchQuery, setSearchQuery, ...props }) {
               className="text-white text-3xl cursor-pointer focus:outline-none"
             >
 <<<<<<< HEAD
-              {props.isOpen ? "✖" : "☰"}
-            </button>
-          </div>
-          <div className="flex items-center ">
+  { props.isOpen ? "✖" : "☰" }
+            </button >
+          </div >
+    <div className="flex items-center ">
 =======
               {props.isOpen ? '✖' : '☰'}
-            </button>
-          </div>
-          <div className='flex items-center '>
+    </button>
+          </div >
+    <div className='flex items-center '>
 >>>>>>> 90b235715ac9baa93ea75837b7dfe3cdff0d84c5
-            <a href="https://www.iiti.ac.in">
-              <img
-                src="https://www.iiti.ac.in/public/themes/iitindore/demos/update-logo.png"
-                className="logo h-15 w-15 p-0 lg:h-20 lg:w-20"
-                alt="IIT Indore Logo"
-              />
-            </a>
+      <a href="https://www.iiti.ac.in">
+        <img
+          src="https://www.iiti.ac.in/public/themes/iitindore/demos/update-logo.png"
+          className="logo h-15 w-15 p-0 lg:h-20 lg:w-20"
+          alt="IIT Indore Logo"
+        />
+      </a>
 <<<<<<< HEAD
-            <p className="text-white font-bold text-xl p-1 ">IIT INDORE</p>
-          </div>
+  <p className="text-white font-bold text-xl p-1 ">IIT INDORE</p>
+          </div >
 
 =======
             <p className='text-white font-bold text-xl p-1 '>IIT INDORE</p>
@@ -140,67 +140,71 @@ export default function NavBar({ searchQuery, setSearchQuery, ...props }) {
               <img src={Search} alt="Search" className="h-5 w-5" />
             </button>
           </form>
-          {/* dark  mode toggle*/}
-          {/* <button
+  {/* dark  mode toggle*/ }
+  {/* <button
               onClick={() => setDarkMode(!darkMode)}
               className="border px-4 py-2 rounded bg-gray-800 hover:bg-gray-700 text-white text-sm"
             >
               {darkMode ? '☀️ Light Mode' : '🌙 Dark Mode'}
             </button> */}
 
-          {/* Mobile Search Icon */}
-          <div className="md:hidden">
-            <button
-              onClick={() => setSearchinfo(Searchinfo)}
-              className="text-white"
-            >
-              <img
-                src={Search}
-                alt="Search"
-                className="h-6 w-6 cursor-pointer"
-              />
-            </button>
-          </div>
+  {/* Mobile Search Icon */ }
+  <div className="md:hidden">
+    <button
+      onClick={() => setSearchinfo(Searchinfo)}
+      className="text-white"
+    >
+      <img
+        src={Search}
+        alt="Search"
+        className="h-6 w-6 cursor-pointer"
+      />
+    </button>
+  </div>
 
-          {props.issignup && (
-            <div
-              className="hidden md:block"
-              onClick={() => setisuserinfoopen(!isuserinfoopen)}
-            >
-              <img
-                src={user}
-                alt="user"
-                className="w-11 h-11 cursor-pointer hover:h-12 hover:w-12 hover:opacity-75"
-              />
-            </div>
-          )}
-          {isuserinfoopen && (
-            <div className="w-80 hidden md:block absolute border border-radius-2 top-32 right-3 z-100 bg-white rounded-md ">
-              <div className="flex flex-col items-center my-5 mx-5 border rounded bg-gray-300">
-                <img src={user} alt="user" className="w-15 h-15 my-2 " />
-                <h2 className="font-bold py-1">
-                  {props.personinfo?.name || "No name"}
-                </h2>
-                <h2>{props.personinfo?.email || "No email "}</h2>
-              </div>
-              <button
-                className="logout text-red-500 font-bold cursor-pointer pl-[17px] mb-[10px] hover:opacity-75"
-                onClick={() => {
-                  if (window.confirm("Do you want to logout?")) {
-                    localStorage.removeItem("personinfo");
-                    props.setissignup(false);
-                    props.setpersoninfo(null);
-                    setisuserinfoopen(false);
-                    navigate("/signup");
-                  }
-                }}
-              >
-                🔓 Logout
-              </button>
-            </div>
-          )}
-        </div>
+  {
+    props.issignup && (
+      <div
+        className="hidden md:block"
+        onClick={() => setisuserinfoopen(!isuserinfoopen)}
+      >
+        <img
+          src={user}
+          alt="user"
+          className="w-11 h-11 cursor-pointer hover:h-12 hover:w-12 hover:opacity-75"
+        />
       </div>
+    )
+  }
+  {
+    isuserinfoopen && (
+      <div className="w-80 hidden md:block absolute border border-radius-2 top-32 right-3 z-100 bg-white rounded-md ">
+        <div className="flex flex-col items-center my-5 mx-5 border rounded bg-gray-300">
+          <img src={user} alt="user" className="w-15 h-15 my-2 " />
+          <h2 className="font-bold py-1">
+            {props.personinfo?.name || "No name"}
+          </h2>
+          <h2>{props.personinfo?.email || "No email "}</h2>
+        </div>
+        <button
+          className="logout text-red-500 font-bold cursor-pointer pl-[17px] mb-[10px] hover:opacity-75"
+          onClick={() => {
+            if (window.confirm("Do you want to logout?")) {
+              localStorage.removeItem("personinfo");
+              props.setissignup(false);
+              props.setpersoninfo(null);
+              setisuserinfoopen(false);
+              navigate("/signup");
+            }
+          }}
+        >
+          🔓 Logout
+        </button>
+      </div>
+    )
+  }
+        </div >
+      </div >
 =======
               
               className="bg-cyan-500 hover:bg-cyan-600 text-white px-4 py-1 cursor-pointer rounded-md transition"
@@ -252,6 +256,6 @@ export default function NavBar({ searchQuery, setSearchQuery, ...props }) {
       </div>
 
 >>>>>>> 90b235715ac9baa93ea75837b7dfe3cdff0d84c5
-    </header>
+    </header >
   );
 }
