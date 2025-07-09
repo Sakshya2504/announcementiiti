@@ -22,36 +22,8 @@ function Signup(props) {
     copylogininfo[name] = value;
     setlogininfo(copylogininfo);
   };
-  //   const handlesignup= async (e)=>{
-  //    // This function handles the signup form submission
-  //    // It prevents the default form submission behavior, sends the data to the server,
-  //     e.preventDefault();
 
-  //     //Fetch API is used to send a POST request to the server with the signup data
-  //      try{
-  //       const res = await fetch('http://localhost:3000/api/signup',{
-  //         method:'POST',
-  //         headers:{'content-type':'application/json'},
-  //         body:JSON.stringify(logininfo)
-  //       });
-  //     // const result= await res.json();
-
-  // const navigate = useNavigate();
-  // const [logininfo, setlogininfo] = useState({
-  //   name: "",
-  //   email: "",
-  //   password: "",
-  // });
-  //      }
-  //     }
-  // useState is used to manage the state of the login information
-  // The initial state is an object with empty strings for name, email, and password
-  // const change = (e) => {
-  //   const copylogininfo = { ...logininfo };
-  //   const { className, value } = e.target;
-  //   copylogininfo[className] = value;
-  //   setlogininfo(copylogininfo);
-  // };
+  
   const handlesignup = async (e) => {
     // This function handles the signup form submission
     // It prevents the default form submission behavior, sends the data to the server,
