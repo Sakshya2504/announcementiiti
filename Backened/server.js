@@ -1,17 +1,17 @@
- 
+
 import mongoose from 'mongoose';
 import express from 'express';
 import cors from 'cors';
-import { User } from './models/UserSchema.js'; 
+import { User } from './models/UserSchema.js';
 import bcrypt from 'bcrypt';
-import { Announce_ } from './models/Announce.js'; 
-import {event_} from './models/Event.js'
+import { Announce_ } from './models/Announce.js';
+import { event_ } from './models/Event.js'
 import { Admin_ } from './models/Admins.js'; // Import the Admin model
-import {Regis} from './models/Regis.js'
+import { Regis } from './models/Regis.js'
 
 import dotenv from "dotenv";
 dotenv.config();
- 
+
 // import {ClubPOJO} from './models/Seed.js'
 import { Club } from "./models/Club.js";
 import Clubroutes from "./routes/ClubRoutes.js";
@@ -24,22 +24,20 @@ const PORT = process.env.PORT || 3000;
 app.use(cors());
 app.use(express.json());
 app.use("/api/clubs", Clubroutes);
+
+
 // Connect to MongoDB with the validation using Mongoose
- 
+
 await mongoose.connect("mongodb://localhost:27017/todo", {
-    // useNewUrlParser: true, //useNewUrlParse is used for parsing the MongoDB connection string
-    // useUnifiedTopology: true // useUnifiedTopology is used to opt in to the MongoDB driver's new connection management engine
 });
-  
+
 await mongoose
   .connect("mongodb://localhost:27017/todo", {
-    // useNewUrlParser: true, //useNewUrlParse is used for parsing the MongoDB connection string
-    // useUnifiedTopology: true // useUnifiedTopology is used to opt in to the MongoDB driver's new connection management engine
   })
   .then(() => console.log("MongoDB connected"))
   .catch((err) => console.error(err));
 // Connect to MongoDB
- 
+
 
 // Signup route
 app.post("/api/signup", async (req, res) => {
@@ -77,6 +75,7 @@ app.post("/api/signup", async (req, res) => {
   }
 });
 
+
 // Login route
 app.post("/api/login", async (req, res) => {
   const { email, password } = req.body;
@@ -106,6 +105,7 @@ app.post("/api/login", async (req, res) => {
     res.status(500).json({ message: "Something went wrong" });
   }
 });
+
 
 // Announcement routes
 // This route is used to create a new announcement
@@ -141,6 +141,7 @@ app.get("/notification", async (req, res) => {
     res.status(500).json({ message: "Failed to fetch Events" });
   }
 });
+
 
 // Event routes
 // This route is used to create a new event
@@ -193,6 +194,8 @@ app.post("/api/search", SearchRoute, async (req, res) => {
       .json({ message: "Something went wrong " });
   }
 });
+
+
 // This route is used to fetch all events
 // It retrieves all events from the database and returns them as a JSON response
 app.get("/Events", async (req, res) => {
@@ -204,6 +207,8 @@ app.get("/Events", async (req, res) => {
     res.status(500).json({ message: "Failed to fetch Events" });
   }
 });
+
+
 // individual Clubpages
 app.get("/clubs", async (req, res) => {
   try {
@@ -215,80 +220,53 @@ app.get("/clubs", async (req, res) => {
   }
 });
 
-app.post('/api/verifyadmin', async (req, res) => {
-    const { email } = req.body;
 
-    try {
-        const admin = await Admin_.findOne({ email });
-        // Check if the email exists in the Admin collection
-        // If the email exists, it means the user is an admin
-        if (admin) {
-            res.status(200).json({ authorized: true });
-        } else {
-            res.status(401).json({ authorized: false, message: 'Unauthorized email' });
-        }
-    } catch (err) {
-        res.status(500).json({ error: 'Server error' });
+
+app.post('/api/verifyadmin', async (req, res) => {
+  const { email } = req.body;
+
+  try {
+    const admin = await Admin_.findOne({ email });
+    // Check if the email exists in the Admin collection
+    // If the email exists, it means the user is an admin
+    if (admin) {
+      res.status(200).json({ authorized: true });
+    } else {
+      res.status(401).json({ authorized: false, message: 'Unauthorized email' });
     }
+  } catch (err) {
+    res.status(500).json({ error: 'Server error' });
+  }
 });
 
-// app.post('/api/register', async (req, res) => {
-//     const { name, email, password } = req.body;
-
-//     try {
-//         const existingUser = await Regis.findOne({ email });
-//         if (existingUser) {
-//             return res.status(409).json({ message: 'User already registered with this email' });
-//         }
-        
-
-        
-//         const newRegis = new Regis({ name, EmailAddress,RollNumber,Program,Branch,PhoneNumber });
-//         await newRegis.save();
-
-//         res.status(201).json({
-//             message: 'User registered successfully!', user: {
-//                 Name: name,
-//                 EmailAddress: email,
-//                 RollNumber: RollNumber,
-//                 Program: Program,
-//                 Branch: Branch,
-//                 PhoneNumber: PhoneNumber
-//             }
-//         });
-//     } catch (err) {
-//         if (err.name === 'ValidationError') {
-//             return res.status(401).json({ message: err.message });
-//         }
-//         res.status(500).json({ message: 'Something went wrong' });
-//     }
-// });
 
 
 app.post('/events/:eventId/register', async (req, res) => {
-    const { eventId } = req.params;
-    const formData = req.body;
+  const { eventId } = req.params;
+  const formData = req.body;
 
-    try {
-        const registration = new Regis({ eventId, ...formData });
-        await registration.save();
-        res.status(200).json({ message: 'Registered successfully' });
-    } catch (err) {
-        console.error('Error saving registration:', err.message);
-        res.status(500).json({ error: 'Internal Server Error' });
-    }
+  try {
+    const registration = new Regis({ eventId, ...formData });
+    await registration.save();
+    res.status(200).json({ message: 'Registered successfully' });
+  } catch (err) {
+    console.error('Error saving registration:', err.message);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
 });
 
-app.get('/events/:eventId/registrations/count', async (req, res) => {
-    const { eventId } = req.params;
 
-    try {
-        const count = await Regis.countDocuments({ eventId });
-        res.json({ count });
-    } catch (err) {
-        console.error('Failed to fetch registration count:', err.message);
-        res.status(500).json({ error: 'Could not retrieve registration count' });
-    }
+
+app.get('/events/:eventId/registrations/count', async (req, res) => {
+  const { eventId } = req.params;
+
+  try {
+    const count = await Regis.countDocuments({ eventId });
+    res.json({ count });
+  } catch (err) {
+    console.error('Failed to fetch registration count:', err.message);
+    res.status(500).json({ error: 'Could not retrieve registration count' });
+  }
 });
 
 
