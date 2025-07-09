@@ -1,19 +1,19 @@
 import mongoose from 'mongoose';
 // import dotenv from 'dotenv';
-import { Club} from './Club.js'; // ensure correct path
+import { Club } from './Club.js'; // ensure correct path
 // import path from 'path';
 import dotenv from "dotenv";
 dotenv.config();
 // dotenv.config({ path: path.resolve('../.env') });
-  
+
 const seedClubs = async () => {
   try {
-    await mongoose.connect("mongodb://localhost:27017/todo")||process.env.MONGO_URL;
+    await mongoose.connect("mongodb://localhost:27017/todo") || process.env.MONGO_URL;
     console.log("✅ Connected to MongoDB");
     await Club.deleteMany({});
 
 
-    const ClubPOJO= [
+    const ClubPOJO = [
       {
         // _id : 'Aaina',
         name: 'Aaina',
@@ -62,8 +62,8 @@ const seedClubs = async () => {
           facebook: 'https://www.instagram.com/avana_iiti/',
         },
       },
-      
-       {
+
+      {
         // _id : 'gdsc',
         name: 'gdsc',
         heading: 'Cultural Expression & Dance',
@@ -83,8 +83,8 @@ const seedClubs = async () => {
           facebook: 'https://www.instagram.com/avana_iiti/',
         },
       },
-       {
-        
+      {
+
         name: 'cynaptics',
         heading: 'Cultural Expression & Dance',
         info: 'cynaptics is the cultural dance club. It performs classical and contemporary forms in fests.',
@@ -103,8 +103,8 @@ const seedClubs = async () => {
           facebook: 'https://www.instagram.com/avana_iiti/',
         },
       },
-       {
-     
+      {
+
         name: 'programming',
         heading: 'Cultural Expression & Dance',
         info: 'Avana is the cultural dance club. It performs classical and contemporary forms in fests.',
@@ -125,7 +125,7 @@ const seedClubs = async () => {
       },
 
     ];
- 
+
     await Club.insertMany(ClubPOJO);
     console.log("✅  Clubs seeded successfully.");
     process.exit();
