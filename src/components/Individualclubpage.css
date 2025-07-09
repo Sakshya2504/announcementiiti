@@ -1,121 +1,137 @@
- .createeventbutton,.announcebutton ,.submitbutton{
-        width: 200px;
-        margin: 20px auto;
-        padding: 12px;
-        font-size: 18px;
-        font-weight: bold;
-        color: white;
-        background: linear-gradient(to right, #007bff, #00c3ff);
-        border: none;
-        border-radius: 8px;
-        cursor: pointer;
-        transition: background 0.3s, transform 0.2s;
+.createeventbutton,
+.announcebutton,
+.submitbutton {
+    width: 200px;
+    margin: 20px auto;
+    padding: 12px;
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+    background: linear-gradient(to right, #007bff, #00c3ff);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+}
+
+.createeventbutton:hover,
+.announcebutton:hover,
+.submitbutton:hover {
+    background: linear-gradient(to right, #0056b3, #0097d1);
+    transform: scale(1.05);
+}
+
+.button_con {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+}
+
+.footer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.imagelogo {
+    height: 30px;
+    width: 30px;
+}
+
+.imagelogo:hover {
+    opacity: 0.75;
+}
+
+.clubhead {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+
+
+.clubbody {
+
+    display: flex;
+    justify-content: center;
+}
+
+.clubimage {
+    border-radius: 20px;
+    width: 90%;
+    object-fit: fill;
+
+}
+
+.box {
+    display: block;
+    perspective: 1000px;
+    transform-style: preserve-3d;
+}
+
+.card {
+    display: grid;
+    position: relative;
+    transform-style: preserve-3d;
+
+}
+
+.card:hover {
+    animation: rotate 0.3s ease 0s 1;
+
+}
+
+#front {
+    position: relative;
+    backface-visibility: hidden;
+    grid-area: 1 / 1;
+}
+
+#back {
+    position: absolute;
+    grid-area: 1 / 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    transform: rotateY(180deg);
+
+}
+
+.box:hover {
+    transform: rotateY(180deg);
+    transition-delay: 0.3s;
+}
+
+#back p {
+    color: white;
+    font-weight: bold;
+}
+
+@keyframes rotate {
+    from {
+        transform: rotateY(0);
     }
 
-    .createeventbutton:hover ,.announcebutton:hover,.submitbutton:hover{
-        background: linear-gradient(to right, #0056b3, #0097d1);
-        transform: scale(1.05);
-    }
-    .button_con{
-        display: flex;
-        flex-direction: row;
-        gap: 5px;
-    }
-    .footer{
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: center;
-        gap: 20px;
-    }
-    .imagelogo{
-        height: 30px;
-        width: 30px;
-    }    
-    
-    .imagelogo:hover{
-        opacity: 0.75;
-    }
-    .clubhead{
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-    }
-    
- 
-  
-   
-   
-    .clubbody{
-        
-      display: flex;
-      justify-content: center;
-    }
-    .clubimage{
-        border-radius: 20px;
-        width: 90%;
-        object-fit: fill;
-
-    }
-    .box{
-  display: block;
-  perspective: 1000px;
-   transform-style: preserve-3d;
-    }
-    .card{
-        display: grid;
-        position: relative;
-        transform-style: preserve-3d;
-       
-    }
-    .card:hover{
-        animation:rotate 0.3s ease 0s 1 ;
-
-    }
-    #front{
-position:relative;
-backface-visibility: hidden;
-grid-area: 1 / 1;
-    }
-    #back{
-position: absolute;
-grid-area: 1 / 1;
-display: flex;
-flex-direction: column;
-align-items: center;
-justify-content: center;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-backface-visibility: hidden;
-transform: rotateY(180deg);
-
-    }
-    .box:hover{
+    to {
         transform: rotateY(180deg);
-        transition-delay: 0.3s;
     }
-    #back p{
-        color: white;
-        font-weight: bold;
-    }
+}
 
-     @keyframes rotate {
-        from{
-            transform: rotateY(0);
-        }
-        to{
-            transform: rotateY(180deg);
-        }
-     }
-     #back h1{
-        color: #11E3FB;
-        font-weight: bold;
-        font-size: 32px;
-        padding-top: 10px;
-        padding-bottom: 10px;
-     }
-   
-    
+#back h1 {
+    color: #11E3FB;
+    font-weight: bold;
+    font-size: 32px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
