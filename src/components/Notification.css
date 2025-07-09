@@ -1,12 +1,13 @@
-.con{
-display: flex;
-flex-direction: column;
-background-color: rgba(1,1,27);
-width: 100vw;
-justify-content: center;
-align-items: center;
+.con {
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(1, 1, 27);
+    width: 100vw;
+    justify-content: center;
+    align-items: center;
 }
-.notifi{
+
+.notifi {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -14,29 +15,25 @@ align-items: center;
     margin-top: 7px;
     margin-bottom: 7px;
     width: 75%;
-   
-   gap: 5%;
-            /* background: linear-gradient(
-    to right,
-    rgba(6, 182, 212, 0.3),
-    rgba(59, 130, 246, 0.3)
-  ); */
-  background: linear-gradient(
-  to bottom right,
-  rgba(10, 10, 46, 0.9),
-  rgba(1, 1, 27, 0.95)
-);
 
-  border-color: rgba(135, 206, 235);
-border-width: 1px;
-   border-radius: 40px;
+    gap: 5%;
+
+    background: linear-gradient(to bottom right,
+            rgba(10, 10, 46, 0.9),
+            rgba(1, 1, 27, 0.95));
+
+    border-color: rgba(135, 206, 235);
+    border-width: 1px;
+    border-radius: 40px;
 }
-.notifi:hover{
+
+.notifi:hover {
     border-color: #33bbcf;
     scale: 1.02;
     border-width: 2px;
 }
-.notifi img{
+
+.notifi img {
     height: 60px;
     width: 70px;
     margin-top: 9px;
@@ -45,18 +42,19 @@ border-width: 1px;
     border-radius: 10%;
     margin-right: 120px;
 }
-.notifi h1{
-    font-size:18px;
+
+.notifi h1 {
+    font-size: 18px;
     color: white;
-    font-weight:500 ;
-    
+    font-weight: 500;
+
 }
-.notifi p{
+
+.notifi p {
     color: white;
     font-size: 15;
 }
-.notifi_info{
+
+.notifi_info {
     margin-left: 35px;
 }
-
-

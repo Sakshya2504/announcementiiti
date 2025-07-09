@@ -2,13 +2,6 @@ import './Notification.css';
 import image from './Images/image.png';
 import { useEffect, useState } from 'react';
 
-
-// const notifi =[{anouncment_photo:image,anouncement_heading:'This is the heading',anouncment_info:'This is the first announcement.'},
-//   {anouncment_photo:image,anouncement_heading:'This is the heading',anouncment_info:'This is the first announcement.'},
-//   {anouncment_photo:image,anouncement_heading:'This is the heading',anouncment_info:'This is the first announcement.'},
-//   {anouncment_photo:image,anouncement_heading:'This is the heading',anouncment_info:'This is the first announcement.'},
-//   {anouncment_photo:image,anouncement_heading:'This is the heading',anouncment_info:'This is the first announcement.'},
-//   {anouncment_photo:image,anouncement_heading:'This is the heading',anouncment_info:'This is the first announcement.'}];
 export default function Notification() {
   // This component fetches and displays notifications
   // It uses the useState hook to manage the state of notifications
@@ -39,24 +32,24 @@ export default function Notification() {
     fetchAnnouncements();
   }, []);
 
-  return( 
-  <>
-    <div className="con min-h-screen ">
-     { notifi.map((e,index)=>(
-      <div key={index} className="notifi "> 
-    
-        <div className='notifi_info'>
-        <h1>{e.anouncement_heading}</h1>
-        <p>{e.anouncment_info}</p>
-        </div>
-        <div className='image_con '>
-         <img src={e.anouncment_photo} alt="image" />
-         </div>
+  return (
+    <>
+      <div className="con min-h-screen ">
+        {notifi.map((e, index) => (
+          <div key={index} className="notifi ">
+
+            <div className='notifi_info'>
+              <h1>{e.anouncement_heading}</h1>
+              <p>{e.anouncment_info}</p>
+            </div>
+            <div className='image_con '>
+              <img src={e.anouncment_photo} alt="image" />
+            </div>
+          </div>
+
+        ))}
+
       </div>
-
-      ))}
-
-    </div>
-  </>
-);
+    </>
+  );
 }
