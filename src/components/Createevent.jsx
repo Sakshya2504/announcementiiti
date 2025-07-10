@@ -2,6 +2,7 @@ import { React,useState } from 'react'
 
 import { useNavigate } from 'react-router-dom'
 import iiti from '../Images/iiti.png';
+import { useParams } from 'react-router-dom';
 
  function Createevent() {
 
@@ -10,11 +11,14 @@ import iiti from '../Images/iiti.png';
   // This component allows users to create an event for a club
   // It includes a form where users can input the event name, date and time, conducted by, and event info
     // useState is used to manage the state of the event information
+    const {clubname} =useParams();
+    const club_name=decodeURIComponent(clubname);
+    console.log(club_name);
     const [eventlogo,seteventlogo]=useState(iiti);
     const [logininfo, setlogininfo] = useState({
       EventName: "",
       EventDateAndTime: "",
-      ConductedBy: "",
+      ConductedBy: club_name,
       EventInfo: "",
       Eventlogo:{eventlogo}
     })
@@ -87,7 +91,7 @@ import iiti from '../Images/iiti.png';
            EventName: "",
            EventDateAndTime: "",
            ConductedBy: "",
-           EventInfo: "",
+           EventInfo: club_name,
            Eventlogo:{eventlogo}
          });
          navigate('/');
@@ -112,7 +116,7 @@ import iiti from '../Images/iiti.png';
       <h2 className='text-white font-bold text-[22px] '>Event Detailes</h2>
       <input type="text" placeholder='Event Name' className='text-black block bg-white border rounded-[10px] w-[90%] md:w-[75%] h-[50px] m-[10px]' name='EventName' value={logininfo.EventName} onChange={handleChange} />
       <input type="text" placeholder='Event Date And Time'className='text-black block bg-white border rounded-[10px] w-[90%] md:w-[75%] h-[50px] m-[10px]' name='EventDateAndTime' value={logininfo.EventDateAndTime} onChange={handleChange}/>
-      <input type="text" placeholder='Conducted By' name='ConductedBy'className='text-black block bg-white border rounded-[10px] w-[90%] md:w-[75%] h-[50px] m-[10px]' value={logininfo.ConductedBy} onChange={handleChange}/>
+      <input type="text" placeholder='Conducted By' name='ConductedBy'className='text-black font-bold block bg-white border rounded-[10px] w-[90%] md:w-[75%] h-[50px] m-[10px]' value={logininfo.ConductedBy} />
       <input type="text" placeholder='Event Info' name='EventInfo'className='text-black block bg-white border rounded-[10px] w-[90%] md:w-[75%] h-[50px] m-[10px]' value={logininfo.EventInfo} onChange={handleChange}/>
       <div className='flex justify-around items-center gap-17 py-2'>
       <h2 className='text-white font-bold '>Event logo :</h2>

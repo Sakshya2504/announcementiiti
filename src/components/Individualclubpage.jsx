@@ -6,6 +6,7 @@ import linkedIn from '../Images/linkedIn.png';
 import facebook from '../Images/facebook.png';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
+import { useParams } from 'react-router-dom';
 
 import exampleImage from '../Images/image.png'; // relative to Events.jsx
 const events = [
@@ -42,6 +43,7 @@ const events = [
 
 
 function Individualclubpage(props) {
+  const {clubname} = useParams();
   const [register,setregister]=useState(false);
       const [registerinfo, setregisterinfo] = useState({
           Name: "",
@@ -72,14 +74,14 @@ function Individualclubpage(props) {
         </div>
         <div className='button_con'>
          
-          <button className='createeventbutton'  onClick={()=> navigate('/createevent')} >
+          <button className='createeventbutton'  onClick={()=> navigate(`/createevent/${clubname}`)} >
            
           Create Event
           
           </button>
          
          
-          <button className='announcebutton' onClick={()=>{navigate('/announce')}}>
+          <button className='announcebutton' onClick={()=>{navigate(`/announce/${clubname}`)}}>
             Announce
           </button>
            

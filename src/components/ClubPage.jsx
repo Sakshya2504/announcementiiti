@@ -47,7 +47,8 @@ function ClubCard({ name }) {
       </div>
       <div className="w-52 h-12 mb-10 mt-1 flex items-center justify-center cursor-pointer xl:border-b-4 border-blue-500">
         <Link
-          to='/individualclubpage'
+          to={`/individualclubpage/${encodeURIComponent(name)}`}
+          
           className="px-4 py-2 max-sm:mb-8 xxs:text-xs sm:text-sm font-medium text-white bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 rounded-lg"
         >
           See more

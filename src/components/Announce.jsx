@@ -1,13 +1,16 @@
 import {React,useState} from 'react'
 import { useNavigate } from 'react-router-dom'
 import iiti from '../Images/iiti.png';
+import { useParams } from 'react-router-dom';
 function Announce() {
   // This component allows users to create an announcement for a club
   // It includes a form where users can input the club name, announcement heading, and announcement
+  const {clubname}= useParams();
+  const club_name=decodeURIComponent(clubname);
   const navigate = useNavigate();
   const [announcelogo,setannouncelogo]=useState(iiti);
   const [logininfo, setlogininfo] = useState({
-    clubname: "",
+    clubname: club_name,
     heading: "",
     info: "",
     announcelogo:{announcelogo}
@@ -78,7 +81,7 @@ function Announce() {
       if (res.ok) {
         alert(result.message || 'Announcement successful');
         setannouncelogo(iiti);
-        setlogininfo({ clubname: "", heading: "", info: "",announcelogo:{announcelogo} });
+        setlogininfo({ clubname: club_name, heading: "", info: "",announcelogo:{announcelogo} });
         navigate('/notification');
       } else {
         alert(result.message || 'Announcement failed');
@@ -102,8 +105,7 @@ function Announce() {
               placeholder="Clubname"
               name="clubname"
               value={logininfo.clubname}
-              onChange={handleChange}
-              className='text-black block bg-white border rounded-[10px] w-[90%] md:w-[75%] h-[50px] m-[10px]'
+              className='text-black font-bold block bg-white border rounded-[10px] w-[90%] md:w-[75%] h-[50px] m-[10px]'
             />
 
             <input
