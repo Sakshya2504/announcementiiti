@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
 
-import Search from "./Images/Search.png";
-import user from "./Images/user.png";
+import Search from './Images/Search.png';
+import user from './Images/user.png';
 
-import SearchAlt from '../Images/Search-white.png';
-import userAlt from './user.png';
+import SearchAlt from './Images/Search-white.png';
+import userAlt from './Images/user.png';
 
 import { useLocation } from 'react-router-dom';
 import { useState } from 'react';
@@ -77,11 +77,6 @@ export default function NavBar(props) {
           >
             <input
               type="search"
-              placeholder="Search here"
-              onSubmit={handleSearch}
-            />
-            <input
-              type="search"
               placeholder="Search by club name or event name"
               value={props.searchQuery}
               onChange={(e) => props.setSearchQuery(e.target.value)}
@@ -89,6 +84,7 @@ export default function NavBar(props) {
             />
             <button
               type="submit"
+              onSubmit={handleSearch}
               className="bg-cyan-500 hover:bg-cyan-600 text-white px-4 py-1 cursor-pointer rounded-md transition"
             >
               <img src={SearchAlt} alt="Search" className="h-5 w-5" />
