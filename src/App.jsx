@@ -57,9 +57,9 @@ const [personinfo, setpersoninfo] = useState(null);
           
           
           
-          <Route path="/individualclubpage" element={<Individualclubpage issignup={issignup} />} />
-          <Route path="/createevent" element={<Createevent/>} />
-           <Route path="/announce" element={<Announce/>} />
+          <Route path="/individualclubpage/:clubname" element={<Individualclubpage issignup={issignup} />} />
+          <Route path="/createevent/:clubname" element={<Createevent/>} />
+           <Route path="/announce/:clubname" element={<Announce/>} />
         </Routes>
         
       </div>

@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 
 import Search from '../Images/Search-white.png';
-import user from './user.png'
+import user from '../Images/user.png'
 import { useLocation } from 'react-router-dom';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';

@@ -2,15 +2,18 @@ import React,
 { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
+import user from '../Images/user.png';
 
 function Signup(props) {
   // This component allows users to sign up for an account
   // It includes a form where users can input their name, email, and password
   const navigate=useNavigate();
+  const [userphoto,setuserphoto]=useState(user);
     const [logininfo,setlogininfo]= useState({
         name:"",
         email:"",
-        password:""
+        password:"",
+        user_photo:userphoto
       
     })
     // useState is used to manage the state of the login information
@@ -21,6 +24,17 @@ function Signup(props) {
         copylogininfo[name]=value;
         setlogininfo(copylogininfo);
     
+    }
+       const handlelogochange=(e)=>{
+      const file =e.target.files[0];
+      if(file){
+        const reader= new FileReader();
+        reader.onloadend=()=>{
+          setuserphoto(reader.result);
+        }
+        reader.readAsDataURL(file);
+      }
+
     }
     const handlesignup= async (e)=>{
      // This function handles the signup form submission
@@ -46,7 +60,8 @@ function Signup(props) {
         setlogininfo( { 
           name:"",
         email:"",
-        password:""
+        password:"",
+        user_photo:userphoto
     });
 
     // After a successful signup, the user is redirected to the home page
@@ -82,7 +97,13 @@ function Signup(props) {
     <input type="email" placeholder='Email' className="text-black block bg-white border rounded-[10px] w-[90%] md:w-[75%] h-[50px] m-[10px]" name='email' value={logininfo.email} id="InputEmail1" onChange={change} required/>
     <input type="password" className="text-black block bg-white border rounded-[10px] w-[90%] md:w-[75%] h-[50px] m-[10px]" name='password' placeholder='Password' value={logininfo.password} id="InputPassword1" onChange={change} required/>
      {/* <input type="password" className="confirmpassword1" placeholder='Confirm Password' value={logininfo.confirmpassword1} id="InputPassword2" onChange={change}/>   */}
-  
+      <div className='flex justify-around items-center gap-15 py-2'>
+      <h2 className='text-white font-bold '>User Photo :</h2>
+      <label className='w-20 h-20  rounded-1xl overflow-clip flex items-center cursor-pointer' >
+        <img src={userphoto}  className=' w-full h-full object-contain' alt="logo" />
+        <input type="file" accept='image/*' className='text-white font-bold hidden' onChange={handlelogochange} />
+      </label>
+      </div>
  
   <button type="submit" className="signupsubmitbutton block w-[90%] md:w-[200px] m-[20px] p-[12px] text-white text-[18px] font-bold bg-[linear-gradient(to_right,_#007bff,_#00c3ff)] border-none rounded-[8px] cursor-pointer hover:bg-[linear-gradient(to_right,_#0056b3,_#0097d1)] hover:scale-105 transition-[background,transform] duration-[300ms,200ms]" >SIGNUP</button>
   </div>
